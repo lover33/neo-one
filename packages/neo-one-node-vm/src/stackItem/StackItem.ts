@@ -46,3 +46,21 @@ export type StackItem =
   | StorageContextStackItem
   | ECPointStackItem
   | StructStackItem;
+
+export type ReferenceStackItem =
+  | ArrayStackItem
+  | ConsensusPayloadStackItem
+  | EnumeratorStackItem
+  | HeaderStackItem
+  | BlockStackItem
+  | ContractStackItem
+  | TransactionStackItem
+  | AccountStackItem
+  | AssetStackItem
+  | AttributeStackItem
+  | InputStackItem
+  | IteratorStackItem
+  | MapStackItem
+  | OutputStackItem
+  | ValidatorStackItem
+  | StructStackItem;

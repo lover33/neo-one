@@ -4,16 +4,16 @@ import { ScriptBuilder } from '../../sb';
 import { VisitOptions } from '../../types';
 import { Helper } from '../Helper';
 
-// Input: [val]
+// Input: []
 // Output: [val]
-export class GetArrayIterableIteratorClassHelper extends Helper {
+export class GetGenericEnumeratorIterableIteratorClassHelper extends Helper {
   public readonly needsGlobal: boolean = true;
 
   public emitGlobal(sb: ScriptBuilder, node: ts.Node, optionsIn: VisitOptions): void {
     const outerOptions = sb.pushValueOptions(optionsIn);
 
     // [number, globalObject]
-    sb.emitPushInt(node, GlobalProperty.ArrayIterableIterator);
+    sb.emitPushInt(node, GlobalProperty.GenericEnumeratorIterableIterator);
     // [classVal, number, globalObjectVal]
     sb.emitHelper(
       node,
@@ -23,22 +23,14 @@ export class GetArrayIterableIteratorClassHelper extends Helper {
           const innerOptions = sb.pushValueOptions(innerOptionsIn);
           // [0, argsarr]
           sb.emitPushInt(node, 0);
-          // [arrayVal]
+          // [enumerator]
           sb.emitOp(node, 'PICKITEM');
-          // [thisObjectVal, val]
+          // [thisObjectVal, enumerator]
           sb.scope.getThis(sb, node, innerOptions);
-          // [thisObjectVal, val, thisObjectVal]
-          sb.emitOp(node, 'TUCK');
-          // [number, thisObjectVal, val, thisObjectVal]
+          // [number, thisObjectVal, enumerator]
           sb.emitPushInt(node, InternalObjectProperty.Data0);
-          // [val, number, thisObjectVal, thisObjectVal]
+          // [enumerator, number, thisObjectVal]
           sb.emitOp(node, 'ROT');
-          // [thisObjectVal]
-          sb.emitHelper(node, innerOptions, sb.helpers.setInternalObjectProperty);
-          // [number, thisObjectVal]
-          sb.emitPushInt(node, InternalObjectProperty.Data1);
-          // [idx, number, thisObjectVal]
-          sb.emitPushInt(node, 0);
           // []
           sb.emitHelper(node, innerOptions, sb.helpers.setInternalObjectProperty);
         },
@@ -48,47 +40,21 @@ export class GetArrayIterableIteratorClassHelper extends Helper {
             sb.emitOp(node, 'DROP');
             // [thisObjectVal]
             sb.scope.getThis(sb, node, innerOptions);
-            // [thisObjectVal, thisObjectVal]
-            sb.emitOp(node, 'DUP');
-            // [thisObjectVal, thisObjectVal, thisObjectVal]
-            sb.emitOp(node, 'DUP');
-            // [number, thisObjectVal, thisObjectVal, thisObjectVal]
-            sb.emitPushInt(node, InternalObjectProperty.Data1);
-            // [idx, thisObjectVal, thisObjectVal]
-            sb.emitHelper(node, innerOptions, sb.helpers.getInternalObjectProperty);
-            // [idx, thisObjectVal, idx, thisObjectVal]
-            sb.emitOp(node, 'TUCK');
-            // [idx + 1, thisObjectVal, idx, thisObjectVal]
-            sb.emitOp(node, 'INC');
-            // [number, idx + 1, thisObjectVal, idx, thisObjectVal]
-            sb.emitPushInt(node, InternalObjectProperty.Data1);
-            // [idx + 1, number, thisObjectVal, idx, thisObjectVal]
-            sb.emitOp(node, 'SWAP');
-            // [idx, thisObjectVal]
-            sb.emitHelper(node, innerOptions, sb.helpers.setInternalObjectProperty);
-            // [thisObjectVal, idx]
-            sb.emitOp(node, 'SWAP');
-            // [number, thisObjectVal, idx]
+            // [number, thisObjectVal]
             sb.emitPushInt(node, InternalObjectProperty.Data0);
-            // [arrayVal, idx]
+            // [enumerator]
             sb.emitHelper(node, innerOptions, sb.helpers.getInternalObjectProperty);
-            // [arrayVal, idx, arrayVal]
-            sb.emitOp(node, 'TUCK');
-            // [length, idx, arrayVal]
-            sb.emitHelper(node, innerOptions, sb.helpers.arrayLength);
-            // [idx, length, idx, arrayVal]
-            sb.emitOp(node, 'OVER');
+            // [enumerator, enumerator]
+            sb.emitOp(node, 'DUP');
             sb.emitHelper(
               node,
               innerOptions,
               sb.helpers.if({
                 condition: () => {
-                  // [length <= idx, idx, arrayVal]
-                  sb.emitOp(node, 'LTE');
+                  // [done, enumerator]
+                  sb.emitSysCall(node, 'Neo.Enumerator.Next');
                 },
                 whenTrue: () => {
-                  // [arrayVal]
-                  sb.emitOp(node, 'DROP');
                   // []
                   sb.emitOp(node, 'DROP');
                   // [val]
@@ -99,14 +65,10 @@ export class GetArrayIterableIteratorClassHelper extends Helper {
                   sb.emitHelper(node, innerOptions, sb.helpers.wrapBoolean);
                 },
                 whenFalse: () => {
-                  // [arrayVal, idx]
+                  // [value, enumerator]
+                  sb.emitSysCall(node, 'Neo.Enumerator.Value');
+                  // [value]
                   sb.emitOp(node, 'SWAP');
-                  // [arr, idx]
-                  sb.emitHelper(node, innerOptions, sb.helpers.unwrapArray);
-                  // [idx, arr]
-                  sb.emitOp(node, 'SWAP');
-                  // [val]
-                  sb.emitOp(node, 'PICKITEM');
                   // [done, val]
                   sb.emitPushBoolean(node, false);
                   // [done, val]
@@ -154,6 +116,10 @@ export class GetArrayIterableIteratorClassHelper extends Helper {
       return;
     }
     // [classVal]
-    sb.emitHelper(node, options, sb.helpers.getGlobalProperty({ property: GlobalProperty.ArrayIterableIterator }));
+    sb.emitHelper(
+      node,
+      options,
+      sb.helpers.getGlobalProperty({ property: GlobalProperty.GenericEnumeratorIterableIterator }),
+    );
   }
 }

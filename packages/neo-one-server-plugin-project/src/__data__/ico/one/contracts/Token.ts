@@ -1,13 +1,4 @@
-import {
-  Address,
-  constant,
-  Contract,
-  createEventNotifier,
-  Deploy,
-  Fixed,
-  MapStorage,
-  SmartContract,
-} from '@neo-one/smart-contract';
+import { Address, Contract, createEventNotifier, Deploy, Fixed, SmartContract } from '@neo-one/smart-contract';
 
 const notifyTransfer = createEventNotifier<Address | undefined, Address | undefined, Fixed<8>>(
   'transfer',
@@ -28,7 +19,7 @@ export class Token implements SmartContract {
   public readonly symbol = 'ONE';
   public readonly decimals = 8;
   private mutableSupply: Fixed<8> = 0;
-  private readonly balances = new MapStorage<Address, Fixed<8>>();
+  private readonly balances = new Map<Address, Fixed<8>>();
 
   public constructor(public readonly owner: Address = Deploy.senderAddress) {
     if (!Address.isSender(owner)) {
@@ -36,12 +27,10 @@ export class Token implements SmartContract {
     }
   }
 
-  @constant
   public get totalSupply(): Fixed<8> {
     return this.mutableSupply;
   }
 
-  @constant
   public balanceOf(address: Address): Fixed<8> {
     const balance = this.balances.get(address);
 

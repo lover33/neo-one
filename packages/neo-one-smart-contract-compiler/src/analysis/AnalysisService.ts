@@ -160,6 +160,40 @@ export class AnalysisService {
     return this.extractLiteral(original, 'PublicKeyConstructor', common.stringToECPoint, common.bufferToECPoint);
   }
 
+  public isThisSmartContract(node: ts.Node): boolean {
+    return this.memoized('is-this-smart-contract', nodeKey(node), () => {
+      const thisType = tsUtils.type_.getThisTypeAt(this.context.typeChecker, node);
+      const thisTypeSymbol = this.context.getSymbolForType(node, thisType);
+      if (thisTypeSymbol === undefined) {
+        return false;
+      }
+
+      const valueDeclaration = tsUtils.symbol.getValueDeclaration(thisTypeSymbol);
+      if (valueDeclaration === undefined) {
+        return false;
+      }
+
+      return ts.isClassDeclaration(valueDeclaration) && this.isSmartContract(valueDeclaration);
+    });
+  }
+
+  public isSmartContract(node: ts.ClassDeclaration): boolean {
+    return this.memoized('is-smart-contract', nodeKey(node), () => {
+      const isSmartContract = tsUtils.class_.getImplementsArray(node).some((implType) => {
+        const testType = this.context.getType(tsUtils.expression.getExpression(implType));
+
+        return testType !== undefined && this.context.builtins.isInterface(node, testType, 'SmartContract');
+      });
+      if (isSmartContract) {
+        return true;
+      }
+
+      const baseClass = tsUtils.class_.getBaseClass(this.context.typeChecker, node);
+
+      return baseClass !== undefined && this.isSmartContract(baseClass);
+    });
+  }
+
   private extractLiteral<T>(
     original: ts.Expression,
     name: string,

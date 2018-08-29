@@ -318,17 +318,18 @@ const SYSCALLS = [
     name: 'Neo.Runtime.Deserialize',
     result: [
       new MapStackItem({
-        keys: {
-          [new BufferStackItem(Buffer.from('key', 'utf8')).toKeyString()]: new BufferStackItem(
-            Buffer.from('key', 'utf8'),
-          ),
-        },
-
-        values: {
-          [new BufferStackItem(Buffer.from('key', 'utf8')).toKeyString()]: new BufferStackItem(
-            Buffer.from('value', 'utf8'),
-          ),
-        },
+        referenceKeys: new Map([
+          [
+            new BufferStackItem(Buffer.from('key', 'utf8')).toStructuralKey(),
+            new BufferStackItem(Buffer.from('key', 'utf8')),
+          ],
+        ]),
+        referenceValues: new Map([
+          [
+            new BufferStackItem(Buffer.from('key', 'utf8')).toStructuralKey(),
+            new BufferStackItem(Buffer.from('value', 'utf8')),
+          ],
+        ]),
       }),
     ],
 

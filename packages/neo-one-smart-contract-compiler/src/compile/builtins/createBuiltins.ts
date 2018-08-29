@@ -18,6 +18,7 @@ import { add as addNumber } from './number';
 import { add as addObject } from './object';
 import { add as addPropertyDescriptor } from './propertyDescriptor';
 import { add as addRegExp } from './regexp';
+import { add as addSet } from './set';
 import { add as addString } from './string';
 import { add as addSymbol } from './symbol';
 import { add as addTemplateStringsArray } from './templateStringsArray';
@@ -47,6 +48,7 @@ export const createBuiltins = (context: Context): Builtins => {
   addSymbol(builtins);
   addTemplateStringsArray(builtins);
   addTypedPropertyDescriptor(builtins);
+  addSet(builtins);
 
   return builtins;
 };

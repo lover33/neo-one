@@ -186,25 +186,6 @@ export class NEOTranspiler implements Transpiler {
     this.scheduledTranspile.add(node);
   }
 
-  public isSmartContract(node: ts.ClassDeclaration): boolean {
-    if (node === this.smartContract) {
-      return true;
-    }
-
-    const isSmartContract = tsUtils.class_.getImplementsArray(node).some((implType) => {
-      const testType = this.context.getType(tsUtils.expression.getExpression(implType));
-
-      return testType !== undefined && this.context.builtins.isInterface(node, testType, 'SmartContract');
-    });
-    if (isSmartContract) {
-      return true;
-    }
-
-    const baseClass = tsUtils.class_.getBaseClass(this.context.typeChecker, node);
-
-    return baseClass !== undefined && this.isSmartContract(baseClass);
-  }
-
   public getTypeText(node: ts.Node, type: ts.Type): string {
     return tsUtils.type_.getText(this.context.typeChecker, type, node);
   }

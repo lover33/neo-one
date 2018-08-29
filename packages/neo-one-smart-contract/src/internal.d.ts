@@ -1,6 +1,6 @@
 // tslint:disable
 /// <reference path="./global.d.ts" />
-import { Contract, SerializableValue, SmartContractValue } from './index';
+import { Contract, SerializableKey, SerializableValue, SmartContractValue } from './index';
 
 export function getArgument<T extends SmartContractValue>(idx: number): T;
 export function doReturn(): void;
@@ -30,5 +30,16 @@ export function migrate(
 ): Contract;
 export function putStorage(key: SerializableValue, value: SerializableValue): void;
 export function getStorage<T extends SerializableValue>(key: SerializableValue): T;
-export function shouldSkipVerify(): boolean;
 export const trigger: number;
+
+export interface MapStorage<K extends SerializableKey, V extends SerializableValue> extends Map<K, V> {}
+export interface MapStorageConstructor extends MapConstructor {
+  new <K extends SerializableKey, V extends SerializableValue>(prefix?: Buffer): MapStorage<K, V>;
+}
+export const MapStorage: MapStorageConstructor;
+
+export interface SetStorage<V extends SerializableKey> extends Set<V> {}
+export interface SetStorageConstructor extends SetConstructor {
+  new <K extends SerializableKey>(prefix: Buffer): SetStorage<K>;
+}
+export const SetStorage: SetStorageConstructor;

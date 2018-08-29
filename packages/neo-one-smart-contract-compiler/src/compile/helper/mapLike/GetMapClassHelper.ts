@@ -1,8 +1,9 @@
 import ts from 'typescript';
-import { GlobalProperty, InternalObjectProperty } from '../../constants';
+import { GlobalProperty, WellKnownSymbol } from '../../constants';
 import { ScriptBuilder } from '../../sb';
 import { VisitOptions } from '../../types';
 import { Helper } from '../Helper';
+import { clear, createDelete, ctor, getMap, has, size } from './common';
 
 // Input: [val]
 // Output: [val]
@@ -12,27 +13,6 @@ export class GetMapClassHelper extends Helper {
   public emitGlobal(sb: ScriptBuilder, node: ts.Node, optionsIn: VisitOptions): void {
     const outerOptions = sb.pushValueOptions(optionsIn);
 
-    const clear = (innerOptionsIn: VisitOptions) => {
-      const innerOptions = sb.pushValueOptions(innerOptionsIn);
-      // []
-      sb.emitOp(node, 'DROP');
-      // [objectVal]
-      sb.scope.getThis(sb, node, innerOptions);
-      // [number, objectVal]
-      sb.emitPushInt(node, InternalObjectProperty.Map);
-      // [obj, number, objectVal]
-      sb.emitOp(node, 'NEWMAP');
-      // []
-      sb.emitHelper(node, innerOptions, sb.helpers.setInternalObjectProperty);
-    };
-
-    const getMap = (innerOptions: VisitOptions) => {
-      // [number, objectVal]
-      sb.emitPushInt(node, InternalObjectProperty.Map);
-      // [obj]
-      sb.emitHelper(node, innerOptions, sb.helpers.getInternalObjectProperty);
-    };
-
     // [number, globalObject]
     sb.emitPushInt(node, GlobalProperty.Map);
     // [classVal, number, globalObjectVal]
@@ -40,66 +20,49 @@ export class GetMapClassHelper extends Helper {
       node,
       outerOptions,
       sb.helpers.createClass({
-        ctor: (innerOptions) => {
-          clear(innerOptions);
+        ctor: ctor(sb, node),
+        accessors: {
+          size: size(sb, node),
         },
         prototypeMethods: {
-          clear: (innerOptions) => {
-            clear(innerOptions);
-            // [val]
-            sb.emitHelper(node, innerOptions, sb.helpers.wrapUndefined);
-          },
-          delete: (innerOptions) => {
+          clear: clear(sb, node),
+          delete: createDelete(sb, node),
+          has: has(sb, node),
+          forEach: (innerOptions) => {
             // [argsarr]
             sb.emitPushInt(node, 0);
-            // [key]
+            // [objectVal]
             sb.emitOp(node, 'PICKITEM');
-            // [serialized]
-            sb.emitHelper(node, innerOptions, sb.helpers.genericSerialize);
-            // [keyBuffer]
-            sb.emitSysCall(node, 'Neo.Runtime.Serialize');
-            // [this, keyBuffer]
+            // [this, objectVal]
             sb.scope.getThis(sb, node, innerOptions);
-            // [map, keyBuffer]
-            getMap(innerOptions);
-            // [map, keyBuffer, map]
-            sb.emitOp(node, 'TUCK');
-            // [keyBuffer, map, keyBuffer, map]
-            sb.emitOp(node, 'OVER');
-            // [hasKey, keyBuffer, map]
-            sb.emitOp(node, 'HASKEY');
-            // [map, hasKey, keyBuffer]
-            sb.emitOp(node, 'ROT');
-            // [keyBuffer, map, hasKey]
-            sb.emitOp(node, 'ROT');
-            // [hasKey]
-            sb.emitOp(node, 'REMOVE');
-            // [boolVal]
-            sb.emitHelper(node, innerOptions, sb.helpers.wrapBoolean);
+            // [map, objectVal]
+            getMap(sb, node)(innerOptions);
+            // [iterator, objectVal]
+            sb.emitSysCall(node, 'Neo.Iterator.Create');
+            // [objectVal, iterator]
+            sb.emitOp(node, 'SWAP');
+            // []
+            sb.emitHelper(node, innerOptions, sb.helpers.rawIteratorForEachFunc);
           },
           get: (innerOptions) => {
             // [argsarr]
             sb.emitPushInt(node, 0);
             // [key]
             sb.emitOp(node, 'PICKITEM');
-            // [serialized]
-            sb.emitHelper(node, innerOptions, sb.helpers.genericSerialize);
-            // [keyBuffer]
-            sb.emitSysCall(node, 'Neo.Runtime.Serialize');
-            // [this, keyBuffer]
+            // [this, key]
             sb.scope.getThis(sb, node, innerOptions);
-            // [map, keyBuffer]
-            getMap(innerOptions);
-            // [map, keyBuffer, map]
+            // [map, key]
+            getMap(sb, node)(innerOptions);
+            // [map, key, map]
             sb.emitOp(node, 'TUCK');
-            // [keyBuffer, map, keyBuffer, map]
+            // [key, map, key, map]
             sb.emitOp(node, 'OVER');
             sb.emitHelper(
               node,
               innerOptions,
               sb.helpers.if({
                 condition: () => {
-                  // [hasKey, keyBuffer, map]
+                  // [hasKey, key, map]
                   sb.emitOp(node, 'HASKEY');
                 },
                 whenTrue: () => {
@@ -123,21 +86,31 @@ export class GetMapClassHelper extends Helper {
             // [this, argsarr, this]
             sb.emitOp(node, 'TUCK');
             // [map, argsarr, this]
-            getMap(innerOptions);
+            getMap(sb, node)(innerOptions);
             // [argsarr, map, this]
             sb.emitOp(node, 'SWAP');
             // [length, keyVal, valueVal, map, this]
             sb.emitOp(node, 'UNPACK');
             // [keyVal, valueVal, map, this]
             sb.emitOp(node, 'DROP');
-            // [serialized, valueVal, map, this]
-            sb.emitHelper(node, innerOptions, sb.helpers.genericSerialize);
-            // [buffer, valueVal, map, this]
-            sb.emitSysCall(node, 'Neo.Runtime.Serialize');
-            // [valueVal, buffer, map, this]
+            // [valueVal, keyVal, map, this]
             sb.emitOp(node, 'SWAP');
             // [this]
             sb.emitOp(node, 'SETITEM');
+          },
+        },
+        prototypeSymbolMethods: {
+          [WellKnownSymbol.iterator]: (innerOptions) => {
+            // []
+            sb.emitOp(node, 'DROP');
+            // [thisObjectVal]
+            sb.scope.getThis(sb, node, innerOptions);
+            // [map]
+            getMap(sb, node)(innerOptions);
+            // [iterator]
+            sb.emitSysCall(node, 'Neo.Iterator.Create');
+            // [val]
+            sb.emitHelper(node, innerOptions, sb.helpers.createGenericIteratorIterableIterator);
           },
         },
       }),

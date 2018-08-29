@@ -1,9 +1,19 @@
 import ts from 'typescript';
-import { GlobalProperty } from '../../constants';
+import { GlobalProperty, WellKnownSymbol } from '../../constants';
 import { ScriptBuilder } from '../../sb';
 import { VisitOptions } from '../../types';
 import { Helper } from '../Helper';
-import { createConstructor, createDelete, createGet, createGetKey, createSet } from './common';
+import {
+  createClear,
+  createConstructor,
+  createDelete,
+  createForEach,
+  createGetKey,
+  createHas,
+  createIterator,
+  createSet,
+  createSize,
+} from './common';
 
 // Input: [val]
 // Output: [val]
@@ -22,14 +32,25 @@ export class GetSetStorageClassHelper extends Helper {
       node,
       outerOptions,
       sb.helpers.createClass({
+        superClass: (innerOptions) => {
+          sb.emitHelper(node, innerOptions, sb.helpers.getMapClass);
+        },
         ctor: createConstructor(sb, node),
+        accessors: {
+          size: createSize(sb, node),
+        },
         prototypeMethods: {
-          has: createGet(sb, node, getKey, (innerOptions) => {
-            // [boolean]
-            sb.emitPushBoolean(node, false);
-            // [val]
-            sb.emitHelper(node, innerOptions, sb.helpers.wrapBoolean);
+          clear: createClear(sb, node),
+          delete: createDelete(sb, node, getKey),
+          forEach: createForEach(sb, node, (innerOptions) => {
+            // [enumerator, objectVal]
+            sb.emitSysCall(node, 'Neo.Iterator.Keys');
+            // [objectVal, enumerator]
+            sb.emitOp(node, 'SWAP');
+            // []
+            sb.emitHelper(node, innerOptions, sb.helpers.rawEnumeratorForEachFunc);
           }),
+          has: createHas(sb, node, getKey),
           add: createSet(sb, node, getKey, (innerOptions) => {
             // [buffer]
             sb.emitOp(node, 'NIP');
@@ -38,7 +59,14 @@ export class GetSetStorageClassHelper extends Helper {
             // [val, buffer]
             sb.emitHelper(node, innerOptions, sb.helpers.wrapBoolean);
           }),
-          delete: createDelete(sb, node, getKey),
+        },
+        prototypeSymbolMethods: {
+          [WellKnownSymbol.iterator]: createIterator(sb, node, (innerOptions) => {
+            // [enumerator]
+            sb.emitSysCall(node, 'Neo.Iterator.Keys');
+            // [val]
+            sb.emitHelper(node, innerOptions, sb.helpers.createGenericEnumeratorIterableIterator);
+          }),
         },
       }),
     );

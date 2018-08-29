@@ -23,7 +23,6 @@ import {
   ArrToStringHelperOptions,
   ExtendArrHelper,
 } from './arr';
-import { CreateArrayIterableIteratorHelper, GetArrayIterableIteratorClassHelper } from './arrayIterableIterator';
 import { ArrayBindingHelper, ArrayBindingHelperOptions, ObjectBindingHelper, ObjectBindingHelperOptions } from './bind';
 import { CreateClassHelper, CreateClassHelperOptions } from './class';
 import {
@@ -84,12 +83,24 @@ import {
 import { Helper } from './Helper';
 import {
   CreateArrayEntriesIterableIteratorHelper,
+  CreateGenericEnumeratorIterableIteratorHelper,
+  CreateGenericIteratorIterableIteratorHelper,
   GetArrayEntriesIterableIteratorClassHelper,
+  GetGenericEnumeratorIterableIteratorClassHelper,
+  GetGenericIteratorIterableIteratorClassHelper,
   IteratorForEachHelper,
   IteratorForEachHelperOptions,
+  RawEnumeratorForEachFuncHelper,
+  RawEnumeratorForEachHelper,
+  RawEnumeratorForEachHelperOptions,
+  RawIteratorFilterHelper,
+  RawIteratorFilterHelperOptions,
+  RawIteratorForEachFuncHelper,
+  RawIteratorForEachHelper,
+  RawIteratorForEachHelperOptions,
 } from './iterator';
 import { KeyedHelper } from './KeyedHelper';
-import { GetMapClassHelper } from './map';
+import { GetMapClassHelper, GetSetClassHelper } from './mapLike';
 import {
   AddEmptyModuleHelper,
   ExportHelper,
@@ -118,7 +129,19 @@ import {
   ProcessStatementsHelper,
   ProcessStatementsHelperOptions,
 } from './statement';
-import { GetMapStorageClassHelper, GetSetStorageClassHelper, GetStorageHelper, PutStorageHelper } from './storage';
+import {
+  DeleteStorageHelper,
+  GetCommonStorageHelper,
+  GetMapStorageClassHelper,
+  GetSetStorageClassHelper,
+  GetStorageBaseHelper,
+  GetStorageHelper,
+  HandleUndefinedStorageHelper,
+  HandleUndefinedStorageHelperOptions,
+  IterStorageHelper,
+  PutCommonStorageHelper,
+  PutStorageHelper,
+} from './storage';
 import {
   ArrayLengthHelper,
   BufferLengthHelper,
@@ -253,10 +276,6 @@ export interface Helpers {
   readonly arrSome: (options: ArrSomeHelperOptions) => ArrSomeHelper;
   readonly arrToString: (options: ArrToStringHelperOptions) => ArrToStringHelper;
   readonly extendArr: ExtendArrHelper;
-
-  // arrayIterableIterator
-  readonly createArrayIterableIterator: CreateArrayIterableIteratorHelper;
-  readonly getArrayIterableIteratorClass: GetArrayIterableIteratorClassHelper;
 
   // asset
   readonly isAsset: IsAssetHelper;
@@ -395,18 +414,34 @@ export interface Helpers {
   readonly unwrapHeader: UnwrapHeaderHelper;
 
   // iterator
+  readonly createGenericEnumeratorIterableIterator: CreateGenericEnumeratorIterableIteratorHelper;
+  readonly createGenericIteratorIterableIterator: CreateGenericIteratorIterableIteratorHelper;
   readonly createArrayEntriesIterableIterator: CreateArrayEntriesIterableIteratorHelper;
+  readonly getGenericEnumeratorIterableIteratorClass: GetGenericEnumeratorIterableIteratorClassHelper;
+  readonly getGenericIteratorIterableIteratorClass: GetGenericIteratorIterableIteratorClassHelper;
   readonly getArrayEntriesIterableIteratorClass: GetArrayEntriesIterableIteratorClassHelper;
   readonly iteratorForEach: (options: IteratorForEachHelperOptions) => IteratorForEachHelper;
+  readonly rawEnumeratorForEach: (options: RawEnumeratorForEachHelperOptions) => RawEnumeratorForEachHelper;
+  readonly rawEnumeratorForEachFunc: RawEnumeratorForEachFuncHelper;
+  readonly rawIteratorFilter: (options: RawIteratorFilterHelperOptions) => RawIteratorFilterHelper;
+  readonly rawIteratorForEach: (options: RawIteratorForEachHelperOptions) => RawIteratorForEachHelper;
+  readonly rawIteratorForEachFunc: RawIteratorForEachFuncHelper;
 
   // map
   readonly getMapClass: GetMapClassHelper;
+  readonly getSetClass: GetSetClassHelper;
 
   // storage
   readonly getMapStorageClass: GetMapStorageClassHelper;
   readonly getSetStorageClass: GetSetStorageClassHelper;
+  readonly putCommonStorage: PutCommonStorageHelper;
+  readonly handleUndefinedStorage: (options: HandleUndefinedStorageHelperOptions) => HandleUndefinedStorageHelper;
+  readonly deleteStorage: DeleteStorageHelper;
+  readonly iterStorage: IterStorageHelper;
   readonly putStorage: PutStorageHelper;
+  readonly getStorageBase: GetStorageBaseHelper;
   readonly getStorage: GetStorageHelper;
+  readonly getCommonStorage: GetCommonStorageHelper;
 
   // types
   readonly forBuiltinType: (options: ForBuiltinTypeHelperOptions) => ForBuiltinTypeHelper;
@@ -505,10 +540,6 @@ export const createHelpers = (): Helpers => {
     arrSome: (options) => new ArrSomeHelper(options),
     arrToString: (options) => new ArrToStringHelper(options),
     extendArr: new ExtendArrHelper(),
-
-    // arrayIterableIterator
-    createArrayIterableIterator: new CreateArrayIterableIteratorHelper(),
-    getArrayIterableIteratorClass: new GetArrayIterableIteratorClassHelper(),
 
     // asset
     isAsset: new IsAssetHelper(),
@@ -643,18 +674,34 @@ export const createHelpers = (): Helpers => {
     unwrapHeader: new UnwrapHeaderHelper(),
 
     // iterator
+    createGenericEnumeratorIterableIterator: new CreateGenericEnumeratorIterableIteratorHelper(),
+    createGenericIteratorIterableIterator: new CreateGenericIteratorIterableIteratorHelper(),
     createArrayEntriesIterableIterator: new CreateArrayEntriesIterableIteratorHelper(),
+    getGenericEnumeratorIterableIteratorClass: new GetGenericEnumeratorIterableIteratorClassHelper(),
+    getGenericIteratorIterableIteratorClass: new GetGenericIteratorIterableIteratorClassHelper(),
     getArrayEntriesIterableIteratorClass: new GetArrayEntriesIterableIteratorClassHelper(),
     iteratorForEach: (options) => new IteratorForEachHelper(options),
+    rawEnumeratorForEach: (options) => new RawEnumeratorForEachHelper(options),
+    rawEnumeratorForEachFunc: new RawEnumeratorForEachFuncHelper(),
+    rawIteratorFilter: (options) => new RawIteratorFilterHelper(options),
+    rawIteratorForEach: (options) => new RawIteratorForEachHelper(options),
+    rawIteratorForEachFunc: new RawIteratorForEachFuncHelper(),
 
     // map
     getMapClass: new GetMapClassHelper(),
+    getSetClass: new GetSetClassHelper(),
 
-    // set
+    // storage
     getMapStorageClass: new GetMapStorageClassHelper(),
     getSetStorageClass: new GetSetStorageClassHelper(),
+    putCommonStorage: new PutCommonStorageHelper(),
+    handleUndefinedStorage: (options) => new HandleUndefinedStorageHelper(options),
+    deleteStorage: new DeleteStorageHelper(),
+    iterStorage: new IterStorageHelper(),
     putStorage: new PutStorageHelper(),
+    getStorageBase: new GetStorageBaseHelper(),
     getStorage: new GetStorageHelper(),
+    getCommonStorage: new GetCommonStorageHelper(),
 
     // types
     forBuiltinType: (options) => new ForBuiltinTypeHelper(options),

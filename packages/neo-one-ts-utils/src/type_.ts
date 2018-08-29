@@ -572,3 +572,7 @@ export function getCallSignatures(type: ts.Type): ReadonlyArray<ts.Signature> {
 export function getNonNullableType(type: ts.Type): ts.Type {
   return type.getNonNullableType();
 }
+
+export function getThisTypeAt(typeChecker: ts.TypeChecker, node: ts.Node): ts.Type | undefined {
+  return (typeChecker as any).tryGetThisTypeAt(node);
+}

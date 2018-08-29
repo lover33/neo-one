@@ -6,8 +6,9 @@ import { Destroy } from './destroy';
 import { DoReturn } from './doReturn';
 import { GetArgument } from './getArgument';
 import { GetStorage } from './getStorage';
+import { add as addMapStorage } from './mapStorage';
 import { PutStorage } from './putStorage';
-import { ShouldSkipVerify } from './shouldSkipVerify';
+import { add as addSetStorage } from './setStorage';
 
 // tslint:disable-next-line export-name
 export const add = (builtins: Builtins): void => {
@@ -19,5 +20,6 @@ export const add = (builtins: Builtins): void => {
   builtins.addInternalValue('getStorage', new GetStorage());
   builtins.addInternalValue('putStorage', new PutStorage());
   builtins.addInternalValue('trigger', new SysCallValue('Neo.Runtime.GetTrigger', Types.Number));
-  builtins.addInternalValue('shouldSkipVerify', new ShouldSkipVerify());
+  addMapStorage(builtins);
+  addSetStorage(builtins);
 };

@@ -101,7 +101,7 @@ export class ClassDeclarationTranspiler extends NodeTranspiler<ts.ClassDeclarati
   public readonly kind = ts.SyntaxKind.ClassDeclaration;
 
   public visitNode(transpiler: Transpiler, node: ts.ClassDeclaration): ts.ClassDeclaration {
-    if (transpiler.isSmartContract(node)) {
+    if (transpiler.context.analysis.isSmartContract(node)) {
       return this.transpileDeploy(transpiler, node);
     }
 
@@ -201,7 +201,7 @@ export class ClassDeclarationTranspiler extends NodeTranspiler<ts.ClassDeclarati
           const name = tsUtils.node.getName(property);
           const type = tsUtils.type_.getType(transpiler.context.typeChecker, property);
 
-          if (transpiler.context.builtins.isInterface(property, type, 'MapStorage')) {
+          if (transpiler.context.builtins.isInterface(property, type, 'Map')) {
             return tsUtils.setOriginal(
               ts.createProperty(
                 property.decorators,
@@ -210,7 +210,7 @@ export class ClassDeclarationTranspiler extends NodeTranspiler<ts.ClassDeclarati
                 property.questionToken === undefined ? property.exclamationToken : property.questionToken,
                 getPropertyTypeNode(transpiler, property, type),
                 tsUtils.setOriginalRecursive(
-                  ts.createNew(ts.createIdentifier('MapStorage'), undefined, [
+                  ts.createNew(ts.createIdentifier(transpiler.getInternalIdentifier(node, 'MapStorage')), undefined, [
                     ts.createCall(ts.createPropertyAccess(ts.createIdentifier('Buffer'), 'from'), undefined, [
                       ts.createStringLiteral(name),
                       ts.createStringLiteral('utf8'),
@@ -223,7 +223,7 @@ export class ClassDeclarationTranspiler extends NodeTranspiler<ts.ClassDeclarati
             );
           }
 
-          if (transpiler.context.builtins.isInterface(property, type, 'SetStorage')) {
+          if (transpiler.context.builtins.isInterface(property, type, 'Set')) {
             return tsUtils.setOriginal(
               ts.createProperty(
                 property.decorators,
@@ -232,7 +232,7 @@ export class ClassDeclarationTranspiler extends NodeTranspiler<ts.ClassDeclarati
                 property.questionToken === undefined ? property.exclamationToken : property.questionToken,
                 getPropertyTypeNode(transpiler, property, type),
                 tsUtils.setOriginalRecursive(
-                  ts.createNew(ts.createIdentifier('SetStorage'), undefined, [
+                  ts.createNew(ts.createIdentifier(transpiler.getInternalIdentifier(node, 'SetStorage')), undefined, [
                     ts.createCall(ts.createPropertyAccess(ts.createIdentifier('Buffer'), 'from'), undefined, [
                       ts.createStringLiteral(name),
                       ts.createStringLiteral('utf8'),

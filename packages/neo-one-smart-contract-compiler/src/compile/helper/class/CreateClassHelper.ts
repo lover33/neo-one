@@ -8,8 +8,16 @@ type Prop = (options: VisitOptions) => void;
 interface Properties {
   readonly [key: string]: Prop;
 }
+interface Accessors {
+  readonly [key: string]: {
+    readonly getter?: Prop;
+    readonly setter?: Prop;
+  };
+}
 export interface CreateClassHelperOptions {
+  readonly superClass?: (options: VisitOptions) => void;
   readonly ctor?: (options: VisitOptions) => void;
+  readonly accessors?: Accessors;
   readonly prototypeMethods?: Properties;
   readonly prototypeSymbolMethods?: Properties;
   readonly classMethods?: Properties;
@@ -19,7 +27,9 @@ export interface CreateClassHelperOptions {
 // Input: []
 // Output: [classVal]
 export class CreateClassHelper extends Helper {
+  private readonly superClass?: (options: VisitOptions) => void;
   private readonly ctor?: (options: VisitOptions) => void;
+  private readonly accessors: Accessors;
   private readonly prototypeMethods: Properties;
   private readonly prototypeSymbolMethods: Properties;
   private readonly classMethods: Properties;
@@ -27,7 +37,9 @@ export class CreateClassHelper extends Helper {
 
   public constructor(options: CreateClassHelperOptions) {
     super();
+    this.superClass = options.superClass;
     this.ctor = options.ctor;
+    this.accessors = options.accessors === undefined ? {} : options.accessors;
     this.prototypeMethods = options.prototypeMethods === undefined ? {} : options.prototypeMethods;
     this.prototypeSymbolMethods = options.prototypeSymbolMethods === undefined ? {} : options.prototypeSymbolMethods;
     this.classMethods = options.classMethods === undefined ? {} : options.classMethods;
@@ -70,6 +82,29 @@ export class CreateClassHelper extends Helper {
       sb.emitHelper(node, options, sb.helpers.setDataPropertyObjectProperty);
     };
 
+    const createAccessor = (name: string, getter?: Prop, setter?: Prop) => {
+      // [thisVal, thisVal]
+      sb.emitOp(node, 'DUP');
+      // [name, thisVal, thisVal]
+      sb.emitPushString(node, name);
+      // [fObjectVal, name, thisVal, thisVal]
+      if (setter !== undefined) {
+        createMethod(setter);
+      }
+      if (getter !== undefined) {
+        createMethod(getter);
+      }
+      // [prototypeVal]
+      sb.emitHelper(
+        node,
+        options,
+        sb.helpers.setAccessorPropertyObjectProperty({
+          hasGet: getter !== undefined,
+          hasSet: setter !== undefined,
+        }),
+      );
+    };
+
     const wrapSymbolMethod = (name: string, body: Prop) => {
       // [prototypeVal, prototypeVal]
       sb.emitOp(node, 'DUP');
@@ -85,6 +120,10 @@ export class CreateClassHelper extends Helper {
     // [prototypeVal]
     sb.emitHelper(node, options, sb.helpers.createObject);
     // [prototypeVal]
+    Object.entries(this.accessors).forEach(([name, { getter, setter }]) => {
+      createAccessor(name, getter, setter);
+    });
+    // [prototypeVal]
     Object.entries(this.prototypeMethods).forEach(([name, body]) => {
       createPropertyMethod(name, body);
     });
@@ -92,6 +131,21 @@ export class CreateClassHelper extends Helper {
     Object.entries(this.prototypeSymbolMethods).forEach(([name, body]) => {
       wrapSymbolMethod(name, body);
     });
+
+    if (this.superClass !== undefined) {
+      // [prototypeVal, prototypeVal]
+      sb.emitOp(node, 'DUP');
+      // ['__proto__', prototypeVal, prototypeVal]
+      sb.emitPushString(node, '__proto__');
+      // [superObjectVal, '__proto__', prototypeVal, prototypeVal]
+      this.superClass(options);
+      // ['prototype', superObjectVal, '__proto__', prototypeVal, prototypeVal]
+      sb.emitPushString(node, 'prototype');
+      // [superProtoType, '__proto__', prototypeVal, prototypeVal]
+      sb.emitHelper(node, options, sb.helpers.getPropertyObjectProperty);
+      // [prototypeVal]
+      sb.emitHelper(node, options, sb.helpers.setDataPropertyObjectProperty);
+    }
 
     // create class
     // [farr, prototypeVal]

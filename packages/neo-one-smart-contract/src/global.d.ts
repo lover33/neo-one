@@ -112,8 +112,6 @@ interface IteratorResult<T> {
 
 interface Iterator<T> {
   next(value?: any): IteratorResult<T>;
-  return?(value?: any): IteratorResult<T>;
-  throw?(e?: any): IteratorResult<T>;
 }
 
 interface Iterable<T> {
@@ -304,9 +302,14 @@ interface ArrayConstructor {}
 declare const Array: ArrayConstructor;
 
 interface Map<K, V> {
+  /** Returns an iterable of entries in the map. */
+  [Symbol.iterator](): IterableIterator<[K, V]>;
+  forEach(callbackfn: (value: V, key: K) => void): void;
+  get(key: K): V | undefined;
+  has(key: K): boolean;
+  readonly size: number;
   clear(): void;
   delete(key: K): boolean;
-  get(key: K): V | undefined;
   set(key: K, value: V): this;
 }
 interface MapConstructor {
@@ -314,6 +317,39 @@ interface MapConstructor {
   readonly prototype: Map<any, any>;
 }
 declare var Map: MapConstructor;
+
+interface ReadonlyMap<K, V> {
+  /** Returns an iterable of entries in the map. */
+  [Symbol.iterator](): IterableIterator<[K, V]>;
+  forEach(callbackfn: (value: V, key: K) => void): void;
+  get(key: K): V | undefined;
+  has(key: K): boolean;
+  readonly size: number;
+}
+
+interface Set<T> {
+  /** Iterates over values in the set. */
+  [Symbol.iterator](): IterableIterator<T>;
+  clear(): void;
+  delete(value: T): boolean;
+  forEach(callbackfn: (value: T) => void): void;
+  has(value: T): boolean;
+  add(value: T): this;
+  readonly size: number;
+}
+interface SetConstructor {
+  new <T = any>(values?: ReadonlyArray<T> | null): Set<T>;
+  readonly prototype: Set<any>;
+}
+declare var Set: SetConstructor;
+
+interface ReadonlySet<T> {
+  /** Iterates over values in the set. */
+  [Symbol.iterator](): IterableIterator<T>;
+  forEach(callbackfn: (value: T) => void): void;
+  has(value: T): boolean;
+  readonly size: number;
+}
 
 interface PropertyDescriptor {
   configurable?: boolean;

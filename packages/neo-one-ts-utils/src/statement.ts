@@ -145,7 +145,7 @@ export function getBlock(node: ts.CatchClause): ts.Block {
 }
 
 export function getStatement(
-  node: ts.DoStatement | ts.ForStatement | ts.WhileStatement | ts.ForInOrOfStatement,
+  node: ts.DoStatement | ts.ForStatement | ts.WhileStatement | ts.ForInOrOfStatement | ts.LabeledStatement,
 ): ts.Statement {
   return node.statement;
 }

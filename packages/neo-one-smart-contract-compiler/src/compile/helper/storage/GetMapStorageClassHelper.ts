@@ -1,9 +1,20 @@
 import ts from 'typescript';
-import { GlobalProperty } from '../../constants';
+import { GlobalProperty, WellKnownSymbol } from '../../constants';
 import { ScriptBuilder } from '../../sb';
 import { VisitOptions } from '../../types';
 import { Helper } from '../Helper';
-import { createConstructor, createDelete, createGet, createGetKey, createSet } from './common';
+import {
+  createClear,
+  createConstructor,
+  createDelete,
+  createForEach,
+  createGet,
+  createGetKey,
+  createHas,
+  createIterator,
+  createSet,
+  createSize,
+} from './common';
 
 // Input: [val]
 // Output: [val]
@@ -22,12 +33,24 @@ export class GetMapStorageClassHelper extends Helper {
       node,
       outerOptions,
       sb.helpers.createClass({
+        superClass: (innerOptions) => {
+          sb.emitHelper(node, innerOptions, sb.helpers.getMapClass);
+        },
         ctor: createConstructor(sb, node),
+        accessors: {
+          size: createSize(sb, node),
+        },
         prototypeMethods: {
-          get: createGet(sb, node, getKey, (innerOptions) => {
-            // [val]
-            sb.emitHelper(node, innerOptions, sb.helpers.wrapUndefined);
+          clear: createClear(sb, node),
+          delete: createDelete(sb, node, getKey),
+          forEach: createForEach(sb, node, (innerOptions) => {
+            // [objectVal, iterator]
+            sb.emitOp(node, 'SWAP');
+            // []
+            sb.emitHelper(node, innerOptions, sb.helpers.rawIteratorForEachFunc);
           }),
+          get: createGet(sb, node, getKey),
+          has: createHas(sb, node, getKey),
           set: createSet(sb, node, getKey, () => {
             // [argsarr, buffer]
             sb.emitOp(node, 'SWAP');
@@ -36,7 +59,12 @@ export class GetMapStorageClassHelper extends Helper {
             // [val, buffer]
             sb.emitOp(node, 'PICKITEM');
           }),
-          delete: createDelete(sb, node, getKey),
+        },
+        prototypeSymbolMethods: {
+          [WellKnownSymbol.iterator]: createIterator(sb, node, (innerOptions) => {
+            // [val]
+            sb.emitHelper(node, innerOptions, sb.helpers.createGenericIteratorIterableIterator);
+          }),
         },
       }),
     );

@@ -7,7 +7,9 @@ export type InternalIdentifier =
   | 'trigger'
   | 'putStorage'
   | 'getStorage'
-  | 'shouldSkipVerify';
+  | 'shouldSkipVerify'
+  | 'MapStorage'
+  | 'SetStorage';
 export type ContractIdentifier = 'Address';
 
 export interface Transpiler {
@@ -16,5 +18,4 @@ export interface Transpiler {
   readonly getFinalTypeNode: (node: ts.Node, type: ts.Type | undefined, typeNode: ts.TypeNode) => ts.TypeNode;
   readonly getInternalIdentifier: (file: ts.Node, name: InternalIdentifier) => string;
   readonly getContractIdentifier: (file: ts.Node, name: ContractIdentifier) => string;
-  readonly isSmartContract: (node: ts.ClassDeclaration) => boolean;
 }

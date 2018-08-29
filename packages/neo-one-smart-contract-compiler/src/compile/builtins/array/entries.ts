@@ -31,7 +31,11 @@ export class ArrayEntries extends BuiltinInstanceMemberCall {
       sb.visit(tsUtils.expression.getExpression(func), options);
     }
 
+    // [arr]
+    sb.emitHelper(node, options, sb.helpers.unwrapArray);
+    // [iterator]
+    sb.emitSysCall(node, 'Neo.Iterator.Create');
     // [val]
-    sb.emitHelper(node, options, sb.helpers.createArrayEntriesIterableIterator);
+    sb.emitHelper(node, options, sb.helpers.createGenericIteratorIterableIterator);
   }
 }

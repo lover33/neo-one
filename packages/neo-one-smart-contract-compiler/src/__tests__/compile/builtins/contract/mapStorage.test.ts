@@ -5,7 +5,7 @@ describe('MapStorage', () => {
     const node = await helpers.startNode();
 
     const contract = await node.addContract(`
-      import { MapStorage } from '@neo-one/smart-contract';
+      import { MapStorage } from '@neo-one/smart-contract-internal';
 
       const storage = new MapStorage<string, number>(Buffer.from('prefix', 'utf8'));
       assertEqual(storage.get('foo'), undefined);

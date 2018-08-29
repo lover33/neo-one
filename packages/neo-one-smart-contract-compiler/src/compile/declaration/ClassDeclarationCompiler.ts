@@ -245,9 +245,24 @@ export class ClassDeclarationCompiler extends NodeCompiler<ts.ClassDeclaration> 
       addMethod(method);
     });
 
-    const verifySymbol = sb.context.builtins.getValueSymbol('verify');
-    const constantSymbol = sb.context.builtins.getValueSymbol('constant');
+    const validSymbols = [
+      sb.context.builtins.getValueSymbol('send'),
+      sb.context.builtins.getValueSymbol('receive'),
+      sb.context.builtins.getValueSymbol('claim'),
+    ];
     tsUtils.class_.getConcreteMembers(decl).forEach((member) => {
+      if (
+        ts.isMethodDeclaration(member) ||
+        ts.isGetAccessorDeclaration(member) ||
+        ts.isSetAccessorDeclaration(member)
+      ) {
+        tsUtils.decoratable.getDecoratorsArray(member).forEach((decorator) => {
+          const decoratorSymbol = sb.context.getSymbol(tsUtils.expression.getExpression(decorator));
+          if (decoratorSymbol !== undefined && !validSymbols.includes(decoratorSymbol)) {
+            sb.context.reportUnsupported(decorator);
+          }
+        });
+      }
       const decorators =
         ts.isMethodDeclaration(member) || ts.isGetAccessorDeclaration(member) || ts.isSetAccessorDeclaration(member)
           ? tsUtils.decoratable.getDecoratorsArray(member).filter((decorator) => {
@@ -255,7 +270,7 @@ export class ClassDeclarationCompiler extends NodeCompiler<ts.ClassDeclaration> 
                 error: true,
               });
 
-              return decoratorSymbol !== verifySymbol && decoratorSymbol !== constantSymbol;
+              return decoratorSymbol === undefined || !validSymbols.includes(decoratorSymbol);
             })
           : tsUtils.decoratable.getDecoratorsArray(member);
       if (decorators.length > 0) {

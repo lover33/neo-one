@@ -31,7 +31,7 @@ export interface AddressConstructor {
   /**
    * Verifies that the `Transaction` was signed by the `address`.
    *
-   * Smart contracts should invoke this function before taking actions on `Address`es, like transferring tokens, that require the permission of the `Address`.
+   * In most cases, smart contracts should instead use `Address.isInvoker`.
    *
    * @example
    *
@@ -42,6 +42,20 @@ export interface AddressConstructor {
    * @returns true if `Address` approved this `Transaction`
    */
   readonly isSender: (address: Address) => boolean;
+  /**
+   * Verifies that the invocation was directly called AND approved by `Address`.
+   *
+   * Smart contracts should invoke this function before taking transferring items for `Address`es, like transferring tokens, that require the permission of the `Address`.
+   *
+   * @example
+   *
+   * if (!Address.isCaller(address)) {
+   *   return false;
+   * }
+   *
+   * @returns true if `Address` approved this `Transaction`
+   */
+  readonly isCaller: (address: Address) => boolean;
 }
 export const Address: AddressConstructor;
 
@@ -707,92 +721,6 @@ export type SerializableKey =
 interface SerializableValueArray extends Array<SerializableValue> {}
 export type SerializableValue = undefined | number | string | boolean | Buffer | SerializableValueArray;
 
-/**
- * Persistent smart contract storage. When used as a `SmartContract` property the prefix is automatically set to the property name.
- *
- * @example
- *
- * class Token implements SmartContract {
- *  private readonly balances =
- *    new MapStorage<Address, Fixed<8>>();
- *
- *   // Note this is not how one should implement token transfer
- *   // and is meant for illustration purposes only.
- *  public transfer(
- *    from: Address,
- *    to: Address,
- *    amount: Fixed<8>,
- *  ): boolean {
- *    const fromBalance = this.balances.get(from);
- *    const toBalance = this.balances.get(to);
- *    this.balances.set(from, fromBalance - amount);
- *    this.balances.set(to, toBalance + amount);
- *    return true;
- *  }
- * }
- *
- */
-export interface MapStorage<K extends SerializableKey, V extends SerializableValue> {
-  /**
-   * Retrieve `key` from storage.
-   *
-   * @returns `V` or undefined if the key does not exist.
-   */
-  readonly get: (key: K) => V | undefined;
-  /**
-   * Set `key` to `value` in storage.
-   */
-  readonly set: (key: K, v: V) => void;
-  /**
-   * Delete `key` from storage.
-   */
-  readonly delete: (key: K) => void;
-}
-export interface MapStorageConstructor {
-  /**
-   * Constructs a new `MapStorage` instance. When used as a `SmartContract` property the `prefix` is automatically set to the property name. Otherwise, `prefix` is mandatory and should be unique within a smart contract.
-   */
-  new <K extends SerializableKey, V extends SerializableValue>(prefix?: Buffer): MapStorage<K, V>;
-}
-export const MapStorage: MapStorageConstructor;
-
-/**
- * Persistent smart contract set storage. When used as a `SmartContract` property the prefix is automatically set to the property name.
- *
- * @example
- *
- * class ICO implements SmartContract {
- *  private readonly whitelistedAddresses =
- *    new SetStorage<Address>();
- *
- *  public isWhitelisted(adress: Address): boolean {
- *    return this.whitelistedAddresses.has(address);
- *  }
- * }
- *
- */
-export interface SetStorage<V extends SerializableKey> {
-  /**
-   * @returns true if `value` exists in storage.
-   */
-  readonly has: (value: V) => boolean;
-  /**
-   * Add `value` to storage.
-   */
-  readonly add: (value: V) => void;
-  /**
-   * Delete `value` from storage.
-   */
-  readonly delete: (value: V) => void;
-}
-export interface SetStorageConstructor {
-  /**
-   * Constructs a new `SetStorage` instance. When used as a `SmartContract` property the `prefix` is automatically set to the property name. Otherwise, `prefix` is mandatory and should be unique within a smart contract.
-   */
-  new <K extends SerializableKey>(prefix?: Buffer): SetStorage<K>;
-}
-export const SetStorage: SetStorageConstructor;
-
 export interface BlockchainConstructor {
   /**
    * Time of the current `Block`.
@@ -824,7 +752,6 @@ export interface DeployConstructor {
    * Use the sender `Address` for the constructor parameter.
    *
    * @example
-   * import { Address, Deploy, SmartContract } from '@neo-one/smart-contract';
    *
    * class Token implements SmartContract {
    *  public constructor(public readonly owner: Address = Deploy.senderAddress) {}
@@ -922,16 +849,11 @@ export interface ContractProperties {
   readonly author: string;
   readonly email: string;
   readonly description: string;
-  readonly payable: boolean;
 }
 /**
  * Marks a class as a `SmartContract`.
  */
 export interface SmartContract {
-  /**
-   * Owner of the `SmartContract`
-   */
-  owner: Address;
   /**
    * Properties used for deployment of the `SmartContract`
    */
@@ -991,10 +913,26 @@ export interface LinkedSmartContractConstructor {
 export const LinkedSmartContract: LinkedSmartContractConstructor;
 
 /**
- * Marks a `SmartContract` method to be verified before execution.
+ * Marks a `SmartContract` method that verifies `Asset` transfers from the `SmartContract`.
+ *
+ * Method must return a boolean indicating whether the `SmartContract` wishes to send the transferred `Asset`s.
+ *
+ * May be used in combination with `@receive`
  */
-export function verify(target: any, propertyKey: string, descriptor: PropertyDescriptor): void;
+export function send(target: any, propertyKey: string, descriptor: PropertyDescriptor): void;
 /**
- * Marks a `SmartContract` method as constant.
+ * Marks a `SmartContract` method that verifies receiving `Asset`s to the `SmartContract`.
+ *
+ * Method must return a boolean indicating whether the `SmartContract` wishes to receive the transferred `Asset`s.
+ *
+ * May be used in combination with `@send`.
  */
-export function constant(target: any, propertyKey: string, descriptor: PropertyDescriptor): void;
+export function receive(target: any, propertyKey: string, descriptor: PropertyDescriptor): void;
+/**
+ * Marks a `SmartContract` method that verifies GAS claims from the `SmartContract`.
+ *
+ * Method must return a boolean indicating whether the `SmartContract` wishes to allow GAS to be claimed.
+ *
+ * May optionally take the `ClaimTransaction` this `SmartContract` is executed in as the last argument. Accessing `Blockchain.currentTransaction` will result in an error.
+ */
+export function claim(target: any, propertyKey: string, descriptor: PropertyDescriptor): void;

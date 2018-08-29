@@ -1,9 +1,9 @@
 import ts from 'typescript';
-import { ScriptBuilder } from '../../sb';
-import { VisitOptions } from '../../types';
-import { BuiltinInterface } from '../BuiltinInterface';
-import { Builtins } from '../Builtins';
-import { BuiltinValue } from '../BuiltinValue';
+import { ScriptBuilder } from '../../../sb';
+import { VisitOptions } from '../../../types';
+import { BuiltinInterface } from '../../BuiltinInterface';
+import { Builtins } from '../../Builtins';
+import { BuiltinValue } from '../../BuiltinValue';
 
 class SetStorageInterface extends BuiltinInterface {}
 class SetStorageValue extends BuiltinValue {

@@ -17,11 +17,28 @@ export abstract class WrapHelper extends Helper {
       return;
     }
 
-    // [type, value]
-    sb.emitPushInt(node, this.type);
-    // [2, type, value]
-    sb.emitPushInt(node, this.length);
-    // [[type, value]]
-    sb.emitOp(node, 'PACK');
+    // [0, value]
+    sb.emitPushInt(node, 0);
+    // [struct, value]
+    sb.emitOp(node, 'NEWSTRUCT');
+    // [struct, struct, value]
+    sb.emitOp(node, 'DUP');
+    if (this.length === 2) {
+      // [value, struct, struct]
+      sb.emitOp(node, 'ROT');
+      // [struct, value, struct, struct]
+      sb.emitOp(node, 'OVER');
+      // [type, struct, value, struct, struct]
+      sb.emitPushInt(node, this.type);
+      // [value, struct, struct]
+      sb.emitOp(node, 'APPEND');
+      // [struct]
+      sb.emitOp(node, 'APPEND');
+    } else {
+      // [type, struct, struct]
+      sb.emitPushInt(node, this.type);
+      // [struct]
+      sb.emitOp(node, 'APPEND');
+    }
   }
 }

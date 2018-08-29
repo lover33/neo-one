@@ -1,5 +1,14 @@
 // tslint:disable readonly-keyword readonly-array no-object-mutation strict-boolean-expressions
-import { Blockchain, constant, createEventNotifier, Fixed, Hash256, Integer, verify } from '@neo-one/smart-contract';
+import {
+  Address,
+  Blockchain,
+  createEventNotifier,
+  Fixed,
+  Hash256,
+  Integer,
+  receive,
+  send,
+} from '@neo-one/smart-contract';
 
 import { Token } from './Token';
 
@@ -18,12 +27,11 @@ export abstract class ICO<Decimals extends number> extends Token<Decimals> {
     this.mutableRemaining = icoAmount;
   }
 
-  @constant
   public get remaining(): number {
     return this.mutableRemaining;
   }
 
-  @verify
+  @receive
   public mintTokens(): boolean {
     if (!this.hasStarted() || this.hasEnded()) {
       notifyRefund();
@@ -63,6 +71,11 @@ export abstract class ICO<Decimals extends number> extends Token<Decimals> {
     this.notifyTransfer(undefined, sender, amount);
 
     return true;
+  }
+
+  @send
+  public withdraw(): boolean {
+    return Address.isSender(this.owner);
   }
 
   private hasStarted(): boolean {

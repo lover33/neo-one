@@ -23,46 +23,15 @@ export class ArrForEachHelper extends Helper {
   public emit(sb: ScriptBuilder, node: ts.Node, optionsIn: VisitOptions): void {
     const options = sb.pushValueOptions(optionsIn);
 
-    // [size, ...array]
-    sb.emitOp(node, 'UNPACK');
-    // [idx, size, ...array]
-    sb.emitPushInt(node, 0);
+    // [enumerator]
+    sb.emitSysCall(node, 'Neo.Enumerator.Create');
     sb.emitHelper(
       node,
       options,
-      sb.helpers.forLoop({
-        condition: () => {
-          // [size, idx, ...array]
-          sb.emitOp(node, 'SWAP');
-          // [size, idx, size, ...array]
-          sb.emitOp(node, 'TUCK');
-          // [idx, size, idx, size, ...array]
-          sb.emitOp(node, 'OVER');
-          // size > idx
-          // [size > idx, idx, size, ...array]
-          sb.emitOp(node, 'GT');
-        },
-        each: (innerOptions) => {
-          // [value, idx, size, ...array]
-          sb.emitOp(node, 'ROT');
-          if (this.withIndex) {
-            // [idx, value, idx, size, ...array]
-            sb.emitOp(node, 'OVER');
-            // [value, idx, idx, size, ...array]
-            sb.emitOp(node, 'SWAP');
-          }
-          // [idx, size, ...array]
-          this.each(sb.noPushValueOptions(innerOptions));
-        },
-        incrementor: () => {
-          // [idx, size, ...array]
-          sb.emitOp(node, 'INC');
-        },
+      sb.helpers.rawEnumeratorForEach({
+        withIndex: this.withIndex,
+        each: this.each,
       }),
     );
-    // [size]
-    sb.emitOp(node, 'DROP');
-    // []
-    sb.emitOp(node, 'DROP');
   }
 }

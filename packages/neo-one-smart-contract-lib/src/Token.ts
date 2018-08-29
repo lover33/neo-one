@@ -1,13 +1,5 @@
 // tslint:disable readonly-keyword readonly-array no-object-mutation strict-boolean-expressions
-import {
-  Address,
-  constant,
-  Contract,
-  ContractProperties,
-  Fixed,
-  MapStorage,
-  SmartContract,
-} from '@neo-one/smart-contract';
+import { Address, Contract, ContractProperties, Fixed, SmartContract } from '@neo-one/smart-contract';
 
 export abstract class Token<Decimals extends number> implements SmartContract {
   public abstract owner: Address;
@@ -16,14 +8,12 @@ export abstract class Token<Decimals extends number> implements SmartContract {
   public abstract readonly decimals: Decimals;
   public abstract readonly symbol: string;
   protected mutableSupply: Fixed<Decimals> = 0;
-  protected readonly balances = new MapStorage<Address, Fixed<Decimals>>();
+  protected readonly balances = new Map<Address, Fixed<Decimals>>();
 
-  @constant
   public get totalSupply(): Fixed<Decimals> {
     return this.mutableSupply;
   }
 
-  @constant
   public balanceOf(address: Address): Fixed<Decimals> {
     const balance = this.balances.get(address);
 

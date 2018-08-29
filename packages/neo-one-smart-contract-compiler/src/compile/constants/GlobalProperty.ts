@@ -11,4 +11,9 @@ export enum GlobalProperty {
   CallingScriptHash = 9,
   GenericLogSerialize = 10,
   ArrayEntriesIterableIterator = 11,
+  CommonStorage = 12,
+  CacheStorage = 13,
+  Set = 14,
+  GenericIteratorIterableIterator = 15,
+  GenericEnumeratorIterableIterator = 16,
 }
