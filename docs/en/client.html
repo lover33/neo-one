@@ -1,0 +1,185 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Client · NEO•ONE</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Client · NEO•ONE"/><meta property="og:type" content="website"/><meta property="og:url" content="https://neo-one.io/index.html"/><meta property="og:description" content="This is the API documentation for the NEO•ONE Client."/><link rel="shortcut icon" href="/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://neo-one.io/blog/atom.xml" title="NEO•ONE Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://neo-one.io/blog/feed.xml" title="NEO•ONE Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.svg"/><img class="mobileLogo" src="/img/mobileLogo.svg"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/docs/en/getting-started.html" target="_self">Docs</a></li><li><a href="/en/help.html" target="_self">Help</a></li><li><a href="/blog" target="_self">Blog</a></li><li><a href="https://github.com/neo-one-suite/neo-one" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Documentation</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Documentation</h3><ul><li class="navListItem"><a class="navItem" href="/docs/en/getting-started.html">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/docs/en/playground-tutorial.html">Playground Tutorial</a></li><li class="navListItem"><a class="navItem" href="/docs/en/writing-a-smart-contract.html">Writing a Smart Contract</a></li><li class="navListItem"><a class="navItem" href="/docs/en/testing.html">Testing</a></li><li class="navListItem"><a class="navItem" href="/docs/en/front-end.html">Front End</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/en/client.html">Client</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/neo-one-suite/neo-one/edit/master/docs/client.md" target="_blank">Edit</a><h1>Client</h1></header><article><div><span><p>This is the API documentation for the NEO•ONE Client.</p>
+<h2><a class="anchor" aria-hidden="true" name="properties"></a><a href="#properties" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Properties</h2>
+<pre><code class="hljs"><span class="hljs-meta">currentAccount$</span><span class="bash">: Observable&lt;UserAccount | undefined&gt;</span>
+</code></pre>
+<ul>
+<li>Observable which returns a stream containing the currently active User Account.
+<br><br></li>
+</ul>
+<pre><code class="hljs">accounts$: Observable&lt;ReadonlyArray&lt;UserAccount<span class="hljs-meta">&gt;&gt;
+</span></code></pre>
+<ul>
+<li>Observable which returns a stream containing an array of all User Accounts registered with the client.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-meta">currentNetwork$</span><span class="bash">: Observable&lt;NetworkType&gt;</span>
+</code></pre>
+<ul>
+<li>Observable which returns a stream containing the currently active network.
+<br><br></li>
+</ul>
+<pre><code class="hljs">networks$: Observable&lt;ReadonlyArray&lt;NetworkType<span class="hljs-meta">&gt;&gt;
+</span></code></pre>
+<ul>
+<li>Observable which returns a stream containing an array of all networks registered with the client.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-keyword">block$: </span>Observable&lt;{<span class="hljs-keyword">block: </span><span class="hljs-keyword">Block, </span>network: NetworkType}&gt;
+</code></pre>
+<ul>
+<li>Observable which returns a stream of blocks and their associated network as they are received.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-string">accountState$:</span> Observable&lt;{<span class="hljs-string">currentAccount:</span> UserAccount, <span class="hljs-string">account:</span> Account} | undefined&gt;
+</code></pre>
+<ul>
+<li>Observable which returns a stream containing all information on the currently active account.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-string">accountState$:</span> Observable&lt;{<span class="hljs-string">currentAccount:</span> UserAccount, <span class="hljs-string">account:</span> Account} | undefined&gt;
+</code></pre>
+<ul>
+<li>Observable which returns a stream containing all information on the currently active account.</li>
+</ul>
+<pre><code class="hljs"><span class="hljs-symbol">providers:</span> TUserAccountProviders
+</code></pre>
+<ul>
+<li>Returns the User Account Providers.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-symbol">hooks:</span> ClientHooks
+</code></pre>
+<ul>
+<li>Returns all client hooks.
+<br><br><br></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" name="methods"></a><a href="#methods" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Methods</h2>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">getAccount</span><span class="hljs-params">(idIn: UserAccountID)</span></span>: UserAccount
+</code></pre>
+<ul>
+<li>Returns the UserAccount for a given UserAccountID.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">selectAccount</span><span class="hljs-params">(idIn?: UserAccountID)</span></span>: Promise&lt;void&gt;
+</code></pre>
+<ul>
+<li>Sets the current account to the account associated with the given UserAccountID.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">selectNetwork</span><span class="hljs-params">(networkIn: NetworkType)</span></span>: Promise&lt;void&gt;
+</code></pre>
+<ul>
+<li>Sets the currently selected network to given network.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">deleteAccount</span><span class="hljs-params">(idIn: UserAccountID)</span></span>: Promise&lt;void&gt;
+</code></pre>
+<ul>
+<li>Removes the account associated with the given UserAccountID from the list of accounts registered with the client.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">updateAccountName</span><span class="hljs-params">(options: UpdateAccountNameOptions)</span></span>: Promise&lt;void&gt;
+</code></pre>
+<ul>
+<li>Updates the name associated with a given account
+<br><br></li>
+</ul>
+<pre><code class="hljs">getCurrentAccount(): UserAccount <span class="hljs-string">| undefined</span>
+</code></pre>
+<ul>
+<li>Returns the currently selected User Account. Returns undefined if no account is selected.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">getCurrentNetwork</span><span class="hljs-params">()</span></span>: NetworkType
+</code></pre>
+<ul>
+<li>Returns the currently selected network.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">getAccounts</span><span class="hljs-params">()</span></span>: ReadonlyArray&lt;UserAccount&gt;
+</code></pre>
+<ul>
+<li>Returns an array of all accounts registered with the client.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">getNetworks</span><span class="hljs-params">()</span></span>: ReadonlyArray&lt;NetworkType&gt;
+</code></pre>
+<ul>
+<li>Returns an array of all networks registered with the client.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">getAccounts</span><span class="hljs-params">()</span></span>: ReadonlyArray&lt;UserAccount&gt;
+</code></pre>
+<ul>
+<li>Returns an array of all accounts registered with the client.
+<br><br></li>
+</ul>
+<pre><code class="hljs">transfer(amoun<span class="hljs-variable">t:</span> BigNumber, asse<span class="hljs-variable">t:</span> Hash256String, <span class="hljs-keyword">to</span>: AddressString, <span class="hljs-keyword">options</span>?: TransactionOptions): Promise&lt;TransactionResult&lt;TransactionReceipt, ContractTransaction&gt;&gt;
+
+transfer(transfer<span class="hljs-variable">s:</span> ReadonlyArray<span class="hljs-symbol">&lt;Transfer&gt;</span>, <span class="hljs-keyword">options</span>?: TransactionOptions): Promise<span class="hljs-symbol">&lt;TransactionResult&gt;</span>
+</code></pre>
+<ul>
+<li>Transfer a given asset to a given address in the amount specified.</li>
+<li>Transfer will be from the currently selected account unless a from account is specified in the options.</li>
+<li>A network or system fee may also be included in the options.</li>
+<li>Transfer in batch by passing in an array of Transfers.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">publish</span><span class="hljs-params">(contract: ContractRegister, options?: TransactionOptions)</span></span>: Promise&lt;TransactionResult&lt;PublishReceipt, InvocationTransaction&gt;&gt;
+</code></pre>
+<ul>
+<li>Publishes a given smart contract to the currently selected network.
+<br><br></li>
+</ul>
+<pre><code class="hljs">publishAndDeploy(contrac<span class="hljs-variable">t:</span> ContractRegister, abi: ABI, param<span class="hljs-variable">s:</span> ReadonlyArray<span class="hljs-symbol">&lt;Param&gt;</span> = [], <span class="hljs-keyword">options</span>?: TransactionOptions, sourceMap<span class="hljs-variable">s:</span> Promise<span class="hljs-symbol">&lt;SourceMaps&gt;</span> = Promise.<span class="hljs-built_in">resolve</span>({})): Promise&lt;TransactionResult&lt;PublishReceipt, InvocationTransaction&gt;&gt;
+</code></pre>
+<ul>
+<li>Publishes and deploys a smart contract to the currently selected network.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">registerAsset</span><span class="hljs-params">(asset: AssetRegister, options?: TransactionOptions)</span></span>: Promise&lt;TransactionResult&lt;RegisterAssetReceipt, InvocationTransaction&gt;&gt;
+</code></pre>
+<ul>
+<li>Registers a new asset to the currently selected network.
+<br><br></li>
+</ul>
+<pre><code class="hljs">issue(<span class="hljs-string">amount:</span> BigNumber, <span class="hljs-string">asset:</span> Hash256String, <span class="hljs-string">to:</span> AddressString, options?: TransactionOptions): Promise&lt;TransactionResult&lt;TransactionReceipt, IssueTransaction&gt;&gt;
+</code></pre>
+<ul>
+<li>Issues a given amount of a given asset to a given address.
+<br><br></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">read</span><span class="hljs-params">(network: NetworkType)</span></span>: ReadClient
+</code></pre>
+<ul>
+<li>Returns a ReadClient for the given network.  The ReadClient is used to obtain information about the blockchain.
+<br><br></li>
+</ul>
+<pre><code class="hljs">smartContract&lt;<span class="hljs-built_in">T</span> extends SmartContract&gt;(definiti<span class="hljs-symbol">on:</span> SmartContractDefinition)<span class="hljs-symbol">:</span> <span class="hljs-built_in">T</span>
+</code></pre>
+<ul>
+<li>Creates a smart contract from a given smart contract definition.
+<br><br></li>
+</ul>
+<pre><code class="hljs">inject&lt;K&gt;(<span class="hljs-string">provider:</span> K <span class="hljs-keyword">extends</span> keyof TUserAccountProviders ? TUserAccountProviders[K]: UserAccountProvider): <span class="hljs-keyword">void</span>
+</code></pre>
+<ul>
+<li>Sets the current User Account Provider to the given provider.
+<br><br></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="front-end.html">← Front End</a></div></div></div></div><footer class="nav-footer footerContainer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/monogram.svg" alt="NEO•ONE" width="66" height="58"/></a><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">DOCS</h5><a class="footerLink" href="/docs/en/getting-started.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/getting-started.svg" alt="Getting Started"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/getting-started-hover.svg" alt="Getting Started"/><div class="body1 gray0 footerLinkText axiformaRegular">Getting Started</div></a><a class="footerLink" href="/docs/en/contributing.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/contribute.svg" alt="Contribute"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/contribute-hover.svg" alt="Contribute"/><div class="body1 gray0 footerLinkText axiformaRegular">Contribute</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">COMMUNITY</h5><a class="footerLink" href="/en/users.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/user-showcase.svg" alt="User Showcase"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/user-showcase-hover.svg" alt="User Showcase"/><div class="body1 gray0 footerLinkText axiformaRegular">User Showcase</div></a><a class="footerLink" href="https://discord.gg/S86PqDE" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/chat.svg" alt="NEO•ONE Chat"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/chat-hover.svg" alt="NEO•ONE Chat"/><div class="body1 gray0 footerLinkText axiformaRegular">NEO•ONE Chat</div></a><a class="footerLink" href="http://stackoverflow.com/questions/tagged/neo-one" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/stack-overflow.svg" alt="Stack Overflow"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/stack-overflow-hover.svg" alt="Stack Overflow"/><div class="body1 gray0 footerLinkText axiformaRegular">Stack Overflow</div></a><a class="footerLink" href="https://twitter.com/neo_one_suite" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/twitter.svg" alt="Twitter"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/twitter-hover.svg" alt="Twitter"/><div class="body1 gray0 footerLinkText axiformaRegular">Twitter</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">MORE</h5><a class="footerLink" href="/blog"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/blog.svg" alt="Blog"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/blog-hover.svg" alt="Blog"/><div class="body1 gray0 footerLinkText axiformaRegular">Blog</div></a><a class="footerLink" href="https://github.com/neo-one-suite/neo-one"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/github.svg" alt="GitHub"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/github-hover.svg" alt="GitHub"/><div class="body1 gray0 footerLinkText axiformaRegular">GitHub</div></a><div class="footerGitHubButton"><a class="github-button" href="https://github.com/neo-one-suite/neo-one" data-icon="octicon-star" data-count-href="/neo-one-suite/neo-one/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></div></div></section><section class="copyright">COPYRIGHT © 2018 NEO•ONE.</section></footer></div><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-92599752-3', 'auto');
+              ga('send', 'pageview');
+            </script><script>window.fbAsyncInit = function() {FB.init({appId:'1764807046864916',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+                </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

@@ -1,0 +1,112 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Testing · NEO•ONE</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Testing · NEO•ONE"/><meta property="og:type" content="website"/><meta property="og:url" content="https://neo-one.io/index.html"/><meta property="og:description" content="Once you&#x27;ve written you smart contract, it&#x27;s time to test.  This guide will walk you through how to test your smart contract with NEO•ONE."/><link rel="shortcut icon" href="/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://neo-one.io/blog/atom.xml" title="NEO•ONE Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://neo-one.io/blog/feed.xml" title="NEO•ONE Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.svg"/><img class="mobileLogo" src="/img/mobileLogo.svg"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/docs/en/getting-started.html" target="_self">Docs</a></li><li><a href="/en/help.html" target="_self">Help</a></li><li><a href="/blog" target="_self">Blog</a></li><li><a href="https://github.com/neo-one-suite/neo-one" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Documentation</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Documentation</h3><ul><li class="navListItem"><a class="navItem" href="/docs/en/getting-started.html">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/docs/en/playground-tutorial.html">Playground Tutorial</a></li><li class="navListItem"><a class="navItem" href="/docs/en/writing-a-smart-contract.html">Writing a Smart Contract</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/en/testing.html">Testing</a></li><li class="navListItem"><a class="navItem" href="/docs/en/front-end.html">Front End</a></li><li class="navListItem"><a class="navItem" href="/docs/en/client.html">Client</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/neo-one-suite/neo-one/edit/master/docs/testing.md" target="_blank">Edit</a><h1>Testing</h1></header><article><div><span><p>Once you've written you smart contract, it's time to test.  This guide will walk you through how to test your smart contract with NEO•ONE.</p>
+<h2><a class="anchor" aria-hidden="true" name="your-smart-contract-api"></a><a href="#your-smart-contract-api" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Your Smart Contract API</h2>
+<p>You've finished writing the first version of your smart contract and you've run <code>yarn neo-one build</code> to compile and deploy your smart contract to a local private network.
+In addition, the <code>yarn neo-one build</code> command also generates some files for you stored in the <code>../generated</code> directory relative to your contract.  The files specific to your contract
+will be in the <code>../generated/&lt;Your Contract Name&gt;</code> directory.  You can find the generated files for the NEO•ONE Playground <a href="https://github.com/neo-one-suite/neo-one-playground/tree/master/one/generated">here</a>.</p>
+<p>The most relevant generated file is the file called <code>types.ts</code> which lives your contract's generated directory.  This file serves as the front-end API for your smart contract.  You'll notice two main differences
+between your smart contract definition file and the front-end API.</p>
+<ul>
+<li>Smart Contract methods return <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promises</a>.
+<ul>
+<li>Blockchain is inherently asynchronous as there is a time delay between blocks.</li>
+</ul></li>
+<li>Some types are converted to their front-end versions.
+<ul>
+<li>For example, Integers and Fixed point numbers are converted to <a href="https://github.com/MikeMcl/bignumber.js/">BigNumbers</a>.</li>
+</ul></li>
+</ul>
+<p>As a concrete example, take a method which returns a contract's token balance for a given address. In the smart contract definition file, it might look like this:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> { <span class="hljs-type">Address</span>, constant, <span class="hljs-type">Integer</span>, <span class="hljs-type">SmartContract</span> } from '<span class="hljs-meta">@neo</span>-one/smart-contract'
+
+export <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyContract</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SmartContract</span> </span>{
+
+  ...
+
+  <span class="hljs-meta">@constant</span>
+  public checkBalance(address: <span class="hljs-type">Address</span>): <span class="hljs-type">Integer</span> {
+    <span class="hljs-comment">// checks balance</span>
+  };
+
+  ...
+</code></pre>
+<p>The front-end api will look like this:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> { AddressString, SmartContract } <span class="hljs-keyword">from</span> <span class="hljs-string">'@neo-one/client'</span>;
+<span class="hljs-keyword">import</span> BigNumber <span class="hljs-keyword">from</span> <span class="hljs-string">'bignumber.js'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> MyContractSmartContract <span class="hljs-keyword">extends</span> SmartContract {
+  ...
+
+  readonly checkBalance(address: AddressString) =&gt; <span class="hljs-built_in">Promise</span>&lt;BigNumber&gt;
+
+  ...
+</code></pre>
+<p>This file serves both as a reference for your smart contract's front-end api as well as types you can import to your front-end.</p>
+<h2><a class="anchor" aria-hidden="true" name="testing-with-jest"></a><a href="#testing-with-jest" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Testing with Jest</h2>
+<p>NEO•ONE was built to allow your smart contracts to be tested with the <a href="https://jestjs.io/">jest</a> testing framework.  In the NEO•ONE Playground, you can find the test files <a href="https://github.com/neo-one-suite/neo-one-playground/tree/master/one/tests">here</a>.
+To setup your smart contract test, you will need to import the generated testing helper, <code>withContracts</code>:</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> { withContracts } <span class="hljs-keyword">from</span> <span class="hljs-string">'../generated/test'</span>
+</code></pre>
+<p>This helper resets and redeploys your contracts to a local private network and gives you access to some helpful tools to help you interact with your smart contract and the blockchain in your test:</p>
+<ul>
+<li>yourSmartContract
+<ul>
+<li>Your smart contract will be available by its name in camel case and gives you full access to your smart contract api.</li>
+</ul></li>
+<li>client
+<ul>
+<li>The NEO•ONE client api is your main resource for interfacing with the blockchain.  You can create wallets, scrape blocks, and much more.  Learn about the client api in detail <a href="/docs/en/client.html">here</a>.</li>
+</ul></li>
+<li>developerClient
+<ul>
+<li>The developerClient allows you to interface with the blockchain in ways that only make sense during development.  You can force consensus, fast forward the network, and much more.  Learn about the developerClient api in detail <a href="">here</a>.</li>
+</ul></li>
+<li>masterAccountID
+<ul>
+<li>A master wallet with plenty of NEO and GAS for you to play with.</li>
+</ul></li>
+<li>networkName
+<ul>
+<li>The name of the local private network network your contract is deployed on.</li>
+</ul></li>
+</ul>
+<p>To use <code>withContracts</code> in your test, simply call it at the top of your test.  Its only argument is an asynchronous callback which forwards all of the above tools.  Then, your test is written like a standard jest test inside of this callback.
+To give an example, lets look at how you would write a test to check that <code>checkBalance</code> is working.</p>
+<pre><code class="hljs"><span class="hljs-keyword">import</span> { createPrivateKey } <span class="hljs-keyword">from</span> <span class="hljs-string">'@neo-one/client'</span>;
+<span class="hljs-keyword">import</span> { withContracts } <span class="hljs-keyword">from</span> <span class="hljs-string">'../generated/test'</span>;
+
+describe(<span class="hljs-string">'MyContract'</span>, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  test(<span class="hljs-string">'checkBalance'</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">await</span> withContracts(<span class="hljs-keyword">async</span> ({ client, developerClient, myContract, masterAccountID, networkName }) =&gt; {
+
+      <span class="hljs-comment">// use the client to create a new wallet</span>
+      <span class="hljs-keyword">const</span> newWallet = <span class="hljs-keyword">await</span> client.providers.memory.keystore.addAccount({
+        network: networkName,
+        privateKey: createPrivateKey(),
+      });
+
+      <span class="hljs-comment">// use the smart contract api to call checkBalance for the new wallet's address</span>
+      <span class="hljs-keyword">const</span> balance = <span class="hljs-keyword">await</span> myContract.checkBalance(newWallet.account.id.address);
+
+      <span class="hljs-comment">// use matchers to confirm you expect the new wallet's balance to be 0</span>
+      expect(balance.toString()).toEqual(<span class="hljs-string">'0'</span>);
+    }
+  }
+}
+</code></pre>
+<p>That's it!  The full power of jest is available to you for testing every aspect of your smart contract running on a local private network.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="writing-a-smart-contract.html">← Writing a Smart Contract</a><a class="docs-next button" href="front-end.html">Front End →</a></div></div></div></div><footer class="nav-footer footerContainer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/monogram.svg" alt="NEO•ONE" width="66" height="58"/></a><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">DOCS</h5><a class="footerLink" href="/docs/en/getting-started.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/getting-started.svg" alt="Getting Started"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/getting-started-hover.svg" alt="Getting Started"/><div class="body1 gray0 footerLinkText axiformaRegular">Getting Started</div></a><a class="footerLink" href="/docs/en/contributing.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/contribute.svg" alt="Contribute"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/contribute-hover.svg" alt="Contribute"/><div class="body1 gray0 footerLinkText axiformaRegular">Contribute</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">COMMUNITY</h5><a class="footerLink" href="/en/users.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/user-showcase.svg" alt="User Showcase"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/user-showcase-hover.svg" alt="User Showcase"/><div class="body1 gray0 footerLinkText axiformaRegular">User Showcase</div></a><a class="footerLink" href="https://discord.gg/S86PqDE" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/chat.svg" alt="NEO•ONE Chat"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/chat-hover.svg" alt="NEO•ONE Chat"/><div class="body1 gray0 footerLinkText axiformaRegular">NEO•ONE Chat</div></a><a class="footerLink" href="http://stackoverflow.com/questions/tagged/neo-one" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/stack-overflow.svg" alt="Stack Overflow"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/stack-overflow-hover.svg" alt="Stack Overflow"/><div class="body1 gray0 footerLinkText axiformaRegular">Stack Overflow</div></a><a class="footerLink" href="https://twitter.com/neo_one_suite" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/twitter.svg" alt="Twitter"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/twitter-hover.svg" alt="Twitter"/><div class="body1 gray0 footerLinkText axiformaRegular">Twitter</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">MORE</h5><a class="footerLink" href="/blog"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/blog.svg" alt="Blog"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/blog-hover.svg" alt="Blog"/><div class="body1 gray0 footerLinkText axiformaRegular">Blog</div></a><a class="footerLink" href="https://github.com/neo-one-suite/neo-one"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/github.svg" alt="GitHub"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/github-hover.svg" alt="GitHub"/><div class="body1 gray0 footerLinkText axiformaRegular">GitHub</div></a><div class="footerGitHubButton"><a class="github-button" href="https://github.com/neo-one-suite/neo-one" data-icon="octicon-star" data-count-href="/neo-one-suite/neo-one/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></div></div></section><section class="copyright">COPYRIGHT © 2018 NEO•ONE.</section></footer></div><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-92599752-3', 'auto');
+              ga('send', 'pageview');
+            </script><script>window.fbAsyncInit = function() {FB.init({appId:'1764807046864916',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+                </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

@@ -4,9 +4,14 @@
 <url> <loc>https://neo-one.io/index.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neo-one.io/en/index.html" /> </url>
 <url> <loc>https://neo-one.io/users.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neo-one.io/en/users.html" /> </url>
 <url> <loc>https://neo-one.io/blog/2017/12/27/Introducing-NEO-ONE.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
+<url> <loc>https://neo-one.io/docs/en/client.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neo-one.io/docs/en/client.html" /> </url>
 <url> <loc>https://neo-one.io/docs/en/code-of-conduct.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neo-one.io/docs/en/code-of-conduct.html" /> </url>
 <url> <loc>https://neo-one.io/docs/en/codebase-overview.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neo-one.io/docs/en/codebase-overview.html" /> </url>
 <url> <loc>https://neo-one.io/docs/en/contributing.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neo-one.io/docs/en/contributing.html" /> </url>
 <url> <loc>https://neo-one.io/docs/en/environment-setup.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neo-one.io/docs/en/environment-setup.html" /> </url>
-<url> <loc>https://neo-one.io/docs/en/installation.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neo-one.io/docs/en/installation.html" /> </url>
+<url> <loc>https://neo-one.io/docs/en/front-end.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neo-one.io/docs/en/front-end.html" /> </url>
+<url> <loc>https://neo-one.io/docs/en/getting-started.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neo-one.io/docs/en/getting-started.html" /> </url>
+<url> <loc>https://neo-one.io/docs/en/playground-tutorial.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neo-one.io/docs/en/playground-tutorial.html" /> </url>
+<url> <loc>https://neo-one.io/docs/en/testing.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neo-one.io/docs/en/testing.html" /> </url>
+<url> <loc>https://neo-one.io/docs/en/writing-a-smart-contract.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://neo-one.io/docs/en/writing-a-smart-contract.html" /> </url>
 </urlset>
