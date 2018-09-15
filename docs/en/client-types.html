@@ -1,0 +1,1239 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Client Types · NEO•ONE</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Client Types · NEO•ONE"/><meta property="og:type" content="website"/><meta property="og:url" content="https://neo-one.io/index.html"/><meta property="og:description" content="This is the API documentation for the NEO•ONE Client Types."/><link rel="shortcut icon" href="/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://neo-one.io/blog/atom.xml" title="NEO•ONE Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://neo-one.io/blog/feed.xml" title="NEO•ONE Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.svg"/><img class="mobileLogo" src="/img/mobileLogo.svg"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/docs/en/getting-started.html" target="_self">Docs</a></li><li><a href="/en/help.html" target="_self">Help</a></li><li><a href="/blog" target="_self">Blog</a></li><li><a href="https://github.com/neo-one-suite/neo-one" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Documentation</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Documentation</h3><ul><li class="navListItem"><a class="navItem" href="/docs/en/getting-started.html">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/docs/en/playground-tutorial.html">Playground Tutorial</a></li><li class="navListItem"><a class="navItem" href="/docs/en/writing-a-smart-contract.html">Writing a Smart Contract</a></li><li class="navListItem"><a class="navItem" href="/docs/en/testing.html">Testing</a></li><li class="navListItem"><a class="navItem" href="/docs/en/front-end.html">Front End</a></li><li class="navListItem"><a class="navItem" href="/docs/en/client.html">Client</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/en/client-types.html">Client Types</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/neo-one-suite/neo-one/edit/master/docs/client-types.md" target="_blank">Edit</a><h1>Client Types</h1></header><article><div><span><p>This is the API documentation for the NEO•ONE Client Types.</p>
+<h2><a class="anchor" aria-hidden="true" name="types"></a><a href="#types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Types</h2>
+<ul>
+<li><a href="#common-types">Common Types</a>
+<ul>
+<li><a href="#AddressString">AddressSting</a></li>
+<li><a href="#Account">Account</a></li>
+<li><a href="#Asset">Asset</a></li>
+<li><a href="#AssetRegister">AssetRegister</a></li>
+<li><a href="#BufferString">BufferString</a></li>
+<li><a href="#GetOptions">GetOptions</a></li>
+<li><a href="#Hash256String">Hash256String</a></li>
+<li><a href="#Input">Input</a></li>
+<li><a href="#InputOutput">InputOutput</a></li>
+<li><a href="#NetworkType">NetworkType</a></li>
+<li><a href="#Output">Output</a></li>
+<li><a href="#PrivateKeyString">PrivateKeyString</a></li>
+<li><a href="#PublicKeyString">PublicKeyString</a></li>
+<li><a href="#SignautreString">SignatureString</a></li>
+<li><a href="#Transfer">Transfer</a></li>
+<li><a href="#UserAccount">UserAccount</a></li>
+<li><a href="#UserAccountID">UserAccountID</a></li>
+</ul></li>
+<li><a href="#contract-types">Contract Types</a>
+<ul>
+<li><a href="#Action">Action</a></li>
+<li><a href="#Contract">Contract</a></li>
+<li><a href="#ContractParameterType">ContractParameterType</a></li>
+<li><a href="#ContractRegister">ContractRegister</a></li>
+<li><a href="#Event">Event</a></li>
+<li><a href="#EventParameters">EventParameters</a></li>
+<li><a href="#Log">Log</a></li>
+<li><a href="#Param">Param</a></li>
+<li><a href="#ParamArray">ParamArray</a></li>
+<li><a href="#ParamJSON">ParamJSON</a></li>
+<li><a href="#Return">Return</a></li>
+<li><a href="#ReturnArray">ReturnArray</a></li>
+<li><a href="#StorageItem">StorageItem</a></li>
+</ul></li>
+<li><a href="#transaction-types">Transaction Types</a>
+<ul>
+<li><a href="#ClaimTransaction">ClaimTransaction</a></li>
+<li><a href="#ConfirmedClaimTransaction">ConfirmedClaimTransaction</a></li>
+<li><a href="#ConfirmedContractTransaction">ConfirmedContractTransaction</a></li>
+<li><a href="#ConfirmedInvocationTransaction">ConfirmedInvocationTransaction</a></li>
+<li><a href="#ConfirmedIssueTransaction">ConfirmedIssueTransaction</a></li>
+<li><a href="#ConfirmedMinerTransaction">ConfirmedMinerTransaction</a></li>
+<li><a href="#ConfirmedStateTransaction">ConfirmedStateTransaction</a></li>
+<li><a href="#ConfirmedTransaction">ConfirmedTransaction</a></li>
+<li><a href="#ConfirmedTransactionBase">ConfirmedTransactionBase</a></li>
+<li><a href="#ContractTransaction">ContractTransaction</a></li>
+<li><a href="#InvocationResult">InvocationResult</a></li>
+<li><a href="#InvocationResultError">InvocationResultError</a></li>
+<li><a href="#InvocationResultSuccess">InvocationResultSuccess</a></li>
+<li><a href="#InvocationTransaction">InvocationTransaction</a></li>
+<li><a href="#InvokeClaimTransactionOptions">InvokeClaimTransactionOptions</a></li>
+<li><a href="#InvokeReceipt">InvokeReceipt</a></li>
+<li><a href="#IssueTransaction">IssueTransaction</a></li>
+<li><a href="#MinerTransaction">MinerTransaction</a></li>
+<li><a href="#StateTransaction">StateTransaction</a></li>
+<li><a href="#Transaction">Transaction</a></li>
+<li><a href="#TransactionBase">TransactionBase</a></li>
+<li><a href="#TransactionOptions">TransactionOptions</a></li>
+<li><a href="#TransactionReceipt">TransactionReceipt</a></li>
+<li><a href="#TransactionResult">TransactionResult</a></li>
+</ul></li>
+<li><a href="#block-types">Block Types</a>
+<ul>
+<li><a href="#Header">Header</a></li>
+<li><a href="#Block">Block</a></li>
+</ul></li>
+<li><a href="#advanced-types">Advanced Types</a>
+<ul>
+<li><a href="#AddressAttributeUsage">AddressAttributeUsage</a></li>
+<li><a href="#AddressContractParameter">AddressContractParameter</a></li>
+<li><a href="#ArrayContractParameter">ArrayContractParameter</a></li>
+<li><a href="#AssetType">AssetType</a></li>
+<li><a href="#AttributeUsage">AttributeUsage</a></li>
+<li><a href="#BlockFilter">BlockFilter</a></li>
+<li><a href="#BooleanContractParameter">BooleanContractParameter</a></li>
+<li><a href="#BufferAttributeUsage">BufferAttributeUsage</a></li>
+<li><a href="#BufferContractParameter">BufferContractParameter</a></li>
+<li><a href="#ContractParameter">ContractParameter</a></li>
+<li><a href="#Hash256AttributeUsage">Hash256AttributeUsage</a></li>
+<li><a href="#Hash256ContractParameter">Hash256ContractParameter</a></li>
+<li><a href="#IntegerContractParameter">IntegerContractParameter</a></li>
+<li><a href="#InteropInterfaceContractParameter">InteropInterfaceContractParameter</a></li>
+<li><a href="#NetworkSettings">NetworkSettings</a></li>
+<li><a href="#PrivateNetworkSettings">PrivateNetworkSettings</a></li>
+<li><a href="#PublicKeyAttributeUsage">PublicKeyAttributeUsage</a></li>
+<li><a href="#PublicKeyContractParameter">PublicKeyContractParameter</a></li>
+<li><a href="#SignatureContractParameter">SignatureContractParameter</a></li>
+<li><a href="#RawAction">RawAction</a></li>
+<li><a href="#RawActionBase">RawActionBase</a></li>
+<li><a href="#RawCallReceipt">RawCallReceipt</a></li>
+<li><a href="RawInvocationData">RawInvocationData</a></li>
+<li><a href="#RawInvocationResult">RawInvocationResult</a></li>
+<li><a href="#RawInvocationResultError">RawInvocationResultError</a></li>
+<li><a href="#RawInvocationResultSuccess">RawInvocationResultSuccess</a></li>
+<li><a href="#RawInvokeReceipt">RawInvokeReceipt</a></li>
+<li><a href="#RawLog">RawLog</a></li>
+<li><a href="#RawNotification">RawNotification</a></li>
+<li><a href="#StringContractParameter">StringContractParameter</a></li>
+<li><a href="#UpdateAccountNameOptions">UpdateAccountNameOptions</a></li>
+<li><a href="#VoidContractParameter">VoidContractParameter</a></li>
+<li><a href="#Witness">Witness</a></li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" name="common-types"></a><a href="#common-types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Common Types</h2>
+<p>These are the types you will need for most common used cases.</p>
+<h4><a class="anchor" aria-hidden="true" name="addressstring"></a><a href="#addressstring" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AddressString</h4>
+<ul>
+<li>Base64 encoded string that represents a NEO address.
+<pre><code class="hljs css ts"><span class="hljs-string">'APyEx5f4Zm4oCHwFWiSTaph1fPBxZacYVR'</span>
+</code></pre></li>
+<li>Also accepts Hash160 strings (hex encoded string prefixed by '0x') when used as a parameter to a to a NEO•ONE function.
+<pre><code class="hljs css ts"><span class="hljs-string">'0xecc6b20d3ccac1ee9ef109af5a7cdb85706b1df9'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="account"></a><a href="#account" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Account</h4>
+<ul>
+<li>Contains asset balances for a given address.</li>
+<li>Properties:
+<ul>
+<li>address: <a href="#AddressString">AddressString</a></li>
+<li>balances: {[asset: string]: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a>}</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="asset"></a><a href="#asset" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Asset</h4>
+<ul>
+<li>Properties
+<ul>
+<li>hash: <a href="#Hash256String">Hash256String</a>
+<ul>
+<li>ID of the Asset</li>
+</ul></li>
+<li>type: <a href="#AssetType">AssetType</a></li>
+<li>name: string
+<ul>
+<li>Name of the Asset</li>
+</ul></li>
+<li>amount: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a>
+<ul>
+<li>Total possible supply of the Asset</li>
+</ul></li>
+<li>available: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a>
+<ul>
+<li>Amount currently available of the Asset</li>
+</ul></li>
+<li>precision: number
+<ul>
+<li>Number of decimal places of the Asset</li>
+</ul></li>
+<li>owner: <a href="#PublicKeyString">PublicKeyString</a>
+<ul>
+<li>Owner of the Asset</li>
+</ul></li>
+<li>admin: <a href="#AddressString">AddressString</a>
+<ul>
+<li>Admin of the Asset</li>
+</ul></li>
+<li>issuer: <a href="#AddressString">AddressString</a>
+<ul>
+<li>Issuer of the Asset</li>
+</ul></li>
+<li>expiration: number
+<ul>
+<li>Block at which the Asset expires</li>
+</ul></li>
+<li>frozen: boolean
+<ul>
+<li>Asset is frozen when true</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="assetregister"></a><a href="#assetregister" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AssetRegister</h4>
+<ul>
+<li>Information required to register an <a href="#Asset">Asset</a>.</li>
+<li>Properties:
+<ul>
+<li>type: <a href="#AssetType">AssetType</a></li>
+<li>name: string
+<ul>
+<li>Name of the Asset</li>
+</ul></li>
+<li>amount: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a>
+<ul>
+<li>Total possible supply of the Asset</li>
+</ul></li>
+<li>precision: number
+<ul>
+<li>Number of decimal places of the Asset</li>
+</ul></li>
+<li>owner: <a href="#PublicKeyString">PublicKeyString</a>
+<ul>
+<li>Owner of the Asset</li>
+</ul></li>
+<li>admin: <a href="#AddressString">AddressString</a>
+<ul>
+<li>Admin of the Asset</li>
+</ul></li>
+<li>issuer: <a href="#AddressString">AddressString</a>
+<ul>
+<li>Issuer of the Asset</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="bufferstring"></a><a href="#bufferstring" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BufferString</h4>
+<ul>
+<li>Hex encoded string that represents a buffer.
+<pre><code class="hljs css ts"><span class="hljs-string">'02028a99826edc0c97d18e22b6932373d908d323aa7f92656a77ec26e8861699ef'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="getoptions"></a><a href="#getoptions" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GetOptions</h4>
+<ul>
+<li>Generic options used for different operations.</li>
+<li>Properties:
+<ul>
+<li>timeoutMS (optional): number</li>
+<li>Time before operation timeout</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="hash256string"></a><a href="#hash256string" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hash256String</h4>
+<ul>
+<li>Hex encoded string prefixed by '0x' that represents a NEO 256 bit hash.</li>
+<li>Examples of Hash256String include <code>Block</code> hashes and<a href="#Transaction">Transaction</a> hashes.
+<pre><code class="hljs css ts"> <span class="hljs-string">'0x7f48028c38117ac9e42c8e1f6f06ae027cdbb904eaf1a0bdc30c9d81694e045c'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="input"></a><a href="#input" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Input</h4>
+<ul>
+<li>Inputs are a reference to an <a href="#Output">Output</a> of a <a href="#Transaction">Transaction</a> that has been persisted to the blockchain.</li>
+<li>The sum of the values of the referenced <a href="#Output">Outputs</a> is the total amount transferred in the <a href="#Transaction">Transaction</a>.</li>
+<li>Properties:
+<ul>
+<li>hash: <a href="#Hash256String">Hash256String</a>
+<ul>
+<li>Hash of the <a href="#Transaction">Transaction</a> this input references.</li>
+</ul></li>
+<li>index: number
+<ul>
+<li><a href="#Output">Output</a> index within the <a href="#Transaction">Transaction</a> this input references.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="inputoutput"></a><a href="#inputoutput" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>InputOutput</h4>
+<ul>
+<li>Extension of <a href="#Input">Input</a> and <a href="#Output">Output</a>.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="networktype"></a><a href="#networktype" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>NetworkType</h4>
+<ul>
+<li>String values which denote the Network
+<ul>
+<li>'main'
+<ul>
+<li>The NEO Main network</li>
+</ul></li>
+<li>'test'
+<ul>
+<li>The NEO Test network</li>
+</ul></li>
+<li>string
+<ul>
+<li>Arbitrary string for the name of a private network</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="output"></a><a href="#output" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Output</h4>
+<ul>
+<li>Outputs represent the destination Address and amount transferred of a given <a href="#Asset">Asset</a>.</li>
+<li>The sum of the unspent Outputs of an Address represent the total balance of the Address.</li>
+<li>Properties:
+<ul>
+<li>asset: <a href="#Hash256String">Hash256String</a>
+<ul>
+<li>Hash of the <a href="#Asset">Asset</a> that was transferred.</li>
+</ul></li>
+<li>value: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a>
+<ul>
+<li>Amount transferred.</li>
+</ul></li>
+<li>address: <a href="#AddressString">AddressString</a>
+<ul>
+<li>Destination Address.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="privatekeystring"></a><a href="#privatekeystring" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PrivateKeyString</h4>
+<ul>
+<li>Hex encoded string that represents a signature for a message.
+<pre><code class="hljs css ts"><span class="hljs-string">'ccaab040cc25021c91567b75db4778853441869157b8f6aad960cdcf1069812480027a528ca9b98e2205027de20696f848cf81824eeb7af1d5110870870ceb67'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="publickeystring"></a><a href="#publickeystring" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PublicKeyString</h4>
+<ul>
+<li>WIF string that represents a private key.
+<pre><code class="hljs css ts"><span class="hljs-string">'L1QqQJnpBwbsPGAuutuzPTac8piqvbR1HRjrY5qHup48TBCBFe4g'</span>
+</code></pre></li>
+<li>Also accepts hex encoded strings when used as a parameter to a NEO•ONE function.
+<pre><code class="hljs css ts"><span class="hljs-string">'9ab7e154840daca3a2efadaf0df93cd3a5b51768c632f5433f86909d9b994a69'</span>
+</code></pre></li>
+<li>Always a WIF string when returned from a NEO•ONE function.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="signaturestring"></a><a href="#signaturestring" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SignatureString</h4>
+<ul>
+<li>Hex encoded string that represents a signature for a message.
+<pre><code class="hljs css ts"><span class="hljs-string">'ccaab040cc25021c91567b75db4778853441869157b8f6aad960cdcf1069812480027a528ca9b98e2205027de20696f848cf81824eeb7af1d5110870870ceb67'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="transfer"></a><a href="#transfer" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transfer</h4>
+<ul>
+<li>Data required to initiate a transfer of an <a href="#Asset">Asset</a>.</li>
+<li>Properties:
+<ul>
+<li>amount: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a>
+<ul>
+<li>Amount to transfer.</li>
+</ul></li>
+<li>asset: <a href="#Hash256String">Hash256String</a>
+<ul>
+<li>Asset to transfer.</li>
+</ul></li>
+<li>to: <a href="#AddressString">AddressString</a>
+<ul>
+<li>Address where the <a href="#Asset">Asset</a> is to be transferred.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="useraccount"></a><a href="#useraccount" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UserAccount</h4>
+<ul>
+<li>Information associated with a UserAccount</li>
+<li>Properties:
+<ul>
+<li>type: string</li>
+<li>id: [UserAccountID(#UserAccountID)</li>
+<li>name: string</li>
+<li>publicKey: <a href="#PublicKeyString">PublicKeyString</a></li>
+<li>configurableName: boolean</li>
+<li>deletable: boolean</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="useraccountid"></a><a href="#useraccountid" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UserAccountID</h4>
+<ul>
+<li>ID to identify a UserAccount by address and network.</li>
+<li>Properties:
+<ul>
+<li>network: <a href="#NeteworkType">NetworkType</a></li>
+<li>address: <a href="#AddressString">AddressString</a></li>
+</ul></li>
+</ul>
+<p><br></p>
+<h2><a class="anchor" aria-hidden="true" name="contract-types"></a><a href="#contract-types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contract Types</h2>
+<p>Types related to Smart Contracts.</p>
+<h4><a class="anchor" aria-hidden="true" name="action"></a><a href="#action" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Action</h4>
+<ul>
+<li><a href="#Event">Event</a></li>
+<li><a href="#Log">Log</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="contract"></a><a href="#contract" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contract</h4>
+<ul>
+<li>Definition of a Contract.</li>
+<li>Properties:
+<ul>
+<li>version: number</li>
+<li>address: <a href="#AddressString">AddressString</a>
+<ul>
+<li>AddressString of this Contract</li>
+</ul></li>
+<li>script: <a href="#BufferString">BufferString</a>
+<ul>
+<li>Contract code</li>
+</ul></li>
+<li>parameters: ReadonlyArray&lt;<a href="#ContractParameterType">ContractParameterType</a>&gt;
+<ul>
+<li>Expected parameters of this Contract.</li>
+</ul></li>
+<li>returnType: <a href="#ContractParameterType">ContractParameterType</a>
+<ul>
+<li>Return type of this Contract.</li>
+</ul></li>
+<li>name: string
+<ul>
+<li>Name of this Contract. For informational purposes only.</li>
+</ul></li>
+<li>codeVersion: string
+<ul>
+<li>Version of this Contract.  For informational purposes only.</li>
+</ul></li>
+<li>author: string
+<ul>
+<li>Author of this Contract. For informational purposes only.</li>
+</ul></li>
+<li>email: string
+<ul>
+<li>Email of this Contract. For informational purposes only.</li>
+</ul></li>
+<li>description: string
+<ul>
+<li>Description of this Contract. For informational purposes only.</li>
+</ul></li>
+<li>storage: boolean
+<ul>
+<li>True if this contract can use storage</li>
+</ul></li>
+<li>dynamicInvoke: boolean
+<ul>
+<li>True if this Contract can make dynamic invocation.s</li>
+</ul></li>
+<li>payable: boolean
+<ul>
+<li>True if this Contract accepts first-class assets and/or tokens.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="contractparametertype"></a><a href="#contractparametertype" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ContractParameterType</h4>
+<ul>
+<li>All possible values of the type field for <a href="#ContractParameter">ContractParameter</a>
+<pre><code class="hljs css ts"><span class="hljs-string">'Signature'</span> | <span class="hljs-string">'Boolean'</span> | <span class="hljs-string">'Integer'</span> | <span class="hljs-string">'Address'</span> | <span class="hljs-string">'Hash256'</span> | <span class="hljs-string">'Buffer'</span> | <span class="hljs-string">'PublicKey'</span> | <span class="hljs-string">'String'</span> | <span class="hljs-string">'Array'</span> | <span class="hljs-string">'InteropInterface'</span> | <span class="hljs-string">'Void'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="contractregister"></a><a href="#contractregister" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ContractRegister</h4>
+<ul>
+<li>Information required to register a <a href="#Contract">Contract</a>.</li>
+<li>Properties:
+<ul>
+<li>script: <a href="#BufferString">BufferString</a>
+<ul>
+<li>Contract code</li>
+</ul></li>
+<li>parameters: ReadonlyArray&lt;<a href="#ContractParameterType">ContractParameterType</a>&gt;
+<ul>
+<li>Expected parameters of this Contract.</li>
+</ul></li>
+<li>returnType: <a href="#ContractParameterType">ContractParameterType</a>
+<ul>
+<li>Return type of this Contract.</li>
+</ul></li>
+<li>name: string
+<ul>
+<li>Name of this Contract. For informational purposes only.</li>
+</ul></li>
+<li>codeVersion: string
+<ul>
+<li>Version of this Contract.  For informational purposes only.</li>
+</ul></li>
+<li>author: string
+<ul>
+<li>Author of this Contract. For informational purposes only.</li>
+</ul></li>
+<li>email: string
+<ul>
+<li>Email of this Contract. For informational purposes only.</li>
+</ul></li>
+<li>description: string
+<ul>
+<li>Description of this Contract. For informational purposes only.</li>
+</ul></li>
+<li>storage: boolean
+<ul>
+<li>True if this contract can use storage</li>
+</ul></li>
+<li>dynamicInvoke: boolean
+<ul>
+<li>True if this Contract can make dynamic invocation.s</li>
+</ul></li>
+<li>payable: boolean
+<ul>
+<li>True if this Contract accepts first-class assets and/or tokens.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="event"></a><a href="#event" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Event</h4>
+<ul>
+<li>Extension of <a href="#RawActionBase">RawActionBase</a>.</li>
+<li>Properties:
+<ul>
+<li>type: 'Event'</li>
+<li>name: string</li>
+<li>parameters: <a href="#EventParameters">EventParameters</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="eventparameters"></a><a href="#eventparameters" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>EventParameters</h4>
+<ul>
+<li>Parameters associated with an <a href="#Event">Event</a></li>
+<li>Mapping of names to <a href="#Param">Params</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="log"></a><a href="#log" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Log</h4>
+<ul>
+<li>Extension of <a href="#RawActionBase">RawActionBase</a>.</li>
+<li>Properties:
+<ul>
+<li>type: 'Log'</li>
+<li>message: string</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="param"></a><a href="#param" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Param</h4>
+<ul>
+<li>Valid parameter types for a smart contract function.
+<ul>
+<li>undefined</li>
+<li><a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+<li><a href="#BufferString">BufferString</a></li>
+<li><a href="#AddressString">AddressString</a></li>
+<li><a href="#Hash256String">Hash256String</a></li>
+<li><a href="#PublicKeyString">PublicKeyString</a></li>
+<li>boolean</li>
+<li><a href="#ParamArray">ParamArray</a></li>
+<li><a href="#ForwardValue">ForwardValue</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="paramarray"></a><a href="#paramarray" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ParamArray</h4>
+<ul>
+<li>Array type allowed to be passed to a smart contract function.</li>
+<li>ReadonlyArray&lt;<a href="#Param">Param</a>&gt;</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="paramjsonarray"></a><a href="#paramjsonarray" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ParamJSONArray</h4>
+<ul>
+<li>Array type allowed inside a JSON object passed to a smart contract function.</li>
+<li>Extension of ReadonlyArray&lt;<a href="#Param">Param</a>&gt;</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="paramjson"></a><a href="#paramjson" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ParamJSON</h4>
+<ul>
+<li>Valid parameter types inside a JSON object passed to a smart contract function.
+<ul>
+<li>undefined</li>
+<li>string</li>
+<li><a href="#BufferString">BufferString</a></li>
+<li><a href="#AddressString">AddressString</a></li>
+<li><a href="#Hash256String">Hash256String</a></li>
+<li><a href="#PublicKeyString">PublicKeyString</a></li>
+<li>boolean</li>
+<li><a href="#ParamArray">ParamJSONArray</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="return"></a><a href="#return" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Return</h4>
+<ul>
+<li>Valid return types for a smart contract function.
+<ul>
+<li>undefined</li>
+<li><a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+<li><a href="#BufferString">BufferString</a></li>
+<li><a href="#AddressString">AddressString</a></li>
+<li><a href="#Hash256String">Hash256String</a></li>
+<li><a href="#PublicKeyString">PublicKeyString</a></li>
+<li>boolean</li>
+<li><a href="#ReturnArray">ReturnArray</a></li>
+<li><a href="#ContractParameter">ContractParameter</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="returnarray"></a><a href="#returnarray" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ReturnArray</h4>
+<ul>
+<li>ReadonlyArray&lt;<a href="#Return">Return</a>&gt;</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="storageitem"></a><a href="#storageitem" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>StorageItem</h4>
+<ul>
+<li>Properties:
+<ul>
+<li>address: <a href="#AddressString">AddressString</a>
+<ul>
+<li><a href="#Contract">Contract</a> Address for this StorageItem.</li>
+</ul></li>
+<li>key: <a href="#BufferString">BufferString</a>
+<ul>
+<li>Key of this StorageItem.</li>
+</ul></li>
+<li>value: <a href="#BufferString">BufferString</a>
+<ul>
+<li>Value of this StorageItem.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><br></p>
+<h2><a class="anchor" aria-hidden="true" name="transaction-types"></a><a href="#transaction-types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transaction Types</h2>
+<p>Types related to Transactions.</p>
+<h4><a class="anchor" aria-hidden="true" name="claimtransaction"></a><a href="#claimtransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ClaimTransaction</h4>
+<ul>
+<li>Extension of <a href="#TransactionBase">TransactionBase</a>.</li>
+<li>Claim GAS for a set of spent <a href="#Output">Outputs</a></li>
+<li>Properties:
+<ul>
+<li>type: 'ClaimTransaction'</li>
+<li>claims: ReadonlyArray&lt;<a href="#Input">Input</a>&gt;</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="confirmedclaimtransaction"></a><a href="#confirmedclaimtransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ConfirmedClaimTransaction</h4>
+<ul>
+<li>Extension of <a href="#ConfirmedTransactionBase">ConfirmedTransactionBase</a> and <a href="#ClaimTransaction">ClaimTransaction</a>.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="confirmedcontracttransaction"></a><a href="#confirmedcontracttransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ConfirmedContractTransaction</h4>
+<ul>
+<li>Extension of <a href="#ConfirmedTransactionBase">ConfirmedTransactionBase</a> and <a href="#ContractTransaction">ContractTransaction</a>.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="confirmedinvocationtransaction"></a><a href="#confirmedinvocationtransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ConfirmedInvocationTransaction</h4>
+<ul>
+<li>Extension of <a href="#ConfirmedTransactionBase">ConfirmedTransactionBase</a> and <a href="#InvocationTransaction">InvocationTransaction</a>.</li>
+<li>Properties:
+<ul>
+<li>invocationData: <a href="#RawInvocationData">RawInvocationData</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="confirmedissuetransaction"></a><a href="#confirmedissuetransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ConfirmedIssueTransaction</h4>
+<ul>
+<li>Extension of <a href="#ConfirmedTransactionBase">ConfirmedTransactionBase</a> and <a href="#IssueTransaction">IssueTransaction</a>.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="confirmedminertransaction"></a><a href="#confirmedminertransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ConfirmedMinerTransaction</h4>
+<ul>
+<li>Extension of <a href="#ConfirmedTransactionBase">ConfirmedTransactionBase</a> and <a href="#MinerTransaction">MinerTransaction</a>.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="confirmedstatetransaction"></a><a href="#confirmedstatetransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ConfirmedStateTransaction</h4>
+<ul>
+<li>Extension of <a href="#ConfirmedTransactionBase">ConfirmedTransactionBase</a> and <a href="#StateTransaction">StateTransaction</a>.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="confirmedtransaction"></a><a href="#confirmedtransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ConfirmedTransaction</h4>
+<ul>
+<li><a href="#ConfirmedMinerTransaction">ConfirmedMinerTransaction</a></li>
+<li><a href="#ConfirmedIssueTransaction">ConfirmedIssueTransaction</a></li>
+<li><a href="#ConfirmedClaimTransaction">ConfirmedClaimTransaction</a></li>
+<li><a href="#ConfirmedContractTransaction">ConfirmedContractTransaction</a></li>
+<li><a href="#ConfirmedStateTransaction">ConfirmedStateTransaction</a></li>
+<li><a href="#ConfirmedInvocationTransaction">ConfirmedInvocationTransaction</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="confirmedtransactionbase"></a><a href="#confirmedtransactionbase" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ConfirmedTransactionBase</h4>
+<ul>
+<li>Base interface for all confirmed <a href="#Transaction">Transactions</a>.</li>
+<li>Properties:
+<ul>
+<li>receipt:
+<ul>
+<li>blockHash: <a href="#Hash256String">Hash256String</a></li>
+<li>blockIndex: number</li>
+<li>index: number</li>
+<li>globalIndex: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="contracttransaction"></a><a href="#contracttransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ContractTransaction</h4>
+<ul>
+<li>Extension of <a href="#TransactionBase">TransactionBase</a></li>
+<li>Transfer of first-class <a href="#Asset">Assets</a></li>
+<li>Properties:
+<ul>
+<li>type: 'ContractTransaction'</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="invocationresult"></a><a href="#invocationresult" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>InvocationResult</h4>
+<ul>
+<li>Result of an invocation.
+<ul>
+<li><a href="#InvocationResultError">InvocationResultError</a></li>
+<li><a href="#InvocationResultSuccess">InvocationResultSuccess</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="invocationresulterror"></a><a href="#invocationresulterror" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>InvocationResultError</h4>
+<ul>
+<li>Result of a failed invocation.</li>
+<li>Properties:
+<ul>
+<li>state: 'FAULT'</li>
+<li>gasConsumed: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+<li>gasCost: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+<li>message: string</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="invocationresultsuccess"></a><a href="#invocationresultsuccess" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>InvocationResultSuccess</h4>
+<ul>
+<li>Result of a successful invocation.</li>
+<li>Properties:
+<ul>
+<li>state: 'HALT'</li>
+<li>gasConsumed: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+<li>gasCost: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+<li>value: Return Value of the Invocation</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="invocationtransaction"></a><a href="#invocationtransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>InvocationTransaction</h4>
+<ul>
+<li>Extension of <a href="#TransactionBase">TransactionBase</a></li>
+<li>Runs a script in the NEO-VM.</li>
+<li>Properties:
+<ul>
+<li>type: 'InvocationTransaction'</li>
+<li>script: <a href="#BufferString">BufferString</a></li>
+<li>gas: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="invokeclaimtransactionoptions"></a><a href="#invokeclaimtransactionoptions" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>InvokeClaimTransactionOptions</h4>
+<ul>
+<li>Extra options available for a <a href="#ClaimTransaction">ClaimTransaction</a>.</li>
+<li>Extension of <a href="#TransactionOptions">TransactionOptions</a>.</li>
+<li>Properties (optional):
+<ul>
+<li>claimAll: boolean
+<ul>
+<li>True when the claim should claim all unclaimed GAS.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="invokereceipt"></a><a href="#invokereceipt" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>InvokeReceipt</h4>
+<ul>
+<li>Extension of <a href="#TransactionReceipt">TransactionReceipt</a> for invocations.</li>
+<li>Properties:
+<ul>
+<li>result: <a href="#InvocationResult">InvocationResult</a></li>
+<li>events: ReadonlyArray&lt;<a href="#Event">Event</a>&gt;</li>
+<li>logs: ReadonlyArray&lt;<a href="#Log">Log</a>&gt;</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="issuetransaction"></a><a href="#issuetransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IssueTransaction</h4>
+<ul>
+<li>Extension of <a href="#TransactionBase">TransactionBase</a></li>
+<li>Issues new currency of a first-class <a href="#Asset">Asset</a>.</li>
+<li>Properties:
+<ul>
+<li>type: 'IssueTransaction'</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="minertransaction"></a><a href="#minertransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MinerTransaction</h4>
+<ul>
+<li>Extension of <a href="#TransactionBase">TransactionBase</a></li>
+<li>First <a href="#Transaction">Transaction</a> in each block which contains the Block rewards for the consensus node that produced the Block.</li>
+<li>Properties:
+<ul>
+<li>type: 'MinerTransaction'</li>
+<li>nonce: number</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="statetransaction"></a><a href="#statetransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>StateTransaction</h4>
+<ul>
+<li>Extension of <a href="#TransactionBase">TransactionBase</a></li>
+<li>Properties:
+<ul>
+<li>type: 'StateTransaction'</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="transaction"></a><a href="#transaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transaction</h4>
+<ul>
+<li><a href="#MinerTransaction">MinerTransaction</a></li>
+<li><a href="#IssueTransaction">IssueTransaction</a></li>
+<li><a href="#ClaimTransaction">ClaimTransaction</a></li>
+<li><a href="#ContractTransaction">ContractTransaction</a></li>
+<li><a href="#StateTransaction">StateTransaction</a></li>
+<li><a href="#InvocationTransaction">InvocationTransaction</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="transactionbase"></a><a href="#transactionbase" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TransactionBase</h4>
+<ul>
+<li>Base interface for all Transactions.</li>
+<li>Properties:
+<ul>
+<li>version: number</li>
+<li>hash: <a href="#Hash256String">Hash256String</a>
+<ul>
+<li>Hash256 of this Transaction</li>
+</ul></li>
+<li>size: number
+<ul>
+<li>Byte size of this Transaction</li>
+</ul></li>
+<li>Attributes: ReadonlyArray&lt;<a href="#Attribute">Attribute</a>&gt;
+<ul>
+<li>Attributes attached to the transaction</li>
+</ul></li>
+<li>inputs: ReadonlyArray&lt;<a href="#Input">Input</a>&gt;
+<ul>
+<li>Inputs of the Transaction.</li>
+</ul></li>
+<li>outputs: ReadonlyArray&lt;<a href="#Output">Output</a>&gt;
+<ul>
+<li>Outputs of the Transaction.</li>
+</ul></li>
+<li>scripts: ReadonlyArray&lt;<a href="#Witness">Witness</a>&gt;</li>
+<li>systemFee: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a>
+<ul>
+<li>Fee for invoking a smart contract.</li>
+</ul></li>
+<li>networkFee: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a>
+<ul>
+<li>Fee attached to a transaction to increase chances of getting it through quickly.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="transactionoptions"></a><a href="#transactionoptions" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TransactionOptions</h4>
+<ul>
+<li>Options available when submitting a <a href="#Transaction">Transaction</a> or <a href="#Transfer">Transfer</a>.</li>
+<li>Properties (All optional):
+<ul>
+<li>from: <a href="#UserAccountID">UserAccountID</a>
+<ul>
+<li>Account to transfer assets from. If this is not provided, the client's current account will be used.</li>
+</ul></li>
+<li>attributes: ReadonlyArray&lt;<a href="#Attribute">Attribute</a>&gt;
+<ul>
+<li>Attributes to attach to the transaction.</li>
+</ul></li>
+<li>networkFee: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a>
+<ul>
+<li>Fee attached to a transaction to increase chances of getting it through quickly.</li>
+</ul></li>
+<li>systemFee: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a>
+<ul>
+<li>Fee for invoking a smart contract.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="transactionreceipt"></a><a href="#transactionreceipt" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TransactionReceipt</h4>
+<ul>
+<li>Receipt of a confirmed <a href="#Transaction">Transaction</a> which contains data about the confirmation such as the Block index and the index of the <a href="#Transaction">Transaction</a> within the block.</li>
+<li>Properties:
+<ul>
+<li>blockIndex: number
+<ul>
+<li>Block index of the <a href="#Transaction">Transaction</a> for this receipt.</li>
+</ul></li>
+<li>blockHash: <a href="#Hash256String">Hash256String</a>
+<ul>
+<li>Block hash of the <a href="#Transaction">Transaction</a> for this receipt.</li>
+</ul></li>
+<li>transactionIndex: number
+<ul>
+<li>Transaction index of the <a href="#Transaction">Transaction</a> within the Block for this Receipt.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="transactionresult"></a><a href="#transactionresult" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TransactionResult</h4>
+<ul>
+<li>Result of a <a href="#Transaction">Transaction</a></li>
+<li>Properties:
+<ul>
+<li>transaction: <a href="#Transction">Transaction</a>
+<ul>
+<li><a href="#Transaction">Transaction</a> send to the network.</li>
+</ul></li>
+<li>confirmed: (options?: <a href="#GetOptions">GetOptions</a>) =&gt; Promise&lt;<a href="#TransactionReceipt">TransactionReceipt</a>&gt;
+<ul>
+<li>Function which must be called to confirm the <a href="#Transaction">Transaction</a> made it into a <a href="#Block">Block</a>.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><br></p>
+<h2><a class="anchor" aria-hidden="true" name="block-types"></a><a href="#block-types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Block Types</h2>
+<h4><a class="anchor" aria-hidden="true" name="block"></a><a href="#block" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Block</h4>
+<ul>
+<li>Extension of <a href="#Header">Header</a>.</li>
+<li>Information contained in a Block.</li>
+<li>Properties:
+<ul>
+<li>transactions: ReadonlyArray&lt;<a href="#ConfirmedTransaction">ConfirmedTransaction</a>&gt;
+<ul>
+<li>Transactions contained in the Block.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="header"></a><a href="#header" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Header</h4>
+<ul>
+<li>Base information about a <a href="#Block">Block</a>.</li>
+<li>Properties:
+<ul>
+<li>version: number
+<ul>
+<li>NEO blockchain version.</li>
+</ul></li>
+<li>hash: <a href="#Hash256String">Hash256String</a>
+<ul>
+<li><a href="#Block">Block</a> hash</li>
+</ul></li>
+<li>previousBlockHash: <a href="#Hash256String">Hash256String</a></li>
+<li>merkleRoot: <a href="#Hash256String">Hash256String</a></li>
+<li>time: number
+<ul>
+<li><a href="#Block">Block</a> time persisted</li>
+</ul></li>
+<li>index: number
+<ul>
+<li><a href="#Block">Block</a> index</li>
+</ul></li>
+<li>nonce: string</li>
+<li>nextConsensus: <a href="#AddressString">AddressString</a>
+<ul>
+<li>Next consensus address.</li>
+</ul></li>
+<li>script: <a href="#Witness">Witness</a></li>
+<li>size: number
+<ul>
+<li>Size in bytes of the <a href="#Block">Block</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<p><br></p>
+<h2><a class="anchor" aria-hidden="true" name="advanced-types"></a><a href="#advanced-types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Advanced Types</h2>
+<p>The rest of the types are contained here.  These will likely only be used for more advanced use cases.</p>
+<h4><a class="anchor" aria-hidden="true" name="addressattributeusage"></a><a href="#addressattributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AddressAttributeUsage</h4>
+<ul>
+<li>Attribute usage flag indicating the data is a PublicKey
+<pre><code class="hljs css ts"><span class="hljs-string">'Script'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="addresscontractparameter"></a><a href="#addresscontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AddressContractParameter</h4>
+<ul>
+<li>Invocation stack item for an Address</li>
+<li>See <a href="#ContractParameter">ContractParameter</a></li>
+<li>Properties
+<ul>
+<li>type: 'Address'</li>
+<li>value: <a href="#AddressString">AddressString</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="arraycontractparameter"></a><a href="#arraycontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ArrayContractParameter</h4>
+<ul>
+<li>Invocation stack item for an Array</li>
+<li>See <a href="#ContractParameter">ContractParameter</a></li>
+<li>Properties
+<ul>
+<li>type: 'Array'</li>
+<li>value: ReadonlyArray&lt;<a href="#ContractParameter">ContractParameter</a>&gt;</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="assettype"></a><a href="#assettype" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AssetType</h4>
+<ul>
+<li>An enum of string values of all possible Asset Types
+<pre><code class="hljs css ts"><span class="hljs-string">'Credit'</span> | <span class="hljs-string">'Duty'</span> | <span class="hljs-string">'Governing'</span> | <span class="hljs-string">'Utility'</span> | <span class="hljs-string">'Currency'</span> | <span class="hljs-string">'Share'</span> | <span class="hljs-string">'Invoice'</span> | <span class="hljs-string">'Token'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="attributeusage"></a><a href="#attributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AttributeUsage</h4>
+<ul>
+<li>Attribute usage flag indicates the type of the data.
+<ul>
+<li><a href="#BufferAttributeUsage">BufferAttributeUsage</a></li>
+<li><a href="#AddressAttributeUsage">AddressAttributeUsage</a></li>
+<li><a href="#PublicKeyAttributeUsage">PublicKeyAttributeUsage</a></li>
+<li><a href="#Hash256AttributeUsage">Hash256AttributeUsage</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="blockfilter"></a><a href="#blockfilter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BlockFilter</h4>
+<ul>
+<li>Filter user in certain methods which iterate over blocks.</li>
+<li>Properties (All optional):
+<ul>
+<li>indexStart: number</li>
+<li>indexStop: number</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="booleancontractparameter"></a><a href="#booleancontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BooleanContractParameter</h4>
+<ul>
+<li>Invocation stack item for boolean</li>
+<li>See <a href="#ContractParameter">ContractParameter</a></li>
+<li>Properties
+<ul>
+<li>type: 'Boolean'</li>
+<li>value: boolean</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="bufferattributeusage"></a><a href="#bufferattributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BufferAttributeUsage</h4>
+<ul>
+<li>Attribute usage flag indicating the data is an arbitrary Buffer
+<pre><code class="hljs css ts"><span class="hljs-string">'DescriptionUrl'</span> | <span class="hljs-string">'Description'</span> | <span class="hljs-string">'Remark'</span> | <span class="hljs-string">'Remark1'</span> | <span class="hljs-string">'Remark2'</span> | <span class="hljs-string">'Remark3'</span> | <span class="hljs-string">'Remark4'</span> | <span class="hljs-string">'Remark5'</span> | <span class="hljs-string">'Remark6'</span> | <span class="hljs-string">'Remark7'</span> | <span class="hljs-string">'Remark8'</span> | <span class="hljs-string">'Remark9'</span> | <span class="hljs-string">'Remark10'</span> | <span class="hljs-string">'Remark11'</span> | <span class="hljs-string">'Remark12'</span> | <span class="hljs-string">'Remark13'</span> | <span class="hljs-string">'Remark14'</span> | <span class="hljs-string">'Remark15'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="buffercontractparameter"></a><a href="#buffercontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BufferContractParameter</h4>
+<ul>
+<li>Invocation stack item for a Buffer</li>
+<li>See <a href="#ContractParameter">ContractParameter</a></li>
+<li>Properties
+<ul>
+<li>type: 'Buffer'</li>
+<li>value: <a href="#BufferString">BufferString</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="contractparameter"></a><a href="#contractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ContractParameter</h4>
+<ul>
+<li>ContractParameters are the serialized stack items of an invocation. These are typically the raw results of an invocation, but they may appear in other raw contexts.
+<ul>
+<li><a href="#SignatureContractParameter">SignatureContractParameter</a></li>
+<li><a href="#BooleanContractParameter">BooleanContractParameter</a></li>
+<li><a href="#IntegerContractParameter">IntegerContractParameter</a></li>
+<li><a href="#AddressContractParameter">AddressContractParameter</a></li>
+<li><a href="#Hash256ContractParameter">Hash256ContractParameter</a></li>
+<li><a href="#BufferContractParameter">BufferContractParameter</a></li>
+<li><a href="#PublicKeyContractParameter">PublicKeyContractParameter</a></li>
+<li><a href="#StringContractParameter">StringContractParameter</a></li>
+<li><a href="#ArrayContractParameter">ArrayContractParameter</a></li>
+<li><a href="#InteropInterfaceContractParameter">InteropInterfaceContractParameter</a></li>
+<li><a href="#VoidContractParameter">VoidContractParameter</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="hash256attributeusage"></a><a href="#hash256attributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hash256AttributeUsage</h4>
+<ul>
+<li>Attribute usage flag indicating the data is a Hash256
+<pre><code class="hljs css ts"><span class="hljs-string">'ContractHash'</span> | <span class="hljs-string">'Vote'</span> | <span class="hljs-string">'Hash1'</span> | <span class="hljs-string">'Hash2'</span> | <span class="hljs-string">'Hash3'</span> | <span class="hljs-string">'Hash4'</span> | <span class="hljs-string">'Hash5'</span> | <span class="hljs-string">'Hash6'</span> | <span class="hljs-string">'Hash7'</span> | <span class="hljs-string">'Hash8'</span> | <span class="hljs-string">'Hash9'</span> | <span class="hljs-string">'Hash10'</span> | <span class="hljs-string">'Hash11'</span> | <span class="hljs-string">'Hash12'</span> | <span class="hljs-string">'Hash13'</span> | <span class="hljs-string">'Hash14'</span> | <span class="hljs-string">'Hash15'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="hash256contractparameter"></a><a href="#hash256contractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hash256ContractParameter</h4>
+<ul>
+<li>Invocation stack item for Hash256</li>
+<li>See <a href="#ContractParameter">ContractParameter</a></li>
+<li>Properties
+<ul>
+<li>type: 'Hash256'</li>
+<li>value: <a href="#Hash256String">Hash256String</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="integercontractparameter"></a><a href="#integercontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IntegerContractParameter</h4>
+<ul>
+<li>Invocation stack item for a BN</li>
+<li>Note that unlike most of the client APIs, we use a <code>BN</code> instead of a <code>BigNumber</code> here to indicate that this is an integer value.</li>
+<li>For example, an <code>IntegerContractParameter</code> that represents a NEO value of 10 would be
+<pre><code class="hljs css ts"><span class="hljs-keyword">new</span> BN(<span class="hljs-number">10</span>_00000000)
+</code></pre></li>
+<li>See <a href="#ContractParameter">ContractParameter</a></li>
+<li>Properties
+<ul>
+<li>type: 'Boolean'</li>
+<li>value: boolean</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="interopinterfacecontractparameter"></a><a href="#interopinterfacecontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>InteropInterfaceContractParameter</h4>
+<ul>
+<li>Invocation stack item for anything other than the other valid contract parameters.</li>
+<li>Examples include the <code>Block</code> builtin. If these builtins remain on the stack after invocation, for example, as a return value, then they will be serialized as this empty interface.</li>
+<li>See <a href="#ContractParameter">ContractParameter</a></li>
+<li>Properties
+<ul>
+<li>type: 'InteropInterface'</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="networksettings"></a><a href="#networksettings" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>NetworkSettings</h4>
+<ul>
+<li>Settings of the network.</li>
+<li>Properties:
+<ul>
+<li>issueGASFee: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="privatenetworksettings"></a><a href="#privatenetworksettings" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PrivateNetworkSettings</h4>
+<ul>
+<li>Settings specific to a private network.</li>
+<li>Properties:
+<ul>
+<li>secondsPerBlock: number</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="publickeyattributeusage"></a><a href="#publickeyattributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PublicKeyAttributeUsage</h4>
+<ul>
+<li>Attribute usage flag indicating the data is a PublicKey
+<pre><code class="hljs css ts"><span class="hljs-string">'ECDH02'</span> | <span class="hljs-string">'ECDH03'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="publickeycontractparameter"></a><a href="#publickeycontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PublicKeyContractParameter</h4>
+<ul>
+<li>Invocation stack item for PublicKey</li>
+<li>See <a href="#ContractParameter">ContractParameter</a></li>
+<li>Properties
+<ul>
+<li>type: 'PublicKey'</li>
+<li>value: <a href="#PublicKeyString">PublicKeyString</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="signaturecontractparameter"></a><a href="#signaturecontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SignatureContractParameter</h4>
+<ul>
+<li>Invocation stack item for Signature</li>
+<li>See <a href="#ContractParameter">ContractParameter</a></li>
+<li>Properties
+<ul>
+<li>type: 'Signature'</li>
+<li>value: <a href="#SignatureString">SignatureString</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="rawaction"></a><a href="#rawaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RawAction</h4>
+<ul>
+<li>Raw action emitted during an invocation.
+<ul>
+<li><a href="#RawNotification">RawNotification</a></li>
+<li><a href="#RawLog">RawLog</a></li>
+</ul></li>
+<li>Low-level API for advanced usage only.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="rawactionbase"></a><a href="#rawactionbase" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RawActionBase</h4>
+<ul>
+<li>Raw action emitted during an invocation.</li>
+<li>Low-level API for advanced usage only.</li>
+<li>Properties:
+<ul>
+<li>version: number</li>
+<li>blockIndex: number</li>
+<li>blockHash: <a href="#Hash256String">Hash256String</a></li>
+<li>transactionIndex: number</li>
+<li>transactionHash: <a href="#Hash256String">Hash256String</a></li>
+<li>index: number</li>
+<li>globalIndex: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+<li>address: <a href="#AddressString">AddressString</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="rawcallreceipt"></a><a href="#rawcallreceipt" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RawCallReceipt</h4>
+<ul>
+<li>Raw receipt of an invocation.</li>
+<li>Low-level API for advanced usage only.</li>
+<li>Properties:
+<ul>
+<li>result: <a href="#RawInvocationResult">RawInvocationResult</a></li>
+<li>actions: ReadonlyArray&lt;<a href="#RawAction">RawAction</a>&gt;</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="rawinvocationdata"></a><a href="#rawinvocationdata" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RawInvocationData</h4>
+<ul>
+<li>Raw data about an invocation.</li>
+<li>Low-level API for advanced usage only.</li>
+<li>Properties:
+<ul>
+<li>asset: <a href="#Asset">Asset</a></li>
+<li>contracts: ReadonlyArray&lt;<a href="#Contract">Contract</a>&gt;</li>
+<li>deletedContractAddresses: ReadonlyArray&lt;<a href="#AddressString">AddressString</a>&gt;</li>
+<li>migratedContractAddresses: ReadonlyArray&lt;[<a href="#AddressString">AddressString</a>, <a href="#AddressString">AddressString</a>]&gt;</li>
+<li>result: <a href="#RawInvocationResult">RawInvocationResult</a></li>
+<li>actions: ReadonlyArray&lt;<a href="#RawAction">RawAction</a>&gt;</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="rawinvocationresult"></a><a href="#rawinvocationresult" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RawInvocationResult</h4>
+<ul>
+<li>Raw result of an invocation.
+<ul>
+<li><a href="#RawInvocationResultError">RawInvocationResultError</a></li>
+<li><a href="#RawInvocationResultSuccess">RawInvocationResultSuccess</a></li>
+</ul></li>
+<li>Low-level API for advanced usage only.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="rawinvocationresulterror"></a><a href="#rawinvocationresulterror" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RawInvocationResultError</h4>
+<ul>
+<li>Raw result of a failed invocation.</li>
+<li>Low-level API for advanced usage only.</li>
+<li>Properties
+<ul>
+<li>state: 'FAULT'</li>
+<li>gasConsumed: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+<li>gasCost: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+<li>stack: ReadonlyArray&lt;<a href="#ContractParameter">ContractParameter</a>&gt;</li>
+<li>message: string</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="rawinvocationresultsuccess"></a><a href="#rawinvocationresultsuccess" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RawInvocationResultSuccess</h4>
+<ul>
+<li>Raw result of a successful invocation.</li>
+<li>Low-level API for advanced usage only.</li>
+<li>Properties
+<ul>
+<li>state: 'HALT'</li>
+<li>gasConsumed: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+<li>gasCost: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+<li>stack: ReadonlyArray&lt;<a href="#ContractParameter">ContractParameter</a>&gt;</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="rawinvokereceipt"></a><a href="#rawinvokereceipt" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RawInvokeReceipt</h4>
+<ul>
+<li>Extension of <a href="#TransactionReceipt">TransactionReceipt</a></li>
+<li>Raw receipt of an invocation.</li>
+<li>Low-level API for advanced usage only.</li>
+<li>Properties:
+<ul>
+<li>result: <a href="#RawInvocationResult">RawInvocationResult</a></li>
+<li>actions: ReadonlyArray&lt;<a href="#RawAction">RawAction</a>&gt;</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="rawlog"></a><a href="#rawlog" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RawLog</h4>
+<ul>
+<li>Extension of <a href="#RawActionBase">RawActionBase</a></li>
+<li>Raw log emitted during an invocation.</li>
+<li>Low-level API for advanced usage only.</li>
+<li>Properties:
+<ul>
+<li>type: 'Log'</li>
+<li>message: string</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="rawnotification"></a><a href="#rawnotification" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RawNotification</h4>
+<ul>
+<li>Extension of <a href="#RawActionBase">RawActionBase</a></li>
+<li>Raw notification emitted during an invocation.</li>
+<li>Low-level API for advanced usage only.</li>
+<li>Properties:
+<ul>
+<li>type: 'Notification'</li>
+<li>args: ReadonlyArray&lt;<a href="#ContractParameter">ContractParameter</a>&gt;</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="stringcontractparameter"></a><a href="#stringcontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>StringContractParameter</h4>
+<ul>
+<li>Invocation stack item for string</li>
+<li>See <a href="#ContractParameter">ContractParameter</a></li>
+<li>Properties
+<ul>
+<li>type: 'String'</li>
+<li>value: string</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="updateaccountnameoptions"></a><a href="#updateaccountnameoptions" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UpdateAccountNameOptions</h4>
+<ul>
+<li>Options for updating a <a href="#UserAccount">UserAccount</a> name.</li>
+<li>Properties:
+<ul>
+<li>id: <a href="#UserAccountID">UserAccountID</a>
+<ul>
+<li>ID of account to change name.</li>
+</ul></li>
+<li>name: string
+<ul>
+<li>Name to change to.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="voidcontractparameter"></a><a href="#voidcontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>VoidContractParameter</h4>
+<ul>
+<li>Invocation stack item for void</li>
+<li>See <a href="#ContractParameter">ContractParameter</a></li>
+<li>Properties
+<ul>
+<li>type: 'Void'</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="witness"></a><a href="#witness" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Witness</h4>
+<ul>
+<li>Properties:
+<ul>
+<li>invocation: <a href="#BufferString">BufferString</a></li>
+<li>verification: <a href="#BufferString">BufferString</a></li>
+</ul></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="client.html">← Client</a></div></div></div></div><footer class="nav-footer footerContainer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/monogram.svg" alt="NEO•ONE" width="66" height="58"/></a><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">DOCS</h5><a class="footerLink" href="/docs/en/getting-started.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/getting-started.svg" alt="Getting Started"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/getting-started-hover.svg" alt="Getting Started"/><div class="body1 gray0 footerLinkText axiformaRegular">Getting Started</div></a><a class="footerLink" href="/docs/en/contributing.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/contribute.svg" alt="Contribute"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/contribute-hover.svg" alt="Contribute"/><div class="body1 gray0 footerLinkText axiformaRegular">Contribute</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">COMMUNITY</h5><a class="footerLink" href="/en/users.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/user-showcase.svg" alt="User Showcase"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/user-showcase-hover.svg" alt="User Showcase"/><div class="body1 gray0 footerLinkText axiformaRegular">User Showcase</div></a><a class="footerLink" href="https://discord.gg/S86PqDE" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/chat.svg" alt="NEO•ONE Chat"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/chat-hover.svg" alt="NEO•ONE Chat"/><div class="body1 gray0 footerLinkText axiformaRegular">NEO•ONE Chat</div></a><a class="footerLink" href="http://stackoverflow.com/questions/tagged/neo-one" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/stack-overflow.svg" alt="Stack Overflow"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/stack-overflow-hover.svg" alt="Stack Overflow"/><div class="body1 gray0 footerLinkText axiformaRegular">Stack Overflow</div></a><a class="footerLink" href="https://twitter.com/neo_one_suite" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/twitter.svg" alt="Twitter"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/twitter-hover.svg" alt="Twitter"/><div class="body1 gray0 footerLinkText axiformaRegular">Twitter</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">MORE</h5><a class="footerLink" href="/blog"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/blog.svg" alt="Blog"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/blog-hover.svg" alt="Blog"/><div class="body1 gray0 footerLinkText axiformaRegular">Blog</div></a><a class="footerLink" href="https://github.com/neo-one-suite/neo-one"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/github.svg" alt="GitHub"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/github-hover.svg" alt="GitHub"/><div class="body1 gray0 footerLinkText axiformaRegular">GitHub</div></a><div class="footerGitHubButton"><a class="github-button" href="https://github.com/neo-one-suite/neo-one" data-icon="octicon-star" data-count-href="/neo-one-suite/neo-one/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></div></div></section><section class="copyright">COPYRIGHT © 2018 NEO•ONE.</section></footer></div><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-92599752-3', 'auto');
+              ga('send', 'pageview');
+            </script><script>window.fbAsyncInit = function() {FB.init({appId:'1764807046864916',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+                </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

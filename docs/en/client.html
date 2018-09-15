@@ -1,4 +1,4 @@
-<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Client · NEO•ONE</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Client · NEO•ONE"/><meta property="og:type" content="website"/><meta property="og:url" content="https://neo-one.io/index.html"/><meta property="og:description" content="This is the API documentation for the NEO•ONE Client."/><link rel="shortcut icon" href="/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://neo-one.io/blog/atom.xml" title="NEO•ONE Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://neo-one.io/blog/feed.xml" title="NEO•ONE Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.svg"/><img class="mobileLogo" src="/img/mobileLogo.svg"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/docs/en/getting-started.html" target="_self">Docs</a></li><li><a href="/en/help.html" target="_self">Help</a></li><li><a href="/blog" target="_self">Blog</a></li><li><a href="https://github.com/neo-one-suite/neo-one" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Documentation</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Documentation</h3><ul><li class="navListItem"><a class="navItem" href="/docs/en/getting-started.html">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/docs/en/playground-tutorial.html">Playground Tutorial</a></li><li class="navListItem"><a class="navItem" href="/docs/en/writing-a-smart-contract.html">Writing a Smart Contract</a></li><li class="navListItem"><a class="navItem" href="/docs/en/testing.html">Testing</a></li><li class="navListItem"><a class="navItem" href="/docs/en/front-end.html">Front End</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/en/client.html">Client</a></li></ul></div></div></section></div><script>
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Client · NEO•ONE</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Client · NEO•ONE"/><meta property="og:type" content="website"/><meta property="og:url" content="https://neo-one.io/index.html"/><meta property="og:description" content="This is the API documentation for the NEO•ONE Client."/><link rel="shortcut icon" href="/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://neo-one.io/blog/atom.xml" title="NEO•ONE Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://neo-one.io/blog/feed.xml" title="NEO•ONE Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.svg"/><img class="mobileLogo" src="/img/mobileLogo.svg"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/docs/en/getting-started.html" target="_self">Docs</a></li><li><a href="/en/help.html" target="_self">Help</a></li><li><a href="/blog" target="_self">Blog</a></li><li><a href="https://github.com/neo-one-suite/neo-one" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Documentation</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Documentation</h3><ul><li class="navListItem"><a class="navItem" href="/docs/en/getting-started.html">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/docs/en/playground-tutorial.html">Playground Tutorial</a></li><li class="navListItem"><a class="navItem" href="/docs/en/writing-a-smart-contract.html">Writing a Smart Contract</a></li><li class="navListItem"><a class="navItem" href="/docs/en/testing.html">Testing</a></li><li class="navListItem"><a class="navItem" href="/docs/en/front-end.html">Front End</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/en/client.html">Client</a></li><li class="navListItem"><a class="navItem" href="/docs/en/client-types.html">Client Types</a></li></ul></div></div></section></div><script>
           var toggler = document.getElementById('navToggler');
           var nav = document.getElementById('docsNav');
           toggler.onclick = function() {
@@ -6,174 +6,169 @@
           };
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/neo-one-suite/neo-one/edit/master/docs/client.md" target="_blank">Edit</a><h1>Client</h1></header><article><div><span><p>This is the API documentation for the NEO•ONE Client.</p>
 <h2><a class="anchor" aria-hidden="true" name="properties"></a><a href="#properties" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Properties</h2>
-<pre><code class="hljs"><span class="hljs-meta">currentAccount$</span><span class="bash">: Observable&lt;UserAccount | undefined&gt;</span>
-</code></pre>
 <ul>
-<li>Observable which returns a stream containing the currently active User Account.
-<br><br></li>
-</ul>
-<pre><code class="hljs">accounts$: Observable&lt;ReadonlyArray&lt;UserAccount<span class="hljs-meta">&gt;&gt;
-</span></code></pre>
-<ul>
-<li>Observable which returns a stream containing an array of all User Accounts registered with the client.
-<br><br></li>
-</ul>
-<pre><code class="hljs"><span class="hljs-meta">currentNetwork$</span><span class="bash">: Observable&lt;NetworkType&gt;</span>
-</code></pre>
-<ul>
-<li>Observable which returns a stream containing the currently active network.
-<br><br></li>
-</ul>
-<pre><code class="hljs">networks$: Observable&lt;ReadonlyArray&lt;NetworkType<span class="hljs-meta">&gt;&gt;
-</span></code></pre>
-<ul>
-<li>Observable which returns a stream containing an array of all networks registered with the client.
-<br><br></li>
-</ul>
-<pre><code class="hljs"><span class="hljs-keyword">block$: </span>Observable&lt;{<span class="hljs-keyword">block: </span><span class="hljs-keyword">Block, </span>network: NetworkType}&gt;
-</code></pre>
-<ul>
-<li>Observable which returns a stream of blocks and their associated network as they are received.
-<br><br></li>
-</ul>
-<pre><code class="hljs"><span class="hljs-string">accountState$:</span> Observable&lt;{<span class="hljs-string">currentAccount:</span> UserAccount, <span class="hljs-string">account:</span> Account} | undefined&gt;
-</code></pre>
-<ul>
-<li>Observable which returns a stream containing all information on the currently active account.
-<br><br></li>
-</ul>
-<pre><code class="hljs"><span class="hljs-string">accountState$:</span> Observable&lt;{<span class="hljs-string">currentAccount:</span> UserAccount, <span class="hljs-string">account:</span> Account} | undefined&gt;
-</code></pre>
-<ul>
-<li>Observable which returns a stream containing all information on the currently active account.</li>
-</ul>
-<pre><code class="hljs"><span class="hljs-symbol">providers:</span> TUserAccountProviders
-</code></pre>
-<ul>
-<li>Returns the User Account Providers.
-<br><br></li>
-</ul>
-<pre><code class="hljs"><span class="hljs-symbol">hooks:</span> ClientHooks
-</code></pre>
-<ul>
-<li>Returns all client hooks.
-<br><br><br></li>
+<li><a href="#currentAccount">currentAccount$</a></li>
+<li><a href="#accounts">accounts$</a></li>
+<li><a href="#currentNetwork">currentNetwork$</a></li>
+<li><a href="#networks">networks$</a></li>
+<li><a href="#block">block$</a></li>
+<li><a href="#accountState">accountState$</a></li>
+<li><a href="#providers">providers</a></li>
+<li><a href="#hooks">hooks</a></li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" name="methods"></a><a href="#methods" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Methods</h2>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">getAccount</span><span class="hljs-params">(idIn: UserAccountID)</span></span>: UserAccount
-</code></pre>
 <ul>
-<li>Returns the UserAccount for a given UserAccountID.
-<br><br></li>
+<li><a href="#getAccount">getAccount</a></li>
+<li><a href="#selectAccount">selectAccount</a></li>
+<li><a href="#selectNetwork">selectNetwork</a></li>
+<li><a href="#deleteAccount">deleteAccount</a></li>
+<li><a href="#updateAccountName">updateAccountName</a></li>
+<li><a href="#getCurrentAccount">getCurrentAccount</a></li>
+<li><a href="#getAccounts">getAccounts</a></li>
+<li><a href="#getNetworks">getNetworks</a></li>
+<li><a href="#transfer">transfer</a></li>
+<li><a href="#publish">publish</a></li>
+<li><a href="#publishAndDeploy">publishAndDeploy</a></li>
+<li><a href="#registerAsset">registerAsset</a></li>
+<li><a href="#issue">issue</a></li>
+<li><a href="#read">read</a></li>
+<li><a href="#smartContract">smartContract</a></li>
+<li><a href="#inject">inject</a></li>
 </ul>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">selectAccount</span><span class="hljs-params">(idIn?: UserAccountID)</span></span>: Promise&lt;void&gt;
-</code></pre>
+<h2><a class="anchor" aria-hidden="true" name="properties-reference"></a><a href="#properties-reference" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Properties Reference</h2>
+<h4><a class="anchor" aria-hidden="true" name="currentaccount"></a><a href="#currentaccount" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>currentAccount$</h4>
 <ul>
-<li>Sets the current account to the account associated with the given UserAccountID.
-<br><br></li>
+<li>type: Observable&lt;<a href="/docs/en/client-types.html#UserAccount">UserAccount</a> | undefined&gt;</li>
+<li>Observable which returns a stream containing the currently active <a href="/docs/en/client-types.html#UserAccount">UserAccount</a>.</li>
+<li>The currently active account is the default account from which transactions will be initiated.</li>
 </ul>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">selectNetwork</span><span class="hljs-params">(networkIn: NetworkType)</span></span>: Promise&lt;void&gt;
-</code></pre>
+<h4><a class="anchor" aria-hidden="true" name="accounts"></a><a href="#accounts" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>accounts$</h4>
 <ul>
-<li>Sets the currently selected network to given network.
-<br><br></li>
+<li>type: Observable&lt;ReadonlyArray&lt;<a href="#UserAccount">UserAccount</a>&gt;&gt;</li>
+<li>Observable which returns a stream containing an array of all User Accounts registered with the client.</li>
 </ul>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">deleteAccount</span><span class="hljs-params">(idIn: UserAccountID)</span></span>: Promise&lt;void&gt;
-</code></pre>
+<h4><a class="anchor" aria-hidden="true" name="currentnetwork"></a><a href="#currentnetwork" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>currentNetwork$</h4>
 <ul>
-<li>Removes the account associated with the given UserAccountID from the list of accounts registered with the client.
-<br><br></li>
+<li>type: Observable&lt;<a href="/docs/en/client-types.html#NetworkType">NetworkType</a>&gt;</li>
+<li>Observable which returns a stream containing the currently active network.</li>
 </ul>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">updateAccountName</span><span class="hljs-params">(options: UpdateAccountNameOptions)</span></span>: Promise&lt;void&gt;
-</code></pre>
+<h4><a class="anchor" aria-hidden="true" name="networks"></a><a href="#networks" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>networks$</h4>
 <ul>
-<li>Updates the name associated with a given account
-<br><br></li>
+<li>type: Observable&lt;ReadonlyArray&lt;<a href="/docs/en/client-types.html#NetworkType">NetworkType</a>&gt;&gt;</li>
+<li>Observable which returns a stream containing an array of all networks registered with the client.</li>
 </ul>
-<pre><code class="hljs">getCurrentAccount(): UserAccount <span class="hljs-string">| undefined</span>
-</code></pre>
+<h4><a class="anchor" aria-hidden="true" name="block"></a><a href="#block" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>block$</h4>
 <ul>
-<li>Returns the currently selected User Account. Returns undefined if no account is selected.
-<br><br></li>
+<li>type: Observable&lt;{block: <a href="/docs/en/client-types.html#">Block</a>, network: <a href="/docs/en/client-types.html#NetworkType">NetworkType</a>}&gt;</li>
+<li>Observable which returns a stream of blocks and their associated network as they are received.</li>
 </ul>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">getCurrentNetwork</span><span class="hljs-params">()</span></span>: NetworkType
-</code></pre>
+<h4><a class="anchor" aria-hidden="true" name="accountstate"></a><a href="#accountstate" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>accountState$</h4>
 <ul>
-<li>Returns the currently selected network.
-<br><br></li>
+<li>type: Observable&lt;{currentAccount: <a href="/docs/en/client-types.html#UserAccount">UserAccount</a>, account: <a href="/docs/en/client-types.html#Account">Account</a>} | undefined&gt;</li>
+<li>Observable which returns a stream containing all information on the currently active account.</li>
 </ul>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">getAccounts</span><span class="hljs-params">()</span></span>: ReadonlyArray&lt;UserAccount&gt;
-</code></pre>
+<h4><a class="anchor" aria-hidden="true" name="providers"></a><a href="#providers" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>providers</h4>
 <ul>
-<li>Returns an array of all accounts registered with the client.
-<br><br></li>
+<li>type: UserAccountProviders</li>
+<li>Returns the User Account Providers.</li>
 </ul>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">getNetworks</span><span class="hljs-params">()</span></span>: ReadonlyArray&lt;NetworkType&gt;
-</code></pre>
+<h4><a class="anchor" aria-hidden="true" name="hooks"></a><a href="#hooks" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>hooks</h4>
 <ul>
-<li>Returns an array of all networks registered with the client.
-<br><br></li>
+<li>type: ClientHooks</li>
+<li>Returns all client hooks.</li>
 </ul>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">getAccounts</span><span class="hljs-params">()</span></span>: ReadonlyArray&lt;UserAccount&gt;
-</code></pre>
+<p><br></p>
+<h2><a class="anchor" aria-hidden="true" name="methods-reference"></a><a href="#methods-reference" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Methods Reference</h2>
+<p><a id="getAccount"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="getaccount-useraccountid-docs-en-client-typeshtml-useraccountid-useraccount-docs-en-client-typeshtml-useraccount"></a><a href="#getaccount-useraccountid-docs-en-client-typeshtml-useraccountid-useraccount-docs-en-client-typeshtml-useraccount" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getAccount(<a href="/docs/en/client-types.html#UserAccountID">UserAccountID</a>): <a href="/docs/en/client-types.html#UserAccount">UserAccount</a></h4>
 <ul>
-<li>Returns an array of all accounts registered with the client.
-<br><br></li>
+<li><code>getAccount(UserAccountID)</code> is used to obtain a <a href="/docs/en/client-types.html#UserAccount">UserAccount</a> from an input <a href="/docs/en/client-types.html#UserAccountID">UserAccountID</a>.</li>
 </ul>
-<pre><code class="hljs">transfer(amoun<span class="hljs-variable">t:</span> BigNumber, asse<span class="hljs-variable">t:</span> Hash256String, <span class="hljs-keyword">to</span>: AddressString, <span class="hljs-keyword">options</span>?: TransactionOptions): Promise&lt;TransactionResult&lt;TransactionReceipt, ContractTransaction&gt;&gt;
-
-transfer(transfer<span class="hljs-variable">s:</span> ReadonlyArray<span class="hljs-symbol">&lt;Transfer&gt;</span>, <span class="hljs-keyword">options</span>?: TransactionOptions): Promise<span class="hljs-symbol">&lt;TransactionResult&gt;</span>
-</code></pre>
+<p><a id="selectAccount"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="selectaccount-useraccountid-docs-en-client-typeshtml-useraccountid-promise-void"></a><a href="#selectaccount-useraccountid-docs-en-client-typeshtml-useraccountid-promise-void" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>selectAccount(<a href="/docs/en/client-types.html#UserAccountID">UserAccountID?</a>): Promise&lt;void&gt;</h4>
 <ul>
-<li>Transfer a given asset to a given address in the amount specified.</li>
-<li>Transfer will be from the currently selected account unless a from account is specified in the options.</li>
-<li>A network or system fee may also be included in the options.</li>
-<li>Transfer in batch by passing in an array of Transfers.
-<br><br></li>
+<li>Sets the current account to the account associated with the given <a href="/docs/en/client-types.html#UserAccountID">UserAccountID</a>.
+The selected account will now be the default account from which transactions will be initiated by the client.</li>
 </ul>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">publish</span><span class="hljs-params">(contract: ContractRegister, options?: TransactionOptions)</span></span>: Promise&lt;TransactionResult&lt;PublishReceipt, InvocationTransaction&gt;&gt;
-</code></pre>
+<p><a id="selectNetwork"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="selectnetwork-networktype-docs-en-client-typeshtml-networktype-promise-void"></a><a href="#selectnetwork-networktype-docs-en-client-typeshtml-networktype-promise-void" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>selectNetwork(<a href="/docs/en/client-types.html#NetworkType">NetworkType</a>): Promise&lt;void&gt;</h4>
 <ul>
-<li>Publishes a given smart contract to the currently selected network.
-<br><br></li>
+<li>Sets the currently selected network to given network.  The client will now default to using the selected network for all operations.</li>
 </ul>
-<pre><code class="hljs">publishAndDeploy(contrac<span class="hljs-variable">t:</span> ContractRegister, abi: ABI, param<span class="hljs-variable">s:</span> ReadonlyArray<span class="hljs-symbol">&lt;Param&gt;</span> = [], <span class="hljs-keyword">options</span>?: TransactionOptions, sourceMap<span class="hljs-variable">s:</span> Promise<span class="hljs-symbol">&lt;SourceMaps&gt;</span> = Promise.<span class="hljs-built_in">resolve</span>({})): Promise&lt;TransactionResult&lt;PublishReceipt, InvocationTransaction&gt;&gt;
-</code></pre>
+<p><a id="deleteAccount"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="deleteaccount-useraccountid-docs-en-client-typeshtml-useraccountid-promise-void"></a><a href="#deleteaccount-useraccountid-docs-en-client-typeshtml-useraccountid-promise-void" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>deleteAccount(<a href="/docs/en/client-types.html#UserAccountID">UserAccountID?</a>): Promise&lt;void&gt;</h4>
 <ul>
-<li>Publishes and deploys a smart contract to the currently selected network.
-<br><br></li>
+<li>Removes the account associated with the given UserAccountID from the list of accounts registered with the client.</li>
 </ul>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">registerAsset</span><span class="hljs-params">(asset: AssetRegister, options?: TransactionOptions)</span></span>: Promise&lt;TransactionResult&lt;RegisterAssetReceipt, InvocationTransaction&gt;&gt;
-</code></pre>
+<p><a id="updateAccountName"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="updateaccountname-updateaccountnameoptions-docs-en-client-typeshtml-updateaccountnameoptions-promise-void"></a><a href="#updateaccountname-updateaccountnameoptions-docs-en-client-typeshtml-updateaccountnameoptions-promise-void" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>updateAccountName(<a href="/docs/en/client-types.html#UpdateAccountNameOptions">UpdateAccountNameOptions</a>): Promise&lt;void&gt;</h4>
 <ul>
-<li>Registers a new asset to the currently selected network.
-<br><br></li>
+<li>Updates the name associated with a given account</li>
 </ul>
-<pre><code class="hljs">issue(<span class="hljs-string">amount:</span> BigNumber, <span class="hljs-string">asset:</span> Hash256String, <span class="hljs-string">to:</span> AddressString, options?: TransactionOptions): Promise&lt;TransactionResult&lt;TransactionReceipt, IssueTransaction&gt;&gt;
-</code></pre>
+<p><a id="getCurrentAccount"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="getcurrentaccount-useraccount-docs-en-client-typeshtml-useraccount-undefined"></a><a href="#getcurrentaccount-useraccount-docs-en-client-typeshtml-useraccount-undefined" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getCurrentAccount(): <a href="/docs/en/client-types.html#UserAccount">UserAccount</a> | undefined</h4>
 <ul>
-<li>Issues a given amount of a given asset to a given address.
-<br><br></li>
+<li>Returns the currently selected User Account. Returns undefined if no account is selected.  This is the default account used for transactions initiated by the client.</li>
 </ul>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">read</span><span class="hljs-params">(network: NetworkType)</span></span>: ReadClient
-</code></pre>
+<p><a id="getCurrentNetwork"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="getcurrentnetwork-networktype-docs-en-client-typeshtml-networktype"></a><a href="#getcurrentnetwork-networktype-docs-en-client-typeshtml-networktype" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getCurrentNetwork(): <a href="/docs/en/client-types.html#NetworkType">NetworkType</a></h4>
 <ul>
-<li>Returns a ReadClient for the given network.  The ReadClient is used to obtain information about the blockchain.
-<br><br></li>
+<li>Returns the currently selected network. This is the default network on which the client will perform operations.</li>
 </ul>
-<pre><code class="hljs">smartContract&lt;<span class="hljs-built_in">T</span> extends SmartContract&gt;(definiti<span class="hljs-symbol">on:</span> SmartContractDefinition)<span class="hljs-symbol">:</span> <span class="hljs-built_in">T</span>
-</code></pre>
+<p><a id="getAccounts"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="getaccounts-readonlyarray-useraccount-docs-en-client-typeshtml-useraccount"></a><a href="#getaccounts-readonlyarray-useraccount-docs-en-client-typeshtml-useraccount" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getAccounts(): ReadonlyArray&lt;<a href="/docs/en/client-types.html#UserAccount">UserAccount</a>&gt;</h4>
 <ul>
-<li>Creates a smart contract from a given smart contract definition.
-<br><br></li>
+<li>Returns an array of all accounts registered with the client.</li>
 </ul>
-<pre><code class="hljs">inject&lt;K&gt;(<span class="hljs-string">provider:</span> K <span class="hljs-keyword">extends</span> keyof TUserAccountProviders ? TUserAccountProviders[K]: UserAccountProvider): <span class="hljs-keyword">void</span>
-</code></pre>
+<p><a id="getNetworks"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="getnetworks-readonlyarray-networktype-docs-en-client-typeshtml-networktype"></a><a href="#getnetworks-readonlyarray-networktype-docs-en-client-typeshtml-networktype" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getNetworks(): ReadonlyArray&lt;<a href="/docs/en/client-types.html#NetworkType">NetworkType</a>&gt;</h4>
 <ul>
-<li>Sets the current User Account Provider to the given provider.
-<br><br></li>
+<li>Returns an array of all networks registered with the client.</li>
 </ul>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="front-end.html">← Front End</a></div></div></div></div><footer class="nav-footer footerContainer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/monogram.svg" alt="NEO•ONE" width="66" height="58"/></a><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">DOCS</h5><a class="footerLink" href="/docs/en/getting-started.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/getting-started.svg" alt="Getting Started"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/getting-started-hover.svg" alt="Getting Started"/><div class="body1 gray0 footerLinkText axiformaRegular">Getting Started</div></a><a class="footerLink" href="/docs/en/contributing.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/contribute.svg" alt="Contribute"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/contribute-hover.svg" alt="Contribute"/><div class="body1 gray0 footerLinkText axiformaRegular">Contribute</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">COMMUNITY</h5><a class="footerLink" href="/en/users.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/user-showcase.svg" alt="User Showcase"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/user-showcase-hover.svg" alt="User Showcase"/><div class="body1 gray0 footerLinkText axiformaRegular">User Showcase</div></a><a class="footerLink" href="https://discord.gg/S86PqDE" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/chat.svg" alt="NEO•ONE Chat"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/chat-hover.svg" alt="NEO•ONE Chat"/><div class="body1 gray0 footerLinkText axiformaRegular">NEO•ONE Chat</div></a><a class="footerLink" href="http://stackoverflow.com/questions/tagged/neo-one" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/stack-overflow.svg" alt="Stack Overflow"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/stack-overflow-hover.svg" alt="Stack Overflow"/><div class="body1 gray0 footerLinkText axiformaRegular">Stack Overflow</div></a><a class="footerLink" href="https://twitter.com/neo_one_suite" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/twitter.svg" alt="Twitter"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/twitter-hover.svg" alt="Twitter"/><div class="body1 gray0 footerLinkText axiformaRegular">Twitter</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">MORE</h5><a class="footerLink" href="/blog"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/blog.svg" alt="Blog"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/blog-hover.svg" alt="Blog"/><div class="body1 gray0 footerLinkText axiformaRegular">Blog</div></a><a class="footerLink" href="https://github.com/neo-one-suite/neo-one"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/github.svg" alt="GitHub"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/github-hover.svg" alt="GitHub"/><div class="body1 gray0 footerLinkText axiformaRegular">GitHub</div></a><div class="footerGitHubButton"><a class="github-button" href="https://github.com/neo-one-suite/neo-one" data-icon="octicon-star" data-count-href="/neo-one-suite/neo-one/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></div></div></section><section class="copyright">COPYRIGHT © 2018 NEO•ONE.</section></footer></div><script>
+<p><a id="transfer"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="transfer-bignumber-https-githubcom-mikemcl-bignumberjs-hash256string-docs-en-client-typeshtml-hash256string-addressstring-docs-en-client-typeshtml-addressstring-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-transactionreceipt-docs-en-client-typeshtml-transactionreceipt-contracttransaction-docs-en-client-typeshtml-contracttransaction"></a><a href="#transfer-bignumber-https-githubcom-mikemcl-bignumberjs-hash256string-docs-en-client-typeshtml-hash256string-addressstring-docs-en-client-typeshtml-addressstring-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-transactionreceipt-docs-en-client-typeshtml-transactionreceipt-contracttransaction-docs-en-client-typeshtml-contracttransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>transfer(<a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a>, <a href="/docs/en/client-types.html#Hash256String">Hash256String</a>, <a href="/docs/en/client-types.html#AddressString">AddressString</a>, <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions?</a>): Promise&lt;<a href="/docs/en/client-types.html#TransactionResult">TransactionResult</a>&lt;<a href="/docs/en/client-types.html#TransactionReceipt">TransactionReceipt</a>, <a href="/docs/en/client-types.html#ContractTransaction">ContractTransaction</a>&gt;&gt;</h4>
+<h4><a class="anchor" aria-hidden="true" name="transferreadonlyarray-transfer-docs-en-client-typeshtml-transfer-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult"></a><a href="#transferreadonlyarray-transfer-docs-en-client-typeshtml-transfer-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>transfer(ReadonlyArray&lt;<a href="/docs/en/client-types.html#Transfer">Transfer</a>&gt;, <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions?</a>): Promise&lt;<a href="/docs/en/client-types.html#TransactionResult">TransactionResult</a>&gt;</h4>
+<ul>
+<li>Transfer a given <a href="/docs/en/client-types.html#Asset">Asset</a> identified by its <a href="/docs/en/client-types.html#Hash256String">Hash256String</a> identifier to a given address in the amount specified.</li>
+<li>Transfer will be from the currently selected account unless a from account is specified in the <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions</a>.</li>
+<li>Transfer in batch by passing in an array of <a href="/docs/en/client-types.html#Transfer">Transfers</a>.</li>
+</ul>
+<p><a id="publish"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="publish-contractregister-docs-en-client-typeshtml-contractregister-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-publishreceipt-docs-en-client-typeshtml-publishreceipt-invocationtransaction-docs-en-client-typeshtml-invocationtransaction"></a><a href="#publish-contractregister-docs-en-client-typeshtml-contractregister-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-publishreceipt-docs-en-client-typeshtml-publishreceipt-invocationtransaction-docs-en-client-typeshtml-invocationtransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>publish(<a href="/docs/en/client-types.html#ContractRegister">ContractRegister</a>, <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions?</a>): Promise&lt;<a href="/docs/en/client-types.html#TransactionResult">TransactionResult</a>&lt;<a href="/docs/en/client-types.html#PublishReceipt">PublishReceipt</a>, <a href="/docs/en/client-types.html#InvocationTransaction">InvocationTransaction</a>&gt;&gt;</h4>
+<ul>
+<li>Publishes a given smart contract to the currently selected network.</li>
+</ul>
+<p><a id="publishAndDeploy"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="publishanddeploy-contractregister-docs-en-client-typeshtml-contractregister-abi-docs-en-client-typeshtml-abi-readonlyarray-param-docs-en-client-typeshtml-param-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-sourcemaps-docs-en-client-typeshtml-sourcemaps-promiseresolve-promise-transactionresult-docs-en-client-typeshtml-transactionresult-publishreceipt-docs-en-client-typeshtml-publishreceipt-invocationtransaction-docs-en-client-typeshtml-invocationtransaction"></a><a href="#publishanddeploy-contractregister-docs-en-client-typeshtml-contractregister-abi-docs-en-client-typeshtml-abi-readonlyarray-param-docs-en-client-typeshtml-param-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-sourcemaps-docs-en-client-typeshtml-sourcemaps-promiseresolve-promise-transactionresult-docs-en-client-typeshtml-transactionresult-publishreceipt-docs-en-client-typeshtml-publishreceipt-invocationtransaction-docs-en-client-typeshtml-invocationtransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>publishAndDeploy(<a href="/docs/en/client-types.html#ContractRegister">ContractRegister</a>, <a href="/docs/en/client-types.html#ABI">ABI</a>, ReadonlyArray&lt;<a href="/docs/en/client-types.html#Param">Param</a>&gt; = [], <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions?</a>, Promise&lt;<a href="/docs/en/client-types.html#SourceMaps">SourceMaps</a>&gt; = Promise.resolve({})): Promise&lt;<a href="/docs/en/client-types.html#TransactionResult">TransactionResult</a>&lt;<a href="/docs/en/client-types.html#PublishReceipt">PublishReceipt</a>, <a href="/docs/en/client-types.html#InvocationTransaction">InvocationTransaction</a>&gt;&gt;</h4>
+<ul>
+<li>Publishes and deploys a smart contract to the currently selected network. Once confirmed, the smart contract will be ready for use.</li>
+</ul>
+<p><a id="registerAsset"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="registerasset-assetregister-docs-en-client-typeshtml-assetregister-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-registerassetreceipt-docs-en-client-typeshtml-registerassetreceipt-invocationtransaction-docs-en-client-typeshtml-invocationtransaction"></a><a href="#registerasset-assetregister-docs-en-client-typeshtml-assetregister-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-registerassetreceipt-docs-en-client-typeshtml-registerassetreceipt-invocationtransaction-docs-en-client-typeshtml-invocationtransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>registerAsset(<a href="/docs/en/client-types.html#AssetRegister">AssetRegister</a>, <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions?</a>): Promise&lt;<a href="/docs/en/client-types.html#TransactionResult">TransactionResult</a>&lt;<a href="/docs/en/client-types.html#RegisterAssetReceipt">RegisterAssetReceipt</a>, <a href="/docs/en/client-types.html#InvocationTransaction">InvocationTransaction</a>&gt;&gt;</h4>
+<ul>
+<li>Registers a new asset to the currently selected network.</li>
+</ul>
+<p><a id="issue"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="issue-bignumber-bignumber-https-githubcom-mikemcl-bignumberjs-hash256string-docs-en-client-typeshtml-hash256string-addressstring-docs-en-client-typeshtml-addressstring-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-transactionreceipt-docs-en-client-typeshtml-transactionreceipt-issuetransaction-docs-en-client-typeshtml-issuetransaction"></a><a href="#issue-bignumber-bignumber-https-githubcom-mikemcl-bignumberjs-hash256string-docs-en-client-typeshtml-hash256string-addressstring-docs-en-client-typeshtml-addressstring-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-transactionreceipt-docs-en-client-typeshtml-transactionreceipt-issuetransaction-docs-en-client-typeshtml-issuetransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>issue(<a href="[BigNumber](https://github.com/MikeMcl/bignumber.js/)">BigNumber</a>, <a href="/docs/en/client-types.html#Hash256String">Hash256String</a>, <a href="/docs/en/client-types.html#AddressString">AddressString</a>, <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions?</a>): Promise&lt;<a href="/docs/en/client-types.html#TransactionResult">TransactionResult</a>&lt;<a href="/docs/en/client-types.html#TransactionReceipt">TransactionReceipt</a>, <a href="/docs/en/client-types.html#IssueTransaction">IssueTransaction</a>&gt;&gt;</h4>
+<ul>
+<li>Issues a given amount of a given asset identified by its <a href="/docs/en/client-types.html#Hash256String">Hash256String</a> to a given address.</li>
+</ul>
+<p><a id="read"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="read-networktype-docs-en-client-typeshtml-networktype-readclient"></a><a href="#read-networktype-docs-en-client-typeshtml-networktype-readclient" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>read(<a href="/docs/en/client-types.html#NetworkType">NetworkType</a>): <a href="">ReadClient</a></h4>
+<ul>
+<li>Returns a ReadClient for the given network.  The ReadClient is used to obtain information about the blockchain.</li>
+</ul>
+<p><a id="smartContract"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="smartcontract-t-extends-smartcontract-smartcontractdefinition-t"></a><a href="#smartcontract-t-extends-smartcontract-smartcontractdefinition-t" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>smartContract&lt;T extends <a href="">SmartContract</a>&gt;(<a href="">SmartContractDefinition</a>): T</h4>
+<ul>
+<li>Creates a smart contract from a given smart contract definition.</li>
+</ul>
+<p><a id="inject"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="inject-k-k-extends-keyof-tuseraccountproviders-tuseraccountproviders-k-useraccountprovider-void"></a><a href="#inject-k-k-extends-keyof-tuseraccountproviders-tuseraccountproviders-k-useraccountprovider-void" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>inject<K>(K extends keyof TUserAccountProviders ? TUserAccountProviders[K]: UserAccountProvider): void</h4>
+<ul>
+<li>Sets the current User Account Provider to the given provider.</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="front-end.html">← Front End</a><a class="docs-next button" href="client-types.html">Client Types →</a></div></div></div></div><footer class="nav-footer footerContainer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/monogram.svg" alt="NEO•ONE" width="66" height="58"/></a><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">DOCS</h5><a class="footerLink" href="/docs/en/getting-started.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/getting-started.svg" alt="Getting Started"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/getting-started-hover.svg" alt="Getting Started"/><div class="body1 gray0 footerLinkText axiformaRegular">Getting Started</div></a><a class="footerLink" href="/docs/en/contributing.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/contribute.svg" alt="Contribute"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/contribute-hover.svg" alt="Contribute"/><div class="body1 gray0 footerLinkText axiformaRegular">Contribute</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">COMMUNITY</h5><a class="footerLink" href="/en/users.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/user-showcase.svg" alt="User Showcase"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/user-showcase-hover.svg" alt="User Showcase"/><div class="body1 gray0 footerLinkText axiformaRegular">User Showcase</div></a><a class="footerLink" href="https://discord.gg/S86PqDE" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/chat.svg" alt="NEO•ONE Chat"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/chat-hover.svg" alt="NEO•ONE Chat"/><div class="body1 gray0 footerLinkText axiformaRegular">NEO•ONE Chat</div></a><a class="footerLink" href="http://stackoverflow.com/questions/tagged/neo-one" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/stack-overflow.svg" alt="Stack Overflow"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/stack-overflow-hover.svg" alt="Stack Overflow"/><div class="body1 gray0 footerLinkText axiformaRegular">Stack Overflow</div></a><a class="footerLink" href="https://twitter.com/neo_one_suite" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/twitter.svg" alt="Twitter"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/twitter-hover.svg" alt="Twitter"/><div class="body1 gray0 footerLinkText axiformaRegular">Twitter</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">MORE</h5><a class="footerLink" href="/blog"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/blog.svg" alt="Blog"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/blog-hover.svg" alt="Blog"/><div class="body1 gray0 footerLinkText axiformaRegular">Blog</div></a><a class="footerLink" href="https://github.com/neo-one-suite/neo-one"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/github.svg" alt="GitHub"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/github-hover.svg" alt="GitHub"/><div class="body1 gray0 footerLinkText axiformaRegular">GitHub</div></a><div class="footerGitHubButton"><a class="github-button" href="https://github.com/neo-one-suite/neo-one" data-icon="octicon-star" data-count-href="/neo-one-suite/neo-one/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></div></div></section><section class="copyright">COPYRIGHT © 2018 NEO•ONE.</section></footer></div><script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
