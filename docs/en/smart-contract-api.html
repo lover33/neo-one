@@ -1,0 +1,1116 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Smart Contract API · NEO•ONE</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Smart Contract API · NEO•ONE"/><meta property="og:type" content="website"/><meta property="og:url" content="https://neo-one.io/index.html"/><meta property="og:description" content="This is the API documentation for NEO•ONE Smart Contracts. This includes all types and utilities available to import into your Smart Contract definition files from `@neo-one/smart-contract`."/><link rel="shortcut icon" href="/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://neo-one.io/blog/atom.xml" title="NEO•ONE Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://neo-one.io/blog/feed.xml" title="NEO•ONE Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.svg"/><img class="mobileLogo" src="/img/mobileLogo.svg"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/docs/en/getting-started.html" target="_self">Docs</a></li><li><a href="/en/help.html" target="_self">Help</a></li><li><a href="/blog" target="_self">Blog</a></li><li><a href="https://github.com/neo-one-suite/neo-one" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Documentation</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Documentation</h3><ul><li class="navListItem"><a class="navItem" href="/docs/en/getting-started.html">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/docs/en/playground-tutorial.html">Playground Tutorial</a></li><li class="navListItem"><a class="navItem" href="/docs/en/writing-a-smart-contract.html">Writing a Smart Contract</a></li><li class="navListItem"><a class="navItem" href="/docs/en/testing.html">Testing</a></li><li class="navListItem"><a class="navItem" href="/docs/en/front-end.html">Front End</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/en/smart-contract-api.html">Smart Contract API</a></li><li class="navListItem"><a class="navItem" href="/docs/en/client-api.html">Client API</a></li><li class="navListItem"><a class="navItem" href="/docs/en/client-types.html">Client Types</a></li><li class="navListItem"><a class="navItem" href="/docs/en/read-client-api.html">Read Client API</a></li><li class="navListItem"><a class="navItem" href="/docs/en/keystore-api.html">Key Store API</a></li><li class="navListItem"><a class="navItem" href="/docs/en/developer-client-api.html">Developer Client API</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/neo-one-suite/neo-one/edit/master/docs/smart-contract-api.md" target="_blank">Edit</a><h1>Smart Contract API</h1></header><article><div><span><p>This is the API documentation for NEO•ONE Smart Contracts. This includes all types and utilities available to import into your Smart Contract definition files from <code>@neo-one/smart-contract</code>.</p>
+<h2><a class="anchor" aria-hidden="true" name="api"></a><a href="#api" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API</h2>
+<ul>
+<li><a href="#Address">Address</a></li>
+<li><a href="#Hash256">Hash256</a></li>
+<li><a href="#PublicKey">PublicKey</a></li>
+<li><a href="#Fixed">Fixed&lt;Decimal&gt;</a></li>
+<li><a href="#Integer">Integer</a></li>
+<li><a href="#Fixed8">Fixed8</a></li>
+<li><a href="#TransactionType">TransactionType</a></li>
+<li><a href="#AttributeUsage">AttributeUsage</a></li>
+<li><a href="#BufferAttributeUsage">BufferAttributeUsage</a></li>
+<li><a href="#PublicKeyAttributeUsage">PublicKeyAttributeUsage</a></li>
+<li><a href="#AddressAttributeUsage">AddressAttributeUsage</a></li>
+<li><a href="#Hash256AttributeUsage">Hash256AttributeUsage</a></li>
+<li><a href="#AttributeBase">AttributeBase</a></li>
+<li><a href="#BufferAttribute">BufferAttribute</a></li>
+<li><a href="#PublicKeyAttribute">PublicKeyAttribute</a></li>
+<li><a href="#AddressAttribute">AddressAttribute</a></li>
+<li><a href="#Hash256Attribute">Hash256Attribute</a></li>
+<li><a href="#Attribute">Attribute</a></li>
+<li><a href="#Output">Output</a></li>
+<li><a href="#Input">Input</a></li>
+<li><a href="#TransactionBase">TransactionBase</a></li>
+<li><a href="#MinerTransaction">MinerTransaction</a></li>
+<li><a href="#IssueTransaction">IssueTransaction</a></li>
+<li><a href="#ClaimTransaction">ClaimTransaction</a></li>
+<li><a href="#ContractTransaction">ContractTransaction</a></li>
+<li><a href="#StateTransaction">StateTransaction</a></li>
+<li><a href="#InvocationTransaction">InvocationTransaction</a></li>
+<li><a href="#Transaction">Transaction</a></li>
+<li><a href="#Account">Account</a></li>
+<li><a href="#AssetType">AssetType</a></li>
+<li><a href="#Asset">Asset</a></li>
+<li><a href="#Contract">Contract</a></li>
+<li><a href="#Header">Header</a></li>
+<li><a href="#Block">Block</a></li>
+<li><a href="#SerializableKeySingle">SerializableKeySingle</a></li>
+<li><a href="#SK">SK</a></li>
+<li><a href="#SerializableKey">SerializableKey</a></li>
+<li><a href="#SerlializableValue">SerlializableValue</a></li>
+<li><a href="#ArrayStorage">ArrayStorage</a></li>
+<li><a href="#MapStorage">MapStorage</a></li>
+<li><a href="#SetStorage">SetStorage</a></li>
+<li><a href="#Blockchain">Blockchain</a></li>
+<li><a href="#Deploy">Deploy</a></li>
+<li><a href="#ContractProperties">ContractProperties</a></li>
+<li><a href="#SmartContract">SmartContract</a></li>
+<li><a href="#LinkedSmartContract">LinkedSmartContract</a></li>
+<li><a href="#Hashable">Hashable</a></li>
+<li><a href="#Crypto">Crypto</a></li>
+<li><a href="#constant">constant</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="address"></a><a href="#address" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Address</h4>
+<ul>
+<li>Buffer that represents a NEO address.</li>
+<li>Stored as a script hash (Hash160) internally.</li>
+<li>Methods:
+<ul>
+<li>isCaller: (Address) =&gt; boolean;
+<ul>
+<li>Verifies that the invocation was directly called AND approved by the given Address.</li>
+<li>Smart contracts should invoke this function before taking transferring items for Addresses, like transferring tokens, that require the permission of the Address.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">if</span> (!Address.isCalled(inputAddress)) {
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+</code></pre></li>
+</ul></li>
+<li>isSender: (Address) =&gt; boolean;
+<ul>
+<li>Verifies that the <a href="#Transaction">Transaction</a> was signed by the address.</li>
+<li>In most cases, smart contracts should instead use.
+<code>Address.isCaller</code>.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">if</span> (!Address.isSender(address)) {
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+</code></pre></li>
+</ul></li>
+</ul></li>
+<li>Constructor:
+<ul>
+<li>from: (string) =&gt; Address;
+<ul>
+<li>Creates an Address from a literal string.</li>
+<li>Accepts either a NEO address or a script hash.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> accountAddress = Address.from(<span class="hljs-string">'ALq7AWrhAueN6mJNqk6FHJjnsEoPRytLdW'</span>);
+<span class="hljs-keyword">const</span> contractAddress = Address.from(<span class="hljs-string">'​​​​​0xcef0c0fdcfe7838eff6ff104f9cdec2922297537​​​​​'</span>);
+</code></pre></li>
+</ul></li>
+</ul></li>
+<li>Example Type Usage:
+<pre><code class="hljs css ts"><span class="hljs-meta">@constant</span>
+<span class="hljs-keyword">public</span> checkBalance(address: Address): Integer {
+  <span class="hljs-comment">// checks balance</span>
+};
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="hash256"></a><a href="#hash256" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hash256</h4>
+<ul>
+<li>Buffer that represents a NEO 256 bit hash.</li>
+<li>Examples of Hash256 include <a href="#Block">Block</a> hashes, <a href="#Transaction">Transaction</a> hashes, and <a href="#Asset">Asset</a> hashes.</li>
+<li>Properties:
+<ul>
+<li>NEO
+<ul>
+<li>Hash256 of the NEO <a href="#Asset">Asset</a>.</li>
+<li>Example:
+<pre><code class="hljs css ts">sendAsset(fromAddress, toAddress, Hash256.NEO);
+</code></pre></li>
+</ul></li>
+<li>GAS
+<ul>
+<li>Hash256 of the GAS <a href="#Asset">Asset</a>.</li>
+<li>Example:
+<pre><code class="hljs css ts">sendAsset(fromAddress, toAddress, Hash256.GAS);
+</code></pre></li>
+</ul></li>
+</ul></li>
+<li>Constructor:
+<ul>
+<li>from: (string) =&gt; Hash256;
+<ul>
+<li>Creates a Hash256 from a literal string.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> transactionHash = Hash256.from(<span class="hljs-string">'0xd6572a459b95d9136b7a713c5485ca709f9efa4f08f1c25dd792672d2bd75bfb'</span>)
+</code></pre></li>
+</ul></li>
+</ul></li>
+<li>Example Type Usage:
+<pre><code class="hljs css ts"><span class="hljs-keyword">public</span> sendAsset(<span class="hljs-keyword">from</span>: Address, to: Address, asset: Hash256): <span class="hljs-built_in">boolean</span> {
+  <span class="hljs-comment">// sends given asset represented by its Hash256 identifier.</span>
+};
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="publickey"></a><a href="#publickey" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PublicKey</h4>
+<ul>
+<li>Buffer that represents a public key.</li>
+<li>Constructor:
+<ul>
+<li>from: (string) =&gt; PublicKey
+<ul>
+<li>Creates a PublicKey from a literal string.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> publicKey = PublicKey.from(<span class="hljs-string">'02028a99826edc0c97d18e22b6932373d908d323aa7f92656a77ec26e8861699ef'</span>)
+</code></pre></li>
+</ul></li>
+</ul></li>
+<li>Example Type Usage:
+<pre><code class="hljs css ts"><span class="hljs-keyword">public</span> publicKeyToAddress(publicKey: PublicKey): Address {
+  <span class="hljs-comment">// converts public key to address</span>
+}
+</code></pre></li>
+</ul>
+<p><a id="Fixed"></a></p>
+<h4><a class="anchor" aria-hidden="true" name="fixed-decimal-extends-number"></a><a href="#fixed-decimal-extends-number" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Fixed&lt;Decimal extends number&gt;</h4>
+<ul>
+<li>Integer which represents a number with the specified decimals.</li>
+<li>Example Type Usage:
+<pre><code class="hljs css ts"><span class="hljs-comment">// 100.0000</span>
+<span class="hljs-keyword">public</span> readonly tokenConversionRate: Fixed&lt;<span class="hljs-number">4</span>&gt;: <span class="hljs-number">100</span>_0000;
+<span class="hljs-comment">// 10,000,000,000.00000000</span>
+<span class="hljs-keyword">public</span> readonly remainingTokens: Fixed&lt;<span class="hljs-number">8</span>&gt;: <span class="hljs-number">10</span>_000_000_000_00000000;
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="integer"></a><a href="#integer" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Integer</h4>
+<ul>
+<li>Integer that represents a number with 0 decimals.</li>
+<li>Shorthand for Fixed&lt;0&gt;.</li>
+<li>Example Type Usage:
+<pre><code class="hljs css ts"><span class="hljs-keyword">public</span> readonly icoDurationSeconds: Integer = <span class="hljs-number">86400</span>;
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="fixed8"></a><a href="#fixed8" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Fixed8</h4>
+<ul>
+<li>Integer that represents a number with 8 decimals.</li>
+<li>Shorthand for Fixed&lt;8&gt;.</li>
+<li>Example Type Usage:
+<pre><code class="hljs css ts"><span class="hljs-keyword">public</span> gasBalance(address: Address): Fixed8 {
+  <span class="hljs-comment">// returns GAS balance of address</span>
+}
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="transactiontype"></a><a href="#transactiontype" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TransactionType</h4>
+<ul>
+<li>enum of all <a href="#Transaction">Transaction</a> Types.
+<ul>
+<li>Miner = 0x00
+<ul>
+<li>First <a href="#Transaction">Transaction</a> in each block which contains the Block rewards for the consensus node that produced the Block.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">if</span>(transaction.type === TransactionType.Miner) {
+  <span class="hljs-comment">// do something</span>
+}
+</code></pre></li>
+</ul></li>
+<li>Issue = 0x01
+<ul>
+<li>Issues new currency of a first-class <a href="#Asset">Asset</a>.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">if</span>(transaction.type === TransactionType.Issue) {
+  <span class="hljs-comment">// do something</span>
+}
+</code></pre></li>
+</ul></li>
+<li>Claim = 0x02
+<ul>
+<li>Claims GAS for a set of spent Outputs.</li>
+<li>Example:
+<pre><code class="hljs css ts"> <span class="hljs-keyword">if</span>(transaction.type === TransactionType.Claim) {
+  <span class="hljs-comment">// do something</span>
+}
+</code></pre></li>
+</ul></li>
+<li>Contract = 0x80
+<ul>
+<li>Transfers first class <a href="#Asset">Assets</a>.</li>
+<li>Example:
+<pre><code class="hljs css ts"> <span class="hljs-keyword">if</span>(transaction.type === TransactionType.Contract) {
+  <span class="hljs-comment">// do something</span>
+}
+</code></pre></li>
+</ul></li>
+<li>State  = 0x90
+<ul>
+<li>State Transaction type.</li>
+<li>Example:
+<pre><code class="hljs css ts"> <span class="hljs-keyword">if</span>(transaction.type === TransactionType.State) {
+  <span class="hljs-comment">// do something</span>
+}
+</code></pre></li>
+</ul></li>
+<li>Publish = 0xd0
+<ul>
+<li>Registers a new Contract</li>
+<li>Example:
+<pre><code class="hljs css ts"> <span class="hljs-keyword">if</span>(transaction.type === TransactionType.Publish) {
+  <span class="hljs-comment">// do something</span>
+}
+</code></pre></li>
+</ul></li>
+<li>Invocation = 0xd1
+<ul>
+<li>Runs a script in the NEO-VM.</li>
+<li>Example:
+<pre><code class="hljs css ts"> <span class="hljs-keyword">if</span>(transaction.type === TransactionType.Invocation) {
+  <span class="hljs-comment">// do something</span>
+}
+</code></pre></li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="attributeusage"></a><a href="#attributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AttributeUsage</h4>
+<ul>
+<li>Attribute usage flags indicate the type of the data.
+<ul>
+<li>ContractHash = 0x00</li>
+<li>ECDH02 = 0x02</li>
+<li>ECDH03 = 0x03</li>
+<li>Script = 0x20</li>
+<li>Vote = 0x30</li>
+<li>DescriptionUrl = 0x81</li>
+<li>Description = 0x90</li>
+<li>Hash1 = 0xa1</li>
+<li>Hash2 = 0xa2</li>
+<li>Hash3 = 0xa3</li>
+<li>Hash4 = 0xa4</li>
+<li>Hash5 = 0xa5</li>
+<li>Hash6 = 0xa6</li>
+<li>Hash7 = 0xa7</li>
+<li>Hash8 = 0xa8</li>
+<li>Hash9 = 0xa9</li>
+<li>Hash10 = 0xaa</li>
+<li>Hash11 = 0xab</li>
+<li>Hash12 = 0xac</li>
+<li>Hash13 = 0xad</li>
+<li>Hash14 = 0xae</li>
+<li>Hash15 = 0xaf</li>
+<li>Remark = 0xf0</li>
+<li>Remark1 = 0xf1</li>
+<li>Remark2 = 0xf2</li>
+<li>Remark3 = 0xf3</li>
+<li>Remark4 = 0xf4</li>
+<li>Remark5 = 0xf5</li>
+<li>Remark6 = 0xf6</li>
+<li>Remark7 = 0xf7</li>
+<li>Remark8 = 0xf8</li>
+<li>Remark9 = 0xf9</li>
+<li>Remark10 = 0xfa</li>
+<li>Remark11 = 0xfb</li>
+<li>Remark12 = 0xfc</li>
+<li>Remark13 = 0xfd</li>
+<li>Remark14 = 0xfe</li>
+<li>Remark15 = 0xff</li>
+</ul></li>
+<li>See:
+<ul>
+<li><a href="#BufferAttributeUsage">BufferAttributeUsage</a></li>
+<li><a href="#PublicKeyAttributeUsage">PublicKeyAttributeUsage</a></li>
+<li><a href="#AddressAttributeUsage">AddressAttributeUsage</a></li>
+<li><a href="#Hash256AttributeUsage">Hash256AttributeUsage</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="bufferattributeusage"></a><a href="#bufferattributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BufferAttributeUsage</h4>
+<ul>
+<li>Attribute usage flag indicating the data is an arbitrary Buffer.
+<ul>
+<li>AttributeUsage.DescriptionUrl</li>
+<li>AttributeUsage.Description</li>
+<li>AttributeUsage.Remark</li>
+<li>AttributeUsage.Remark1 ... AttributeUsage.Remark15</li>
+</ul></li>
+<li>See <a href="#BufferAttribute">BufferAttribute</a>.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="publickeyattributeusage"></a><a href="#publickeyattributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PublicKeyAttributeUsage</h4>
+<ul>
+<li>Attribute usage flag indicating the data is a <a href="#PublicKey">PublicKey</a>.
+<ul>
+<li>AttributeUsage.ECDH02</li>
+<li>AttributeUsage.ECDH03</li>
+</ul></li>
+<li>See <a href="#PublicKeyAttribute">PublicKeyAttribute</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="addressattributeusage"></a><a href="#addressattributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AddressAttributeUsage</h4>
+<ul>
+<li>Attribute usage flag indicating the data is an <a href="#Address">Address</a>.
+<ul>
+<li>AttributeUsage.Script</li>
+</ul></li>
+<li>See <a href="#AddressAttribute">AddressAttribute</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="hash256attributeusage"></a><a href="#hash256attributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hash256AttributeUsage</h4>
+<ul>
+<li>Attribute usage flag indicating the data is a <a href="#Hash256">Hash256</a>.
+<ul>
+<li>AttributeUsage.ContractHash</li>
+<li>AttributeUsage.Vote</li>
+<li>AttributeUsage.Hash1 ... AttributeUsage.Hash15</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="attributebase"></a><a href="#attributebase" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AttributeBase</h4>
+<ul>
+<li>Base interface for <a href="#Attribute">Attributes</a>.</li>
+<li>Properties:
+<ul>
+<li>usage: <a href="#AttributeUsage">AttributeUsage</a>
+<ul>
+<li>Attribute usage flag indicating the type of the data</li>
+</ul></li>
+<li>data: Buffer
+<ul>
+<li>The raw data stored in the Attribute</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="bufferattribute"></a><a href="#bufferattribute" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BufferAttribute</h4>
+<ul>
+<li><a href="#Attribute">Attribute</a>  whose data is an arbitrary Buffer.</li>
+<li>Extension of <a href="#AttributeBase">AttributeBase</a>.</li>
+<li>Properties:
+<ul>
+<li>usage: <a href="#BufferAttributeUsage">BufferAttributeUsage</a></li>
+<li>data: Buffer</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="publickeyattribute"></a><a href="#publickeyattribute" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PublicKeyAttribute</h4>
+<ul>
+<li><a href="#Attribute">Attribute</a>  whose data is a <a href="#PublicKey">PublicKey</a>.</li>
+<li>Extension of <a href="#AttributeBase">AttributeBase</a>.</li>
+<li>Properties:
+<ul>
+<li>usage: <a href="#PublicKeyAttributeUsage">PublicKeyAttributeUsage</a></li>
+<li>data: <a href="#PublicKey">PublicKey</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="addressattribute"></a><a href="#addressattribute" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AddressAttribute</h4>
+<ul>
+<li><a href="#Attribute">Attribute</a>  whose data is an <a href="#Address">Address</a>.</li>
+<li>Extension of <a href="#AttributeBase">AttributeBase</a>.</li>
+<li>Properties:
+<ul>
+<li>usage: <a href="#AddressAttributeUsage">AddressAttributeUsage</a></li>
+<li>data: <a href="#Address">Address</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="hash256attribute"></a><a href="#hash256attribute" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hash256Attribute</h4>
+<ul>
+<li><a href="#Attribute">Attribute</a> whose data is a <a href="#Hash256">Hash256</a>.</li>
+<li>Extension of <a href="#AttributeBase">AttributeBase</a>.</li>
+<li>Properties:
+<ul>
+<li>usage: <a href="#Hash256AttributeUsage">Hash256AttributeUsage</a></li>
+<li>data: <a href="#Hash256">Hash256</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="attribute"></a><a href="#attribute" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Attribute</h4>
+<ul>
+<li>Attributes are used to store additional data on <a href="#Transaction">Transactions</a>.
+<ul>
+<li><a href="#BufferAttribute">BufferAttribute</a></li>
+<li><a href="#PublicKeyAttribute">PublicKeyAttribute</a></li>
+<li><a href="#AddressAttribute">AddressAttribute</a></li>
+<li><a href="#Hash256Attribute">Hash256Attribute</a></li>
+</ul></li>
+<li>Most attributes are used to store arbitrary data, whereas some, like <a href="#AddressAttribute">AddressAttribute</a>, have specific uses in the NEO protocol.</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="output"></a><a href="#output" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Output</h4>
+<ul>
+<li>Outputs represent the destination <a href="#Address">Address</a> and amount transferred of a given <a href="#Asset">Asset</a>.</li>
+<li>The sum of the unspent Outputs of an <a href="#Address">Address</a> represent the total balance of an <a href="#Address">Address</a>.</li>
+<li>Properties:
+<ul>
+<li>address: <a href="#Address">Address</a>
+<ul>
+<li>Destination <a href="#Address">Address</a></li>
+</ul></li>
+<li>asset: <a href="#Hash256">Hash256</a>
+<ul>
+<li>Hash of the <a href="#Asset">Asset</a> that was tranferred.</li>
+</ul></li>
+<li>value: <a href="#Fixed8">Fixed8</a>
+<ul>
+<li>Amount transferred.</li>
+</ul></li>
+</ul></li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">private</span> checkNEOBalance(address: Address, outputs: ReadonlyArray&lt;Output&gt;): Fixed8 {
+  <span class="hljs-keyword">let</span> amount = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> output of outputs) {
+    <span class="hljs-keyword">if</span> (output.address === address) {
+      <span class="hljs-keyword">if</span> (output.asset === Hash256.NEO) {
+        amount += output.value;
+      }
+    }
+  }
+
+  <span class="hljs-keyword">return</span> amount;
+};
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="input"></a><a href="#input" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Input</h4>
+<ul>
+<li>Inputs are a reference to an <a href="#Output">Output</a> of a <a href="#Transaction">Transaction</a> that has been persisted to the blockchain.</li>
+<li>The sum of the value of the referenced <a href="#Output">Outputs</a> is the total amount transferred in the <a href="#Transaction">Transaction</a>.</li>
+<li>Properties:
+<ul>
+<li>hash: <a href="#Hash256">Hash256</a>
+<ul>
+<li>Hash of this <a href="#Transaction">Transaction</a>.</li>
+</ul></li>
+<li>index: <a href="#Integer">Integer</a>
+<ul>
+<li><a href="#Output">Output</a> index within the <a href="#Transaction">Transaction</a> this input references.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="transactionbase"></a><a href="#transactionbase" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TransactionBase</h4>
+<ul>
+<li>Base interface for all <a href="#Transaction">Transactions</a>.</li>
+<li>Properties:
+<ul>
+<li>hash: <a href="#Hash256">Hash256</a>
+<ul>
+<li><a href="#Hash256">Hash256</a> of the Transaction.</li>
+</ul></li>
+<li>type: <a href="#TransactionType">TransactionType</a>
+<ul>
+<li>Type of the Transaction.</li>
+</ul></li>
+<li>attributes: <a href="#Attribute">Attribute</a>[ ]
+<ul>
+<li><a href="#Attribute">Attributes</a> attached to the Transaction.</li>
+</ul></li>
+<li>outputs: <a href="#Output">Output</a>[ ]
+<ul>
+<li><a href="#Output">Outputs</a> of the Transaction.</li>
+</ul></li>
+<li>inputs: <a href="#Input">Input</a>[ ]
+<ul>
+<li><a href="#Input">Inputs</a> of the Transaction.</li>
+</ul></li>
+<li>references: <a href="#Output">Output</a>[ ]
+<ul>
+<li>Corresponding <a href="#Output">Outputs</a> for the <a href="#Input">Inputs</a> of the Transaction.</li>
+</ul></li>
+<li>unspentOutputs: <a href="#Output">Output</a>[ ]
+<ul>
+<li><a href="#Output">Outputs</a> which have not been spent.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="minertransaction"></a><a href="#minertransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MinerTransaction</h4>
+<ul>
+<li>Extension of <a href="#TransactionBase">TransactionBase</a></li>
+<li>First Transaction in each block which contains the Block rewards for the consensus node which produced the Block.</li>
+<li>Properties:
+<ul>
+<li>type: <a href="#TransactionType">TransactionType.Miner</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="issuetransaction"></a><a href="#issuetransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IssueTransaction</h4>
+<ul>
+<li>Extension of <a href="#TransactionBase">TransactionBase</a></li>
+<li>Issues new currency of a first-class <a href="#Asset">Asset</a>.</li>
+<li>Properties:
+<ul>
+<li>type: <a href="#TransactionType">TransactionType.Issue</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="claimtransaction"></a><a href="#claimtransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ClaimTransaction</h4>
+<ul>
+<li>Extension of <a href="#TransactionBase">TransactionBase</a></li>
+<li>Claims GAS for a set of spent <a href="#Output">Outputs</a>.</li>
+<li>Properties:
+<ul>
+<li>type: <a href="#TransactionType">TransactionType.Claim</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="contracttransaction"></a><a href="#contracttransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ContractTransaction</h4>
+<ul>
+<li>Extension of <a href="#TransactionBase">TransactionBase</a></li>
+<li><a href="#Transaction">Transaction</a> that transfers first class <a href="#Asset">Assets</a>.</li>
+<li>Properties:
+<ul>
+<li>type: <a href="#TransactionType">TransactionType.Contract</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="statetransaction"></a><a href="#statetransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>StateTransaction</h4>
+<ul>
+<li>Extension of <a href="#TransactionBase">TransactionBase</a></li>
+<li>Properties:
+<ul>
+<li>type: <a href="#TransactionType">TransactionType.State</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="invocationtransaction"></a><a href="#invocationtransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>InvocationTransaction</h4>
+<ul>
+<li>Extension of <a href="#TransactionBase">TransactionBase</a></li>
+<li><a href="#Transaction">Transaction</a> which runs a script in the NEO-VM.</li>
+<li>Properties:
+<ul>
+<li>type: <a href="#TransactionType">TransactionType.Invocation</a></li>
+<li>script: Buffer
+<ul>
+<li>Code that was executed in the NEO-VM.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="transaction"></a><a href="#transaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transaction</h4>
+<ul>
+<li>Transactions are persisted to the blockchain and represent various functionality like transferring first class <a href="#Asset">Assets</a> or executing smart contracts.
+<ul>
+<li><a href="#MinerTransaction">MinerTransaction</a></li>
+<li><a href="#IssueTransaction">IssueTransaction</a></li>
+<li><a href="#ClaimTransaction">ClaimTransaction</a></li>
+<li><a href="#ContractTransaction">ContractTransaction</a></li>
+<li><a href="#StateTransaction">StateTransaction</a></li>
+<li><a href="#InvocationTransaction">InvocationTransaction</a></li>
+</ul></li>
+<li>Constructor:
+<ul>
+<li>for: (<a href="#Hash256">Hash256</a>) =&gt; Transaction</li>
+</ul></li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> transactionHash = Hash256.from(<span class="hljs-string">'0xd6572a459b95d9136b7a713c5485ca709f9efa4f08f1c25dd792672d2bd75bfb'</span>);
+<span class="hljs-keyword">const</span> transaction = Transaction.for(transactionHash);
+<span class="hljs-keyword">const</span> transactionOutputs = transaction.outputs;
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="account"></a><a href="#account" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Account</h4>
+<ul>
+<li>Object which stores an <a href="#Address">Address</a> and a method for checking its balances.</li>
+<li>Properties:
+<ul>
+<li>address: <a href="#Address">Address</a>
+<ul>
+<li><a href="#Address">Address</a> of the Account.</li>
+</ul></li>
+</ul></li>
+<li>Methods:
+<ul>
+<li>getBalance: (<a href="#Hash256">Hash256</a>) =&gt; <a href="#Fixed8">Fixed8</a>
+<ul>
+<li>Retrieves the balance of a first class <a href="#Asset">Asset</a> for the Account's <a href="#Address">Address</a>.</li>
+</ul></li>
+</ul></li>
+<li>Constructor:
+<ul>
+<li>for: (<a href="#Address">Address</a>) =&gt; Account
+<ul>
+<li>Returns an Account for the specified <a href="#Address">Address</a>.</li>
+</ul></li>
+</ul></li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> address = Address.from(<span class="hljs-string">'ALq7AWrhAueN6mJNqk6FHJjnsEoPRytLdW'</span>);
+<span class="hljs-keyword">const</span> account = Account.for(address);
+<span class="hljs-keyword">const</span> neoBalance = account.getBalance(Hash256.NEO);
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="assettype"></a><a href="#assettype" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AssetType</h4>
+<ul>
+<li>enum of all possible types for <a href="#Asset">Assets</a>.
+<ul>
+<li>Credit = 0x40</li>
+<li>Duty = 0x80</li>
+<li>Governing = 0x00
+<ul>
+<li>Reserved for the NEO <a href="#Asset">Asset</a>.</li>
+</ul></li>
+<li>Utility = 0x01
+<ul>
+<li>Reserved for the GAS <a href="#Asset">Asset</a>.</li>
+</ul></li>
+<li>Currency = 0x08</li>
+<li>Share = 0x90</li>
+<li>Invoice = 0x98</li>
+<li>Token = 0x60</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="asset"></a><a href="#asset" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Asset</h4>
+<ul>
+<li>Attributes of a first-class Asset.</li>
+<li>Smart Contract authors will typically only interact with the NEO and GAS Assets.</li>
+<li>Properties:
+<ul>
+<li>hash: <a href="#Hash256">Hash256</a>
+<ul>
+<li><a href="#Hash256">Hash256</a> of the Asset.</li>
+</ul></li>
+<li>type: <a href="#AssetType">AssetType</a>
+<ul>
+<li>Type of the Asset which denotes its function.</li>
+</ul></li>
+<li>amount: <a href="#Fixed8">Fixed8</a>
+<ul>
+<li>Total possible supply of the Asset.</li>
+</ul></li>
+<li>available: <a href="#Fixed8">Fixed8</a>
+<ul>
+<li>Amount currently available of the Asset.</li>
+</ul></li>
+<li>precision: <a href="#Integer">Integer</a>
+<ul>
+<li>Precision (number of decimal places) of the Asset.</li>
+</ul></li>
+<li>owner: <a href="#PublicKey">PublicKey</a>
+<ul>
+<li>Owner of the Asset.</li>
+</ul></li>
+<li>admin: <a href="#Address">Address</a>
+<ul>
+<li>Admin of the Asset.</li>
+</ul></li>
+<li>issuer: <a href="#Address">Address</a>
+<ul>
+<li>Issuer of the Asset.</li>
+</ul></li>
+</ul></li>
+<li>Constructor:
+<ul>
+<li>for: (hash: <a href="#Hash256">Hash256</a>) =&gt; Asset
+<ul>
+<li>Returns an Asset for the specified hash.</li>
+</ul></li>
+</ul></li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> neoAsset = Asset.for(Hash256.NEO);
+<span class="hljs-keyword">const</span> neoAmount = neoAsset.amount;
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="contract"></a><a href="#contract" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contract</h4>
+<ul>
+<li>Attributes of a smart contract deployed to the blockchain.</li>
+<li>Properties:
+<ul>
+<li>script: Buffer
+<ul>
+<li>Contract code.</li>
+</ul></li>
+<li>payable: boolean
+<ul>
+<li>Flag that indicates if the Contract supports receiving <a href="#Asset">Assets</a> and NEP-5 tokens.</li>
+</ul></li>
+</ul></li>
+<li>Constructor:
+<ul>
+<li>for: (address: <a href="#Address">Address</a>) =&gt; Contract | undefined
+<ul>
+<li>Returns a Contract for the specified <a href="#Address">Address</a>.</li>
+<li>Returns undefined if a Contract does not exist at the specified <a href="#Address">Address</a>.</li>
+</ul></li>
+</ul></li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> contractAddress = Address.from(<span class="hljs-string">'​​​​​0xcef0c0fdcfe7838eff6ff104f9cdec2922297537​​​​​'</span>);
+<span class="hljs-keyword">const</span> contract = Contract.for(contractAddress);
+<span class="hljs-keyword">const</span> contractScript = contract.script;
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="header"></a><a href="#header" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Header</h4>
+<ul>
+<li>Attributes of a <a href="#Block">Block</a> persisted to the blockchain.</li>
+<li>Header includes all information except for the <a href="#Transaction">Transactions</a>.</li>
+<li>Properties:
+<ul>
+<li>hash: <a href="#Hash256">Hash256</a>
+<ul>
+<li><a href="#Block">Block</a> hash.</li>
+</ul></li>
+<li>version: <a href="#Integer">Integer</a>
+<ul>
+<li>NEO blockchain version.</li>
+</ul></li>
+<li>previousHash: <a href="#Hash256">Hash256</a>
+<ul>
+<li>hash of the previous <a href="#Block">Block</a>.</li>
+</ul></li>
+<li>index: <a href="#Integer">Integer</a>
+<ul>
+<li><a href="#Block">Block</a> index.</li>
+</ul></li>
+<li>merkleRoot: <a href="#Hash256">Hash256</a></li>
+<li>time: <a href="#Integer">Integer</a>
+<ul>
+<li><a href="#Block">Block</a> time persisted.</li>
+</ul></li>
+<li>nextConsensus: <a href="#Address">Address</a>
+<ul>
+<li>Next consensus <a href="#Address">Address</a>.</li>
+</ul></li>
+</ul></li>
+<li>Constructor:
+<ul>
+<li>for: (<a href="#Hash256">Hash256</a> | <a href="#Integer">Integer</a>) =&gt; Header
+<ul>
+<li>Accepts either a <a href="#Hash256">Hash256</a> representing a <a href="#Block">Block</a> hash or the index of the <a href="#Block">Block</a>.</li>
+<li>Returns a Header for the specified block hash or index.</li>
+</ul></li>
+</ul></li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> blockHash = Hash256.from(<span class="hljs-string">'0xd6572a459b95d9136b7a713c5485ca709f9efa4f08f1c25dd792672d2bd75bfb'</span>);
+<span class="hljs-keyword">const</span> header = Header.for(blockHash);
+<span class="hljs-keyword">const</span> nextConsensusAddress = header.nextConsensus;
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="block"></a><a href="#block" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Block</h4>
+<ul>
+<li>Attributes of a Block persisted to the blockchain.</li>
+<li>Extension of <a href="#Header">Header</a>.</li>
+<li>Properties:
+<ul>
+<li>transactions: <a href="#Transaction">Transaction</a>[]
+<ul>
+<li><a href="#Transaction">Transactions</a> included in the Block.</li>
+</ul></li>
+</ul></li>
+<li>Constructor:
+<ul>
+<li>for: (<a href="#Hash256">Hash256</a> | <a href="#Integer">Integer</a>) =&gt; Block;
+<ul>
+<li>Accepts either a <a href="#Hash256">Hash256</a> representing a Block hash or the index of the Block.</li>
+<li>Returns a Block for the specified block hash or index.</li>
+</ul></li>
+</ul></li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> genesisBlock = Block.for(<span class="hljs-number">0</span>);
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="serializablekeysingle"></a><a href="#serializablekeysingle" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SerializableKeySingle</h4>
+<ul>
+<li>Possible single key types for <a href="#MapStorage">MapStorage</a> and <a href="#SetStorage">SetStorage</a>.
+<ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>Buffer</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="serializablekey"></a><a href="#serializablekey" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SerializableKey</h4>
+<ul>
+<li>Possible key types for <a href="#MapStorage">MapStorage</a> and <a href="#SetStorage">SetStorage</a>.  This includes single key values (<a href="#SerializableKeySingle">SerializableKeySingle</a>) and collections of single key values. Supports collections of up to four single key values.
+<ul>
+<li><a href="#SerializableKeySingle">SK</a></li>
+<li>[<a href="#SerializableKeySingle">SK</a>, <a href="#SerializableKeySingle">SK</a>]</li>
+<li>[<a href="#SerializableKeySingle">SK</a>, <a href="#SerializableKeySingle">SK</a>, <a href="#SerializableKeySingle">SK</a>]</li>
+<li>[<a href="#SerializableKeySingle">SK</a>, <a href="#SerializableKeySingle">SK</a>, <a href="#SerializableKeySingle">SK</a>, <a href="#SerializableKeySingle">SK</a>]</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="serlializablevalue"></a><a href="#serlializablevalue" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SerlializableValue</h4>
+<ul>
+<li>Possible value types for <a href="#ArrayStorage">ArrayStorage</a> and <a href="#MapStorage">MapStorage</a>.
+<ul>
+<li>undefined</li>
+<li>null</li>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>Buffer</li>
+<li>SerializableValue Array</li>
+<li>SerializableValue Map</li>
+<li>SerializableValue Set</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="arraystorage"></a><a href="#arraystorage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ArrayStorage</h4>
+<ul>
+<li>Persistent smart contract array storage.</li>
+<li>Only usable as a <a href="#SmartContract">SmartContract</a> property.</li>
+<li>Properties:
+<ul>
+<li>length: number
+<ul>
+<li>The length of the array. This is a number one higher than the index of last element defined in the array.</li>
+</ul></li>
+</ul></li>
+<li>Methods:
+<ul>
+<li>forEach: (callback: (value: T, idx: number) =&gt; void) =&gt; void
+<ul>
+<li>Executes a provided callback function once per each value in storage.</li>
+</ul></li>
+<li>push: (...items: T[ ]) =&gt; number
+<ul>
+<li>Appends new elements to storage and returns the new length of the array.</li>
+</ul></li>
+<li>pop: () =&gt; T | undefined;
+<ul>
+<li>Removes the last element from an array and returns it.</li>
+</ul></li>
+</ul></li>
+<li>Constructor:
+<ul>
+<li>for&lt;T extends <a href="#SerializableValue">SerializableValue</a>&gt;(): ArrayStorage<T>
+<ul>
+<li>Constructs a new ArrayStorage instance.  Only usable as a <a href="#SmartContract">SmartContract</a> property.</li>
+</ul></li>
+</ul></li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">class</span> MySmartContract <span class="hljs-keyword">extends</span> SmartContract {
+  <span class="hljs-keyword">private</span> readonly pendingAddresses = ArrayStorage.for&lt;Address&gt;();
+
+    <span class="hljs-keyword">public</span> addPendingAddress(address: Address): <span class="hljs-built_in">void</span> {
+      <span class="hljs-keyword">this</span>.pendingAddresses.push(address);
+    }
+}
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="mapstorage"></a><a href="#mapstorage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MapStorage</h4>
+<ul>
+<li>Persistent smart contract map storage.</li>
+<li>Only usable as a <a href="#SmartContract">SmartContract</a> property.</li>
+<li>Methods:
+<ul>
+<li>forEach(callback: (value: V, key: K) =&gt; void) =&gt; void
+<ul>
+<li>Executes a provided function once per each key/value pair in storage.</li>
+</ul></li>
+<li>get: (key: K) =&gt; V | undefined;
+<ul>
+<li>Returns the value associated with the given key from storage.</li>
+</ul></li>
+<li>has: (key: K) =&gt; boolean;
+<ul>
+<li>Returns true when the storage contains an element with the given key.  False if no such element exists in the storage.</li>
+</ul></li>
+<li>delete: (key: K) =&gt; boolean;
+<ul>
+<li>Removes the element associated with the given key from storage.</li>
+<li>Returns true if the element existed and has been removed or false if the element does not exist.</li>
+</ul></li>
+<li>set: (key: K, value: V) =&gt; MapStorage&lt;K, V&gt;
+<ul>
+<li>Adds or updates an element with a specified key and value in storage.</li>
+<li>Returns the MapStorage object.</li>
+</ul></li>
+</ul></li>
+<li>Constructor:
+<ul>
+<li>for&lt;T extends <a href="#SerializableKey">SerializableKey</a>, V extends <a href="#SerializableValue">SerializableValue</a>&gt;(): MapStorage&lt;K, V&gt;
+<ul>
+<li>Constructs a new MapStorage instance.  Only usable as a <a href="#SmartContract">SmartContract</a> property.</li>
+</ul></li>
+</ul></li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">class</span> MyToken <span class="hljs-keyword">extends</span> SmartContract {
+  <span class="hljs-keyword">private</span> readonly balances = MapStorage.for&lt;Address, Fixed&lt;<span class="hljs-number">8</span>&gt;&gt;();
+
+  <span class="hljs-keyword">public</span> transfer(
+    <span class="hljs-keyword">from</span>: Address,
+    to: Address,
+    amount: Fixed&lt;<span class="hljs-number">8</span>&gt;,
+  ): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">const</span> fromBalance = <span class="hljs-keyword">this</span>.balances.get(<span class="hljs-keyword">from</span>);
+    <span class="hljs-keyword">const</span> toBalance = <span class="hljs-keyword">this</span>.balances.get(to);
+    <span class="hljs-keyword">this</span>.balances.set(<span class="hljs-keyword">from</span>, fromBalance - amount);
+    <span class="hljs-keyword">this</span>.balances.set(to, toBalance + amount);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+  }
+}
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="setstorage"></a><a href="#setstorage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SetStorage</h4>
+<ul>
+<li>Persistent smart contract set storage.</li>
+<li>Only usable as a <a href="#SmartContract">SmartContract</a> property.</li>
+<li>Methods:
+<ul>
+<li>forEach: (callback: (value: V) =&gt; void) =&gt; void
+<ul>
+<li>Executes a provided function once per each value in storage.</li>
+</ul></li>
+<li>has: (value: V) =&gt; boolean
+<ul>
+<li>Returns a boolean indicating whether a given value exists in the storage.</li>
+</ul></li>
+<li>delete: (value: V) =&gt; boolean
+<ul>
+<li>Removes the specified value from storage.</li>
+<li>Returns true if the value existed in storage and was removed.</li>
+</ul></li>
+<li>add: (value: V) =&gt; SetStorage<V>
+<ul>
+<li>Adds a given value to the storage.</li>
+<li>Returns the SetStorage object.</li>
+</ul></li>
+</ul></li>
+<li>Constructor:
+<ul>
+<li>for&lt;V extends <a href="#SerializableKey">SerializableKey</a>)&gt;(): SetStorage<V>
+<ul>
+<li>Constructs a new SetStorage instance.  Only usable as a <a href="#SmartContract">SmartContract</a> property.</li>
+</ul></li>
+</ul></li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">class</span> ICO <span class="hljs-keyword">extends</span> SmartContract {
+  <span class="hljs-keyword">private</span> readonly whitelistedAddresses = SetStorage.for&lt;Address&gt;();
+
+  <span class="hljs-keyword">public</span> isWhiteListed(address: Address): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.whitelistedAddresses.has(address);
+  }
+}
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="blockchain"></a><a href="#blockchain" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Blockchain</h4>
+<ul>
+<li>Information about the current state of the blockchain and the current execution.</li>
+<li>Properties:
+<ul>
+<li>currentBlockTime: number
+<ul>
+<li>Time of the current <a href="#Block">Block</a>.</li>
+<li>During execution, this is the timestamp of the <a href="#Block">Block</a> that this <a href="#Transaction">Transaction</a> will be included in.</li>
+<li>During verification, this is the timestamp of the latest <a href="#Block">Block</a>.</li>
+<li>currentHeight: number
+<ul>
+<li>Index of the latest <a href="#Block">Block</a> persisted to the blockchain.</li>
+</ul></li>
+<li>currentTransaction: <a href="#InvocationTransaction">InvocationTransaction</a>
+<ul>
+<li><a href="#InvocationTransaction">InvocationTransaction</a> this smart contract is executed in.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="deploy"></a><a href="#deploy" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deploy</h4>
+<ul>
+<li>Inject values at deployment time.</li>
+<li>Can only be used for default constructor parameters.</li>
+<li>Properties:
+<ul>
+<li>senderAddress: <a href="#Address">Address</a>
+<ul>
+<li>Use sender <a href="#Address">Address</a> for the constructor parameter.</li>
+</ul></li>
+</ul></li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">import</span> { Address, Deploy, SmartContract } <span class="hljs-keyword">from</span> <span class="hljs-string">'@neo-one/smart-contract'</span>
+
+<span class="hljs-keyword">class</span> Token <span class="hljs-keyword">extends</span> SmartContract {
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> readonly owner: Address = Deploy.senderAddress</span>) {
+    <span class="hljs-keyword">super</span>();
+  }
+}
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="contractproperties"></a><a href="#contractproperties" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ContractProperties</h4>
+<ul>
+<li>Required information for the deployment of a <a href="#SmartContract">SmartContract</a>.</li>
+<li>Must be included as a public readonly property named <code>properties</code> on all <a href="#SmartContract">SmartContracts</a></li>
+<li>Properties:
+<ul>
+<li>codeVersion: string</li>
+<li>author: string</li>
+<li>email: string</li>
+<li>description: string</li>
+</ul></li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">import</span> { SmartContract } <span class="hljs-keyword">from</span> <span class="hljs-string">'@neo-one/smart-contract'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MySmartContract <span class="hljs-keyword">extends</span> SmartContract {
+  <span class="hljs-keyword">public</span> readonly properties = {
+    codeVersion: <span class="hljs-string">'1.0'</span>,
+    author: <span class="hljs-string">'my name'</span>,
+    email: <span class="hljs-string">'myName@email.io'</span>,
+    description: <span class="hljs-string">'My Contract'</span>,
+  };
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="smartcontract"></a><a href="#smartcontract" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SmartContract</h4>
+<ul>
+<li>Marks a class as a SmartContract.</li>
+<li>Smart Contracts written with NEO•ONE are classes which extend this SmartContract base class.</li>
+<li>Properties:
+<ul>
+<li>properties: <a href="#ContractProperties">ContractProperties</a>
+<ul>
+<li>codeVersion: string</li>
+<li>author: string</li>
+<li>email: string</li>
+<li>description: string</li>
+</ul></li>
+<li>address: <a href="#Address">Address</a>
+<ul>
+<li><a href="#Address">Address</a> of the SmartContract.</li>
+</ul></li>
+<li>processedTransactions: <a href="#SetStorage">SetStorage<Hash256></a>
+<ul>
+<li>Stores <a href="#Transaction">Transaction</a> hashes that have sent or received native assets.</li>
+<li>Used to enforce that a <a href="#Transaction">Transaction</a> with native assets is only ever processed appropriately.</li>
+</ul></li>
+<li>allowedRefunds: <a href="#SetStorage">SetStorage<Hash256></a>
+<ul>
+<li>Stores <a href="#Transaction">Transaction</a> hashes that can be refunded.</li>
+</ul></li>
+<li>deployed: true
+<ul>
+<li>Property primarily used internally to validate that the smart contract is deployed only once.</li>
+</ul></li>
+</ul></li>
+<li>Methods:
+<ul>
+<li>refundAssets: (transactionHash: Hash256) =&gt; boolean
+<ul>
+<li>Method automatically added for refunding native assets.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="linkedsmartcontract"></a><a href="#linkedsmartcontract" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LinkedSmartContract</h4>
+<ul>
+<li>An object representing a statically linked contract.</li>
+<li>Constructor:
+<ul>
+<li>for: &lt;T extends <a href="#SmartContract">SmartContract</a>&gt; =&gt; T | never;
+<ul>
+<li>Returns an object representing a statically linked contract <code>T</code>.</li>
+<li><code>T</code> is checked for validity and <code>LinkedSmartContract.for</code> will report an error during compilation if the interface is invalid.</li>
+</ul></li>
+</ul></li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">import</span> { Token } <span class="hljs-keyword">from</span> <span class="hljs-string">'./Token'</span>;
+
+<span class="hljs-keyword">const</span> contract = linkedSmartContract.for&lt;Token&gt;();
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">from</span> = Address.from(<span class="hljs-string">'ALfnhLg7rUyL6Jr98bzzoxz5J7m64fbR4s'</span>);
+<span class="hljs-keyword">const</span> to = Address.from(<span class="hljs-string">'AVf4UGKevVrMR1j3UkPsuoYKSC4ocoAkKx'</span>);
+
+contract.transfer(<span class="hljs-keyword">from</span>, to, <span class="hljs-number">10</span>);
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="hashable"></a><a href="#hashable" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hashable</h4>
+<ul>
+<li>Hashable types usable by the <a href="#Crypto">Crypto</a> utilities.
+<ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>Buffer</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="crypto"></a><a href="#crypto" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Crypto</h4>
+<ul>
+<li>Collection of some common cryptography utilities
+<ul>
+<li>sha1: (<a href="#Hashable">Hashable</a>) =&gt; Buffer</li>
+<li>sha256: (<a href="#Hashable">Hashable</a>) =&gt; Buffer</li>
+<li>hash160: (<a href="#Hashable">Hashable</a>) =&gt; Buffer</li>
+<li>hash256: (<a href="#Hashable">Hashable</a>) =&gt; Buffer</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="constant"></a><a href="#constant" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>constant</h4>
+<ul>
+<li>Tag to mark a <a href="#SmartContract">SmartContract</a> method as not modifying storage.</li>
+<li>Use above a method as <code>@constant</code>.</li>
+<li>Example:</li>
+</ul>
+<pre><code class="hljs css ts"><span class="hljs-meta">@constant</span>
+<span class="hljs-keyword">public</span> checkBalance(address: Address): Integer {
+  <span class="hljs-comment">// checks balance, does not alter storage</span>
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="front-end.html">← Front End</a><a class="docs-next button" href="client-api.html">Client API →</a></div></div></div></div><footer class="nav-footer footerContainer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/monogram.svg" alt="NEO•ONE" width="66" height="58"/></a><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">DOCS</h5><a class="footerLink" href="/docs/en/getting-started.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/getting-started.svg" alt="Getting Started"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/getting-started-hover.svg" alt="Getting Started"/><div class="body1 gray0 footerLinkText axiformaRegular">Getting Started</div></a><a class="footerLink" href="/docs/en/contributing.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/contribute.svg" alt="Contribute"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/contribute-hover.svg" alt="Contribute"/><div class="body1 gray0 footerLinkText axiformaRegular">Contribute</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">COMMUNITY</h5><a class="footerLink" href="/en/users.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/user-showcase.svg" alt="User Showcase"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/user-showcase-hover.svg" alt="User Showcase"/><div class="body1 gray0 footerLinkText axiformaRegular">User Showcase</div></a><a class="footerLink" href="https://discord.gg/S86PqDE" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/chat.svg" alt="NEO•ONE Chat"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/chat-hover.svg" alt="NEO•ONE Chat"/><div class="body1 gray0 footerLinkText axiformaRegular">NEO•ONE Chat</div></a><a class="footerLink" href="http://stackoverflow.com/questions/tagged/neo-one" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/stack-overflow.svg" alt="Stack Overflow"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/stack-overflow-hover.svg" alt="Stack Overflow"/><div class="body1 gray0 footerLinkText axiformaRegular">Stack Overflow</div></a><a class="footerLink" href="https://twitter.com/neo_one_suite" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/twitter.svg" alt="Twitter"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/twitter-hover.svg" alt="Twitter"/><div class="body1 gray0 footerLinkText axiformaRegular">Twitter</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">MORE</h5><a class="footerLink" href="/blog"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/blog.svg" alt="Blog"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/blog-hover.svg" alt="Blog"/><div class="body1 gray0 footerLinkText axiformaRegular">Blog</div></a><a class="footerLink" href="https://github.com/neo-one-suite/neo-one"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/github.svg" alt="GitHub"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/github-hover.svg" alt="GitHub"/><div class="body1 gray0 footerLinkText axiformaRegular">GitHub</div></a><div class="footerGitHubButton"><a class="github-button" href="https://github.com/neo-one-suite/neo-one" data-icon="octicon-star" data-count-href="/neo-one-suite/neo-one/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></div></div></section><section class="copyright">COPYRIGHT © 2018 NEO•ONE.</section></footer></div><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-92599752-3', 'auto');
+              ga('send', 'pageview');
+            </script><script>window.fbAsyncInit = function() {FB.init({appId:'1764807046864916',xfbml:true,version:'v2.7'});};(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) {return;}js = d.createElement(s); js.id = id;js.src = '//connect.facebook.net/en_US/sdk.js';fjs.parentNode.insertBefore(js, fjs);}(document, 'script','facebook-jssdk'));
+                </script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>
