@@ -91,48 +91,111 @@
 <p><a id="getAccount"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="getaccount-useraccountid-docs-en-client-typeshtml-useraccountid-useraccount-docs-en-client-typeshtml-useraccount"></a><a href="#getaccount-useraccountid-docs-en-client-typeshtml-useraccountid-useraccount-docs-en-client-typeshtml-useraccount" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getAccount(<a href="/docs/en/client-types.html#UserAccountID">UserAccountID</a>): <a href="/docs/en/client-types.html#UserAccount">UserAccount</a></h4>
 <ul>
-<li><code>getAccount(UserAccountID)</code> is used to obtain a <a href="/docs/en/client-types.html#UserAccount">UserAccount</a> from an input <a href="/docs/en/client-types.html#UserAccountID">UserAccountID</a>.</li>
+<li>Used to obtain a <a href="/docs/en/client-types.html#UserAccount">UserAccount</a> from an input <a href="/docs/en/client-types.html#UserAccountID">UserAccountID</a>.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> userAccountID = {
+  network: <span class="hljs-string">'private'</span>,
+  address: <span class="hljs-string">'APyEx5f4Zm4oCHwFWiSTaph1fPBxZacYVR'</span>
+};
+
+<span class="hljs-keyword">const</span> userAccount = client.getAccount(userAccountID);
+<span class="hljs-keyword">const</span> accountName = userAccount.name;
+</code></pre></li>
 </ul>
 <p><a id="selectAccount"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="selectaccount-useraccountid-docs-en-client-typeshtml-useraccountid-promise-void"></a><a href="#selectaccount-useraccountid-docs-en-client-typeshtml-useraccountid-promise-void" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>selectAccount(<a href="/docs/en/client-types.html#UserAccountID">UserAccountID?</a>): Promise&lt;void&gt;</h4>
 <ul>
 <li>Sets the current account to the account associated with the given <a href="/docs/en/client-types.html#UserAccountID">UserAccountID</a>.
 The selected account will now be the default account from which transactions will be initiated by the client.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> userAccountID = {
+  network: <span class="hljs-string">'private'</span>,
+  address: <span class="hljs-string">'APyEx5f4Zm4oCHwFWiSTaph1fPBxZacYVR'</span>
+};
+
+<span class="hljs-keyword">await</span> client.selectAccount(userAccountID);
+<span class="hljs-comment">// claim initiated for the selected account by default.</span>
+<span class="hljs-keyword">await</span> client.claim();
+</code></pre></li>
 </ul>
 <p><a id="selectNetwork"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="selectnetwork-networktype-docs-en-client-typeshtml-networktype-promise-void"></a><a href="#selectnetwork-networktype-docs-en-client-typeshtml-networktype-promise-void" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>selectNetwork(<a href="/docs/en/client-types.html#NetworkType">NetworkType</a>): Promise&lt;void&gt;</h4>
 <ul>
 <li>Sets the currently selected network to given network.  The client will now default to using the selected network for all operations.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-comment">// changes the client's default network to 'private-alt'</span>
+<span class="hljs-keyword">await</span> client.selectNetwork(<span class="hljs-string">'private-alt'</span>);
+</code></pre></li>
 </ul>
 <p><a id="deleteAccount"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="deleteaccount-useraccountid-docs-en-client-typeshtml-useraccountid-promise-void"></a><a href="#deleteaccount-useraccountid-docs-en-client-typeshtml-useraccountid-promise-void" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>deleteAccount(<a href="/docs/en/client-types.html#UserAccountID">UserAccountID?</a>): Promise&lt;void&gt;</h4>
 <ul>
 <li>Removes the account associated with the given UserAccountID from the list of accounts registered with the client.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> userAccount = client.getAccounts()[<span class="hljs-number">0</span>];
+<span class="hljs-keyword">await</span> client.deleteAccount(userAccount.id);
+
+<span class="hljs-comment">// throws an error - the userAccount no longer exists.</span>
+<span class="hljs-keyword">const</span> account = client.getAccount(userAccount.id);
+</code></pre></li>
 </ul>
 <p><a id="updateAccountName"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="updateaccountname-updateaccountnameoptions-docs-en-client-typeshtml-updateaccountnameoptions-promise-void"></a><a href="#updateaccountname-updateaccountnameoptions-docs-en-client-typeshtml-updateaccountnameoptions-promise-void" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>updateAccountName(<a href="/docs/en/client-types.html#UpdateAccountNameOptions">UpdateAccountNameOptions</a>): Promise&lt;void&gt;</h4>
 <ul>
 <li>Updates the name associated with a given account</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span>  userAccount = client.getAccounts()[<span class="hljs-number">0</span>]
+<span class="hljs-keyword">await</span> client.updateAccountName({
+  id: userAccount.id,
+  name: <span class="hljs-string">'new-account-name'</span>,
+});
+
+<span class="hljs-keyword">const</span> newAccount = client.getAccount(userAccount.id);
+<span class="hljs-comment">// prints 'new-account-name' to console</span>
+<span class="hljs-built_in">console</span>.log(newAccount.name);
+</code></pre></li>
 </ul>
 <p><a id="getCurrentAccount"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="getcurrentaccount-useraccount-docs-en-client-typeshtml-useraccount-undefined"></a><a href="#getcurrentaccount-useraccount-docs-en-client-typeshtml-useraccount-undefined" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getCurrentAccount(): <a href="/docs/en/client-types.html#UserAccount">UserAccount</a> | undefined</h4>
 <ul>
 <li>Returns the currently selected User Account. Returns undefined if no account is selected.  This is the default account used for transactions initiated by the client.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> currentAccount = client.getCurrentAccount();
+<span class="hljs-comment">// check that a current account is selected</span>
+<span class="hljs-keyword">if</span> (currentAccount === <span class="hljs-literal">undefined</span>) {
+  <span class="hljs-keyword">await</span> client.selectAccount();
+}
+
+<span class="hljs-comment">// claim initiated from the current account by default</span>
+<span class="hljs-keyword">await</span> client.claim()
+</code></pre></li>
 </ul>
 <p><a id="getCurrentNetwork"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="getcurrentnetwork-networktype-docs-en-client-typeshtml-networktype"></a><a href="#getcurrentnetwork-networktype-docs-en-client-typeshtml-networktype" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getCurrentNetwork(): <a href="/docs/en/client-types.html#NetworkType">NetworkType</a></h4>
 <ul>
 <li>Returns the currently selected network. This is the default network on which the client will perform operations.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> currentNetwork = client.getCurrentNetwork();
+<span class="hljs-keyword">if</span> (currentNetwork !== <span class="hljs-string">'main'</span> &amp;&amp; currentNetwork !== <span class="hljs-string">'test'</span>) {
+  <span class="hljs-comment">// do something specific to a private network</span>
+}
+</code></pre></li>
 </ul>
 <p><a id="getAccounts"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="getaccounts-readonlyarray-useraccount-docs-en-client-typeshtml-useraccount"></a><a href="#getaccounts-readonlyarray-useraccount-docs-en-client-typeshtml-useraccount" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getAccounts(): ReadonlyArray&lt;<a href="/docs/en/client-types.html#UserAccount">UserAccount</a>&gt;</h4>
 <ul>
 <li>Returns an array of all accounts registered with the client.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> accountNames = client.getAccounts().map(<span class="hljs-function">(<span class="hljs-params">userAccount</span>) =&gt;</span> userAccount.name)
+</code></pre></li>
 </ul>
 <p><a id="getNetworks"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="getnetworks-readonlyarray-networktype-docs-en-client-typeshtml-networktype"></a><a href="#getnetworks-readonlyarray-networktype-docs-en-client-typeshtml-networktype" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getNetworks(): ReadonlyArray&lt;<a href="/docs/en/client-types.html#NetworkType">NetworkType</a>&gt;</h4>
 <ul>
 <li>Returns an array of all networks registered with the client.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> privateNetworks = client.getNetworks().filter(<span class="hljs-function">(<span class="hljs-params">network</span>) =&gt;</span> network !== <span class="hljs-string">'main'</span> &amp;&amp; network !== <span class="hljs-string">'test'</span>)
+</code></pre></li>
 </ul>
 <p><a id="transfer"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="transfer-bignumber-https-githubcom-mikemcl-bignumberjs-hash256string-docs-en-client-typeshtml-hash256string-addressstring-docs-en-client-typeshtml-addressstring-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-transactionreceipt-docs-en-client-typeshtml-transactionreceipt-contracttransaction-docs-en-client-typeshtml-contracttransaction"></a><a href="#transfer-bignumber-https-githubcom-mikemcl-bignumberjs-hash256string-docs-en-client-typeshtml-hash256string-addressstring-docs-en-client-typeshtml-addressstring-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-transactionreceipt-docs-en-client-typeshtml-transactionreceipt-contracttransaction-docs-en-client-typeshtml-contracttransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>transfer(<a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a>, <a href="/docs/en/client-types.html#Hash256String">Hash256String</a>, <a href="/docs/en/client-types.html#AddressString">AddressString</a>, <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions?</a>): Promise&lt;<a href="/docs/en/client-types.html#TransactionResult">TransactionResult</a>&lt;<a href="/docs/en/client-types.html#TransactionReceipt">TransactionReceipt</a>, <a href="/docs/en/client-types.html#ContractTransaction">ContractTransaction</a>&gt;&gt;</h4>
@@ -141,31 +204,126 @@ The selected account will now be the default account from which transactions wil
 <li>Transfer a given <a href="/docs/en/client-types.html#Asset">Asset</a> identified by its <a href="/docs/en/client-types.html#Hash256String">Hash256String</a> identifier to a given address in the amount specified.</li>
 <li>Transfer will be from the currently selected account unless a from account is specified in the <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions</a>.</li>
 <li>Transfer in batch by passing in an array of <a href="/docs/en/client-types.html#Transfer">Transfers</a>.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-comment">// transfer 10 of a given asset from sender to receiver</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transfer10</span>(<span class="hljs-params">receiver: AddressString, sender: UserAccountID, asset: Hash256String</span>): <span class="hljs-title">Promise</span>&lt;<span class="hljs-title">TransactionReceipt</span>&gt; </span>{
+  <span class="hljs-keyword">const</span> ten = <span class="hljs-keyword">new</span> BigNumber(<span class="hljs-string">'10'</span>);
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.transfer(ten, asset, receiver, { <span class="hljs-keyword">from</span>: sender });
+  <span class="hljs-keyword">const</span> receipt = <span class="hljs-keyword">await</span> receipt.confirmed();
+
+  <span class="hljs-keyword">return</span> receipt;
+};
+
+<span class="hljs-comment">// distribute 10 of a given asset in batch from sender to list of receivers.</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">distribute10</span>(<span class="hljs-params">receiverList: ReadonlyArray&lt;AddressString&gt;, sender: UserAccountID, asset: Hash256String</span>) </span>{
+  <span class="hljs-keyword">const</span> ten = <span class="hljs-keyword">new</span> BigNumber(<span class="hljs-string">'10'</span>);
+  <span class="hljs-keyword">const</span> transfers = receiverList.map(<span class="hljs-function">(<span class="hljs-params">receiver</span>) =&gt;</span> ({
+    amount: ten,
+    asset,
+    to: receiver,
+  }));
+
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.transfer(transfers, {<span class="hljs-keyword">from</span>: sender});
+  <span class="hljs-keyword">const</span> receipt = <span class="hljs-keyword">await</span> receipt.confirmed();
+
+  <span class="hljs-keyword">return</span> receipt;
+}
+</code></pre></li>
 </ul>
 <p><a id="publish"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="publish-contractregister-docs-en-client-typeshtml-contractregister-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-publishreceipt-docs-en-client-typeshtml-publishreceipt-invocationtransaction-docs-en-client-typeshtml-invocationtransaction"></a><a href="#publish-contractregister-docs-en-client-typeshtml-contractregister-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-publishreceipt-docs-en-client-typeshtml-publishreceipt-invocationtransaction-docs-en-client-typeshtml-invocationtransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>publish(<a href="/docs/en/client-types.html#ContractRegister">ContractRegister</a>, <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions?</a>): Promise&lt;<a href="/docs/en/client-types.html#TransactionResult">TransactionResult</a>&lt;<a href="/docs/en/client-types.html#PublishReceipt">PublishReceipt</a>, <a href="/docs/en/client-types.html#InvocationTransaction">InvocationTransaction</a>&gt;&gt;</h4>
 <ul>
 <li>Publishes a given smart contract to the currently selected network.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">import</span> { compileContract } <span class="hljs-keyword">from</span> <span class="hljs-string">'@neo-one/smart-contract-compiler'</span>;
+...
+
+<span class="hljs-keyword">const</span> contractResult = compileContract(contractPath, contractName);
+
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.publish(contractResult.contract);
+<span class="hljs-keyword">const</span> receipt = <span class="hljs-keyword">await</span> result.confirmed();
+</code></pre></li>
 </ul>
 <p><a id="publishAndDeploy"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="publishanddeploy-contractregister-docs-en-client-typeshtml-contractregister-abi-docs-en-client-typeshtml-abi-readonlyarray-param-docs-en-client-typeshtml-param-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-sourcemaps-docs-en-client-typeshtml-sourcemaps-promiseresolve-promise-transactionresult-docs-en-client-typeshtml-transactionresult-publishreceipt-docs-en-client-typeshtml-publishreceipt-invocationtransaction-docs-en-client-typeshtml-invocationtransaction"></a><a href="#publishanddeploy-contractregister-docs-en-client-typeshtml-contractregister-abi-docs-en-client-typeshtml-abi-readonlyarray-param-docs-en-client-typeshtml-param-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-sourcemaps-docs-en-client-typeshtml-sourcemaps-promiseresolve-promise-transactionresult-docs-en-client-typeshtml-transactionresult-publishreceipt-docs-en-client-typeshtml-publishreceipt-invocationtransaction-docs-en-client-typeshtml-invocationtransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>publishAndDeploy(<a href="/docs/en/client-types.html#ContractRegister">ContractRegister</a>, <a href="/docs/en/client-types.html#ABI">ABI</a>, ReadonlyArray&lt;<a href="/docs/en/client-types.html#Param">Param</a>&gt; = [], <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions?</a>, Promise&lt;<a href="/docs/en/client-types.html#SourceMaps">SourceMaps</a>&gt; = Promise.resolve({})): Promise&lt;<a href="/docs/en/client-types.html#TransactionResult">TransactionResult</a>&lt;<a href="/docs/en/client-types.html#PublishReceipt">PublishReceipt</a>, <a href="/docs/en/client-types.html#InvocationTransaction">InvocationTransaction</a>&gt;&gt;</h4>
 <ul>
 <li>Publishes and deploys a smart contract to the currently selected network. Once confirmed, the smart contract will be ready for use.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">import</span> { compileContract } <span class="hljs-keyword">from</span> <span class="hljs-string">'@neo-one/smart-contract-compiler'</span>;
+...
+
+<span class="hljs-keyword">const</span> contractResult = compileContract(contractPath, contractName);
+
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.publishAndDeploy(contractResult.contract, contractResult.abi);
+<span class="hljs-keyword">const</span> receipt = <span class="hljs-keyword">await</span> result.confirmed();
+</code></pre></li>
 </ul>
 <p><a id="registerAsset"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="registerasset-assetregister-docs-en-client-typeshtml-assetregister-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-registerassetreceipt-docs-en-client-typeshtml-registerassetreceipt-invocationtransaction-docs-en-client-typeshtml-invocationtransaction"></a><a href="#registerasset-assetregister-docs-en-client-typeshtml-assetregister-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-registerassetreceipt-docs-en-client-typeshtml-registerassetreceipt-invocationtransaction-docs-en-client-typeshtml-invocationtransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>registerAsset(<a href="/docs/en/client-types.html#AssetRegister">AssetRegister</a>, <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions?</a>): Promise&lt;<a href="/docs/en/client-types.html#TransactionResult">TransactionResult</a>&lt;<a href="/docs/en/client-types.html#RegisterAssetReceipt">RegisterAssetReceipt</a>, <a href="/docs/en/client-types.html#InvocationTransaction">InvocationTransaction</a>&gt;&gt;</h4>
 <ul>
 <li>Registers a new asset to the currently selected network.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> assetRegister = {
+  <span class="hljs-keyword">type</span>: <span class="hljs-string">'Token'</span>,
+  name: <span class="hljs-string">'myToken'</span>,
+  amount: <span class="hljs-keyword">new</span> BigNumber(<span class="hljs-string">'10000000000'</span>),
+  precision: <span class="hljs-number">4</span>,
+  owner: <span class="hljs-string">'02028a99826edc0c97d18e22b6932373d908d323aa7f92656a77ec26e8861699ef'</span>,
+  admin: <span class="hljs-string">'APyEx5f4Zm4oCHwFWiSTaph1fPBxZacYVR'</span>,
+  issuer: <span class="hljs-string">'APyEx5f4Zm4oCHwFWiSTaph1fPBxZacYVR'</span>,
+}
+
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.registerAsset(assetRegister);
+<span class="hljs-keyword">const</span> receipt = <span class="hljs-keyword">await</span> result.confirmed();
+</code></pre></li>
 </ul>
 <p><a id="issue"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="issue-bignumber-bignumber-https-githubcom-mikemcl-bignumberjs-hash256string-docs-en-client-typeshtml-hash256string-addressstring-docs-en-client-typeshtml-addressstring-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-transactionreceipt-docs-en-client-typeshtml-transactionreceipt-issuetransaction-docs-en-client-typeshtml-issuetransaction"></a><a href="#issue-bignumber-bignumber-https-githubcom-mikemcl-bignumberjs-hash256string-docs-en-client-typeshtml-hash256string-addressstring-docs-en-client-typeshtml-addressstring-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-transactionreceipt-docs-en-client-typeshtml-transactionreceipt-issuetransaction-docs-en-client-typeshtml-issuetransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>issue(<a href="[BigNumber](https://github.com/MikeMcl/bignumber.js/)">BigNumber</a>, <a href="/docs/en/client-types.html#Hash256String">Hash256String</a>, <a href="/docs/en/client-types.html#AddressString">AddressString</a>, <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions?</a>): Promise&lt;<a href="/docs/en/client-types.html#TransactionResult">TransactionResult</a>&lt;<a href="/docs/en/client-types.html#TransactionReceipt">TransactionReceipt</a>, <a href="/docs/en/client-types.html#IssueTransaction">IssueTransaction</a>&gt;&gt;</h4>
+<h4><a class="anchor" aria-hidden="true" name="issuereadonlyarray-transfer-docs-en-client-typeshtml-transfer-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-transactionreceipt-docs-en-client-typeshtml-transactionreceipt-issuetransaction-docs-en-client-typeshtml-issuetransaction"></a><a href="#issuereadonlyarray-transfer-docs-en-client-typeshtml-transfer-transactionoptions-docs-en-client-typeshtml-transactionoptions-promise-transactionresult-docs-en-client-typeshtml-transactionresult-transactionreceipt-docs-en-client-typeshtml-transactionreceipt-issuetransaction-docs-en-client-typeshtml-issuetransaction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>issue(ReadonlyArray&lt;<a href="/docs/en/client-types.html#Transfer">Transfer</a>&gt;, <a href="/docs/en/client-types.html#TransactionOptions">TransactionOptions?</a>): Promise&lt;<a href="/docs/en/client-types.html#TransactionResult">TransactionResult</a>&lt;<a href="/docs/en/client-types.html#TransactionReceipt">TransactionReceipt</a>, <a href="/docs/en/client-types.html#IssueTransaction">IssueTransaction</a>&gt;&gt;</h4>
 <ul>
 <li>Issues a given amount of a given asset identified by its <a href="/docs/en/client-types.html#Hash256String">Hash256String</a> to a given address.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-comment">// issue a given asset to a single address</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">issueAsset</span>(<span class="hljs-params">asset: Asset, amount: BigNumber, network: NetworkType</span>): <span class="hljs-title">Promise</span>&lt;<span class="hljs-title">TransactionReceipt</span>&gt; </span>{
+  <span class="hljs-keyword">const</span> accountID = {
+    address: asset.issuer,
+    network,
+  };
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.issue(amount, asset.hash, asset.issuer, { <span class="hljs-keyword">from</span>: accountID });
+  <span class="hljs-keyword">const</span> receipt = <span class="hljs-keyword">await</span> receipt.confirmed();
+
+  <span class="hljs-keyword">return</span> receipt;
+};
+
+<span class="hljs-comment">// issue a given asset to a list of addresses</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">distributeIssueAsset</span>(<span class="hljs-params">receiverList: ReadonlyArray&lt;AddressString&gt;, asset: Asset, amount: BigNumber, network: NetworkType</span>) </span>{
+  <span class="hljs-keyword">const</span> accountID = {
+    address: asset.issuer,
+    network,
+  };
+  <span class="hljs-keyword">const</span> transfers = receiverList.map(<span class="hljs-function">(<span class="hljs-params">receiver</span>) =&gt;</span> ({
+    amount,
+    asset: asset.hash,
+    to: receiver,
+  }));
+
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.transfer(transfers, {<span class="hljs-keyword">from</span>: accountID});
+  <span class="hljs-keyword">const</span> receipt = <span class="hljs-keyword">await</span> receipt.confirmed();
+
+  <span class="hljs-keyword">return</span> receipt;
+}
+</code></pre></li>
 </ul>
 <p><a id="read"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="read-networktype-docs-en-client-typeshtml-networktype-readclient-docs-en-read-client-apihtml"></a><a href="#read-networktype-docs-en-client-typeshtml-networktype-readclient-docs-en-read-client-apihtml" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>read(<a href="/docs/en/client-types.html#NetworkType">NetworkType</a>): <a href="/docs/en/read-client-api.html">ReadClient</a></h4>
 <ul>
 <li>Returns a ReadClient for the given network.  The ReadClient is used to obtain information about the blockchain.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> networkName = <span class="hljs-string">'private'</span>;
+<span class="hljs-keyword">const</span> readClient = client.read(networkName);
+
+<span class="hljs-keyword">const</span> genesisBlock = <span class="hljs-keyword">await</span> readClient.getBlock(<span class="hljs-number">0</span>);
+</code></pre></li>
 </ul>
 <p><a id="smartContract"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="smartcontract-t-extends-smartcontract-smartcontractdefinition-t"></a><a href="#smartcontract-t-extends-smartcontract-smartcontractdefinition-t" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>smartContract&lt;T extends <a href="">SmartContract</a>&gt;(<a href="">SmartContractDefinition</a>): T</h4>

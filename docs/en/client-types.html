@@ -27,6 +27,11 @@
 <li><a href="#UserAccount">UserAccount</a></li>
 <li><a href="#UserAccountID">UserAccountID</a></li>
 </ul></li>
+<li><a href="#block-types">Block Types</a>
+<ul>
+<li><a href="#Header">Header</a></li>
+<li><a href="#Block">Block</a></li>
+</ul></li>
 <li><a href="#contract-types">Contract Types</a>
 <ul>
 <li><a href="#Action">Action</a></li>
@@ -42,6 +47,14 @@
 <li><a href="#Return">Return</a></li>
 <li><a href="#ReturnArray">ReturnArray</a></li>
 <li><a href="#StorageItem">StorageItem</a></li>
+</ul></li>
+<li><a href="#abi-types">ABI Types</a>
+<ul>
+<li><a href="#ABI">ABI</a></li>
+<li><a href="#ABIEvent">ABIEvent</a></li>
+<li><a href="#ABIFunction">ABIFunction</a></li>
+<li><a href="#ABIParameter">ABIParameter</a></li>
+<li><a href="#ABIReturn">ABIReturn</a></li>
 </ul></li>
 <li><a href="#transaction-types">Transaction Types</a>
 <ul>
@@ -69,30 +82,35 @@
 <li><a href="#TransactionReceipt">TransactionReceipt</a></li>
 <li><a href="#TransactionResult">TransactionResult</a></li>
 </ul></li>
-<li><a href="#block-types">Block Types</a>
+<li><a href="#transaction-attribute-types">Transaction Attribute Types</a>
 <ul>
-<li><a href="#Header">Header</a></li>
-<li><a href="#Block">Block</a></li>
+<li><a href="#AddressAttribute">AddressAttribute</a></li>
+<li><a href="#AddressAttributeUsage">AddressAttributeUsage</a></li>
+<li><a href="#Attribute">Attribute</a></li>
+<li><a href="#BufferAttribute">BufferAttribute</a></li>
+<li><a href="#BufferAttributeUsage">BufferAttributeUsage</a></li>
+<li><a href="#Hash256Attribute">Hash256Attribute</a></li>
+<li><a href="#Hash256AttributeUsage">Hash256AttributeUsage</a></li>
+<li><a href="#PublicKeyAttribute">PublicKeyAttribute</a></li>
+<li><a href="#PublicKeyAttributeUsage">PublicKeyAttributeUsage</a></li>
 </ul></li>
 <li><a href="#advanced-types">Advanced Types</a>
 <ul>
-<li><a href="#AddressAttributeUsage">AddressAttributeUsage</a></li>
 <li><a href="#AddressContractParameter">AddressContractParameter</a></li>
 <li><a href="#ArrayContractParameter">ArrayContractParameter</a></li>
 <li><a href="#AssetType">AssetType</a></li>
 <li><a href="#AttributeUsage">AttributeUsage</a></li>
 <li><a href="#BlockFilter">BlockFilter</a></li>
 <li><a href="#BooleanContractParameter">BooleanContractParameter</a></li>
-<li><a href="#BufferAttributeUsage">BufferAttributeUsage</a></li>
 <li><a href="#BufferContractParameter">BufferContractParameter</a></li>
 <li><a href="#ContractParameter">ContractParameter</a></li>
-<li><a href="#Hash256AttributeUsage">Hash256AttributeUsage</a></li>
 <li><a href="#Hash256ContractParameter">Hash256ContractParameter</a></li>
 <li><a href="#IntegerContractParameter">IntegerContractParameter</a></li>
 <li><a href="#InteropInterfaceContractParameter">InteropInterfaceContractParameter</a></li>
+<li><a href="#LocalWallet">LocalWallet</a></li>
+<li><a href="#LockedWallet">LockedWallet</a></li>
 <li><a href="#NetworkSettings">NetworkSettings</a></li>
 <li><a href="#PrivateNetworkSettings">PrivateNetworkSettings</a></li>
-<li><a href="#PublicKeyAttributeUsage">PublicKeyAttributeUsage</a></li>
 <li><a href="#PublicKeyContractParameter">PublicKeyContractParameter</a></li>
 <li><a href="#SignatureContractParameter">SignatureContractParameter</a></li>
 <li><a href="#RawAction">RawAction</a></li>
@@ -107,6 +125,7 @@
 <li><a href="#RawNotification">RawNotification</a></li>
 <li><a href="#StringContractParameter">StringContractParameter</a></li>
 <li><a href="#UpdateAccountNameOptions">UpdateAccountNameOptions</a></li>
+<li><a href="#UnlockedWallet">UnlockedWallet</a></li>
 <li><a href="#VoidContractParameter">VoidContractParameter</a></li>
 <li><a href="#Witness">Witness</a></li>
 </ul></li>
@@ -356,6 +375,55 @@
 </ul></li>
 </ul>
 <p><br></p>
+<h2><a class="anchor" aria-hidden="true" name="block-types"></a><a href="#block-types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Block Types</h2>
+<h4><a class="anchor" aria-hidden="true" name="block"></a><a href="#block" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Block</h4>
+<ul>
+<li>Extension of <a href="#Header">Header</a>.</li>
+<li>Information contained in a Block.</li>
+<li>Properties:
+<ul>
+<li>transactions: ReadonlyArray&lt;<a href="#ConfirmedTransaction">ConfirmedTransaction</a>&gt;
+<ul>
+<li>Transactions contained in the Block.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="header"></a><a href="#header" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Header</h4>
+<ul>
+<li>Base information about a <a href="#Block">Block</a>.</li>
+<li>Properties:
+<ul>
+<li>version: number
+<ul>
+<li>NEO blockchain version.</li>
+</ul></li>
+<li>hash: <a href="#Hash256String">Hash256String</a>
+<ul>
+<li><a href="#Block">Block</a> hash</li>
+</ul></li>
+<li>previousBlockHash: <a href="#Hash256String">Hash256String</a></li>
+<li>merkleRoot: <a href="#Hash256String">Hash256String</a></li>
+<li>time: number
+<ul>
+<li><a href="#Block">Block</a> time persisted</li>
+</ul></li>
+<li>index: number
+<ul>
+<li><a href="#Block">Block</a> index</li>
+</ul></li>
+<li>nonce: string</li>
+<li>nextConsensus: <a href="#AddressString">AddressString</a>
+<ul>
+<li>Next consensus address.</li>
+</ul></li>
+<li>script: <a href="#Witness">Witness</a></li>
+<li>size: number
+<ul>
+<li>Size in bytes of the <a href="#Block">Block</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<p><br></p>
 <h2><a class="anchor" aria-hidden="true" name="contract-types"></a><a href="#contract-types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contract Types</h2>
 <p>Types related to Smart Contracts.</p>
 <h4><a class="anchor" aria-hidden="true" name="action"></a><a href="#action" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Action</h4>
@@ -574,6 +642,170 @@
 <li>value: <a href="#BufferString">BufferString</a>
 <ul>
 <li>Value of this StorageItem.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><br></p>
+<h2><a class="anchor" aria-hidden="true" name="abi-types"></a><a href="#abi-types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ABI Types</h2>
+<p>Types related to Smart Contract ABIs.</p>
+<h4><a class="anchor" aria-hidden="true" name="abi"></a><a href="#abi" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ABI</h4>
+<ul>
+<li>Full specification of the functions and events of a smart contract.</li>
+<li>Used by the client APIs to generate the smart contract interface.</li>
+<li>Properties:
+<ul>
+<li>functions: ReadonlyArray&lt;<a href="#ABIFunction">ABIFunction</a>&gt;</li>
+<li>events (optional): ReadonlyArray&lt;<a href="#ABIEvent">ABIEvent</a>&gt;</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="abievent"></a><a href="#abievent" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ABIEvent</h4>
+<ul>
+<li>Event specification in the <a href="#ABI">ABI</a> of a smart contract.</li>
+<li>Properties:
+<ul>
+<li>name: string
+<ul>
+<li>Name of the event.</li>
+</ul></li>
+<li>parameters: ReadonlyArray&lt;<a href="#ABIParameter">ABIParameter</a>&gt;
+<ul>
+<li>Parameters of the event.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="abifunction"></a><a href="#abifunction" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ABIFunction</h4>
+<ul>
+<li>Event specification in the <a href="#ABI">ABI</a> of a smart contract.</li>
+<li>Properties:
+<ul>
+<li>name: string
+<ul>
+<li>Name of the function.</li>
+</ul></li>
+<li>parameters (optional): ReadonlyArray&lt;<a href="#ABIParameter">ABIParameter</a>&gt;
+<ul>
+<li>Parameters of the function.</li>
+</ul></li>
+<li>returnType: <a href="#ABIReturn">ABIReturn</a>
+<ul>
+<li>Return type of the function.</li>
+</ul></li>
+<li>constant (optional): boolean
+<ul>
+<li>True if the function is constant or read-only.</li>
+</ul></li>
+<li>send (optional): boolean
+<ul>
+<li>True if the function is used for sending native assets.</li>
+</ul></li>
+<li>receive (optional): boolean
+<ul>
+<li>True if the function is used for receiving native assets.</li>
+</ul></li>
+<li>claim (optional): boolean
+<ul>
+<li>True if teh function is used for claiming GAS.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="abiparameter"></a><a href="#abiparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ABIParameter</h4>
+<ul>
+<li>Parameter type specifications of a smart contract.</li>
+<li>Extensions of the corresponding <a href="#ABIReturn">ABIReturn</a>
+<ul>
+<li>e.g. Hash256ABIParameter contains all properties in Hash256ABIReturn</li>
+</ul></li>
+<li>Common Properties:
+<ul>
+<li>name: string
+<ul>
+<li>Name of the parameter.</li>
+</ul></li>
+<li>default (optional): { type: 'sender' }
+<ul>
+<li>Runtime default value</li>
+</ul></li>
+<li>rest (optional): boolean
+<ul>
+<li>Represents a rest parameter</li>
+</ul></li>
+</ul></li>
+<li>Types with Additional Properties:
+<ul>
+<li>SignatureABIParameter</li>
+<li>BooleanABIParameter</li>
+<li>AddressABIParameter</li>
+<li>Hash256ABIParameter</li>
+<li>BufferABIParameter</li>
+<li>PublicKeyABIParameter</li>
+<li>StringABIParameter</li>
+<li>VoidABIParameter</li>
+<li>IntegerABIParameter</li>
+<li>ArrayABIParameter</li>
+<li>ForwardValueABIParameter</li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="abireturn"></a><a href="#abireturn" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ABIReturn</h4>
+<ul>
+<li>Return type specifications of a smart contract.</li>
+<li>Common Properties:
+<ul>
+<li>optional (optional): boolean
+<ul>
+<li>Indicates whether the return is possibly undefined.</li>
+</ul></li>
+<li>forwardedValue (optional): boolean
+<ul>
+<li>Indicates whether the return is a forwarded value.</li>
+</ul></li>
+</ul></li>
+<li>Types with Additional Properties:
+<ul>
+<li>SignatureABIReturn
+<ul>
+<li>type: 'Signature'</li>
+</ul></li>
+<li>BooleanABIReturn
+<ul>
+<li>type: 'Boolean'</li>
+</ul></li>
+<li>AddressABIReturn
+<ul>
+<li>type: 'Address'</li>
+</ul></li>
+<li>Hash256ABIReturn
+<ul>
+<li>type: 'Hash256'</li>
+</ul></li>
+<li>BufferABIReturn
+<ul>
+<li>type: 'Buffer'</li>
+</ul></li>
+<li>PublicKeyABIReturn
+<ul>
+<li>type: 'PublicKey'</li>
+</ul></li>
+<li>StringABIReturn
+<ul>
+<li>type: 'String'</li>
+</ul></li>
+<li>VoidABIReturn
+<ul>
+<li>type: 'Void'</li>
+</ul></li>
+<li>IntegerABIReturn
+<ul>
+<li>type: 'Integer'</li>
+<li>decimals: number</li>
+</ul></li>
+<li>ArrayABIReturn
+<ul>
+<li>type: 'Array'</li>
+<li>value: ABIReturn</li>
+</ul></li>
+<li>ForwardValueABIReturn
+<ul>
+<li>type: 'ForwardValue;</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -832,63 +1064,97 @@
 </ul></li>
 </ul>
 <p><br></p>
-<h2><a class="anchor" aria-hidden="true" name="block-types"></a><a href="#block-types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Block Types</h2>
-<h4><a class="anchor" aria-hidden="true" name="block"></a><a href="#block" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Block</h4>
+<h2><a class="anchor" aria-hidden="true" name="transaction-attribute-types"></a><a href="#transaction-attribute-types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transaction Attribute Types</h2>
+<p>All possible Attribute types which can be attached to transactions.</p>
+<h4><a class="anchor" aria-hidden="true" name="addressattribute"></a><a href="#addressattribute" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AddressAttribute</h4>
 <ul>
-<li>Extension of <a href="#Header">Header</a>.</li>
-<li>Information contained in a Block.</li>
+<li><a href="#Attribute">Attribute</a> whose data is a <a href="#AddressString">AddressString</a></li>
 <li>Properties:
 <ul>
-<li>transactions: ReadonlyArray&lt;<a href="#ConfirmedTransaction">ConfirmedTransaction</a>&gt;
-<ul>
-<li>Transactions contained in the Block.</li>
-</ul></li>
+<li>usage: <a href="#AddressAttributeUsage">AddressAttributeUsage</a></li>
+<li>data: <a href="#AddressString">AddressString</a></li>
 </ul></li>
 </ul>
-<h4><a class="anchor" aria-hidden="true" name="header"></a><a href="#header" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Header</h4>
+<h4><a class="anchor" aria-hidden="true" name="addressattributeusage"></a><a href="#addressattributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AddressAttributeUsage</h4>
 <ul>
-<li>Base information about a <a href="#Block">Block</a>.</li>
+<li>Attribute usage flag indicating the data is an Address.</li>
+<li>Possible Values:
+<pre><code class="hljs css ts"><span class="hljs-string">'Script'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="attribute"></a><a href="#attribute" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Attribute</h4>
+<ul>
+<li>Attributes are used to store additional data on <a href="#Transaction">Transactions</a>.</li>
+<li>Most Attributes are used to store arbitrary data, whereas some, like <a href="#AddressAttribute">AddressAttribute</a>, have specific uses in the NEO.</li>
+<li>Attribute Types:
+<ul>
+<li><a href="#AddressAttribute">AddressAttribute</a></li>
+<li><a href="#BufferAttribute">BufferAttribute</a></li>
+<li><a href="#Hash256Attribute">Hash256Attribute</a></li>
+<li><a href="#PublicKeyAttribute">PublicKeyAttribute</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="attributeusage"></a><a href="#attributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AttributeUsage</h4>
+<ul>
+<li>Attribute usage flag indicates the type of the data.
+<ul>
+<li><a href="#BufferAttributeUsage">BufferAttributeUsage</a></li>
+<li><a href="#AddressAttributeUsage">AddressAttributeUsage</a></li>
+<li><a href="#PublicKeyAttributeUsage">PublicKeyAttributeUsage</a></li>
+<li><a href="#Hash256AttributeUsage">Hash256AttributeUsage</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="bufferattribute"></a><a href="#bufferattribute" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BufferAttribute</h4>
+<ul>
+<li><a href="#Attribute">Attribute</a> whose data is a <a href="#BufferString">BufferString</a></li>
 <li>Properties:
 <ul>
-<li>version: number
+<li>usage: <a href="#BufferAttributeUsage">BufferAttributeUsage</a></li>
+<li>data: <a href="#BufferString">BufferString</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="bufferattributeusage"></a><a href="#bufferattributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BufferAttributeUsage</h4>
 <ul>
-<li>NEO blockchain version.</li>
-</ul></li>
-<li>hash: <a href="#Hash256String">Hash256String</a>
+<li>Attribute usage flag indicating the data is an arbitrary Buffer.</li>
+<li>Possible Values:
+<pre><code class="hljs css ts"><span class="hljs-string">'DescriptionUrl'</span> | <span class="hljs-string">'Description'</span> | <span class="hljs-string">'Remark'</span> | <span class="hljs-string">'Remark1'</span> | <span class="hljs-string">'Remark2'</span> | <span class="hljs-string">'Remark3'</span> | <span class="hljs-string">'Remark4'</span> | <span class="hljs-string">'Remark5'</span> | <span class="hljs-string">'Remark6'</span> | <span class="hljs-string">'Remark7'</span> | <span class="hljs-string">'Remark8'</span> | <span class="hljs-string">'Remark9'</span> | <span class="hljs-string">'Remark10'</span> | <span class="hljs-string">'Remark11'</span> | <span class="hljs-string">'Remark12'</span> | <span class="hljs-string">'Remark13'</span> | <span class="hljs-string">'Remark14'</span> | <span class="hljs-string">'Remark15'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="hash256attribute"></a><a href="#hash256attribute" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hash256Attribute</h4>
 <ul>
-<li><a href="#Block">Block</a> hash</li>
-</ul></li>
-<li>previousBlockHash: <a href="#Hash256String">Hash256String</a></li>
-<li>merkleRoot: <a href="#Hash256String">Hash256String</a></li>
-<li>time: number
+<li><a href="#Attribute">Attribute</a> whose data is a <a href="#Hash256String">Hash256String</a></li>
+<li>Properties:
 <ul>
-<li><a href="#Block">Block</a> time persisted</li>
+<li>usage: <a href="#Hash256AttributeUsage">Hash256AttributeUsage</a></li>
+<li>data: <a href="#Hash256String">Hash256String</a></li>
 </ul></li>
-<li>index: number
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="hash256attributeusage"></a><a href="#hash256attributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hash256AttributeUsage</h4>
 <ul>
-<li><a href="#Block">Block</a> index</li>
-</ul></li>
-<li>nonce: string</li>
-<li>nextConsensus: <a href="#AddressString">AddressString</a>
+<li>Attribute usage flag indicating the data is a Hash256</li>
+<li>Possible Values:
+<pre><code class="hljs css ts"><span class="hljs-string">'ContractHash'</span> | <span class="hljs-string">'Vote'</span> | <span class="hljs-string">'Hash1'</span> | <span class="hljs-string">'Hash2'</span> | <span class="hljs-string">'Hash3'</span> | <span class="hljs-string">'Hash4'</span> | <span class="hljs-string">'Hash5'</span> | <span class="hljs-string">'Hash6'</span> | <span class="hljs-string">'Hash7'</span> | <span class="hljs-string">'Hash8'</span> | <span class="hljs-string">'Hash9'</span> | <span class="hljs-string">'Hash10'</span> | <span class="hljs-string">'Hash11'</span> | <span class="hljs-string">'Hash12'</span> | <span class="hljs-string">'Hash13'</span> | <span class="hljs-string">'Hash14'</span> | <span class="hljs-string">'Hash15'</span>
+</code></pre></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="publickeyattribute"></a><a href="#publickeyattribute" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PublicKeyAttribute</h4>
 <ul>
-<li>Next consensus address.</li>
-</ul></li>
-<li>script: <a href="#Witness">Witness</a></li>
-<li>size: number
+<li><a href="#Attribute">Attribute</a> whose data is a <a href="#PublicKeyString">PublicKeyString</a></li>
+<li>Properties:
 <ul>
-<li>Size in bytes of the <a href="#Block">Block</a></li>
+<li>usage: <a href="#PublicKeyAttributeUsage">PublicKeyAttributeUsage</a></li>
+<li>data: <a href="#PublicKeyString">PublicKeyString</a></li>
 </ul></li>
-</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="publickeyattributeusage"></a><a href="#publickeyattributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PublicKeyAttributeUsage</h4>
+<ul>
+<li>Attribute usage flag indicating the data is a PublicKey</li>
+<li>Possible Values:
+<pre><code class="hljs css ts"><span class="hljs-string">'ECDH02'</span> | <span class="hljs-string">'ECDH03'</span>
+</code></pre></li>
 </ul>
 <p><br></p>
 <h2><a class="anchor" aria-hidden="true" name="advanced-types"></a><a href="#advanced-types" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Advanced Types</h2>
 <p>The rest of the types are contained here.  These will likely only be used for more advanced use cases.</p>
-<h4><a class="anchor" aria-hidden="true" name="addressattributeusage"></a><a href="#addressattributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AddressAttributeUsage</h4>
-<ul>
-<li>Attribute usage flag indicating the data is a PublicKey
-<pre><code class="hljs css ts"><span class="hljs-string">'Script'</span>
-</code></pre></li>
-</ul>
 <h4><a class="anchor" aria-hidden="true" name="addresscontractparameter"></a><a href="#addresscontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AddressContractParameter</h4>
 <ul>
 <li>Invocation stack item for an Address</li>
@@ -915,16 +1181,6 @@
 <pre><code class="hljs css ts"><span class="hljs-string">'Credit'</span> | <span class="hljs-string">'Duty'</span> | <span class="hljs-string">'Governing'</span> | <span class="hljs-string">'Utility'</span> | <span class="hljs-string">'Currency'</span> | <span class="hljs-string">'Share'</span> | <span class="hljs-string">'Invoice'</span> | <span class="hljs-string">'Token'</span>
 </code></pre></li>
 </ul>
-<h4><a class="anchor" aria-hidden="true" name="attributeusage"></a><a href="#attributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AttributeUsage</h4>
-<ul>
-<li>Attribute usage flag indicates the type of the data.
-<ul>
-<li><a href="#BufferAttributeUsage">BufferAttributeUsage</a></li>
-<li><a href="#AddressAttributeUsage">AddressAttributeUsage</a></li>
-<li><a href="#PublicKeyAttributeUsage">PublicKeyAttributeUsage</a></li>
-<li><a href="#Hash256AttributeUsage">Hash256AttributeUsage</a></li>
-</ul></li>
-</ul>
 <h4><a class="anchor" aria-hidden="true" name="blockfilter"></a><a href="#blockfilter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BlockFilter</h4>
 <ul>
 <li>Filter user in certain methods which iterate over blocks.</li>
@@ -943,12 +1199,6 @@
 <li>type: 'Boolean'</li>
 <li>value: boolean</li>
 </ul></li>
-</ul>
-<h4><a class="anchor" aria-hidden="true" name="bufferattributeusage"></a><a href="#bufferattributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BufferAttributeUsage</h4>
-<ul>
-<li>Attribute usage flag indicating the data is an arbitrary Buffer
-<pre><code class="hljs css ts"><span class="hljs-string">'DescriptionUrl'</span> | <span class="hljs-string">'Description'</span> | <span class="hljs-string">'Remark'</span> | <span class="hljs-string">'Remark1'</span> | <span class="hljs-string">'Remark2'</span> | <span class="hljs-string">'Remark3'</span> | <span class="hljs-string">'Remark4'</span> | <span class="hljs-string">'Remark5'</span> | <span class="hljs-string">'Remark6'</span> | <span class="hljs-string">'Remark7'</span> | <span class="hljs-string">'Remark8'</span> | <span class="hljs-string">'Remark9'</span> | <span class="hljs-string">'Remark10'</span> | <span class="hljs-string">'Remark11'</span> | <span class="hljs-string">'Remark12'</span> | <span class="hljs-string">'Remark13'</span> | <span class="hljs-string">'Remark14'</span> | <span class="hljs-string">'Remark15'</span>
-</code></pre></li>
 </ul>
 <h4><a class="anchor" aria-hidden="true" name="buffercontractparameter"></a><a href="#buffercontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>BufferContractParameter</h4>
 <ul>
@@ -976,12 +1226,6 @@
 <li><a href="#InteropInterfaceContractParameter">InteropInterfaceContractParameter</a></li>
 <li><a href="#VoidContractParameter">VoidContractParameter</a></li>
 </ul></li>
-</ul>
-<h4><a class="anchor" aria-hidden="true" name="hash256attributeusage"></a><a href="#hash256attributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hash256AttributeUsage</h4>
-<ul>
-<li>Attribute usage flag indicating the data is a Hash256
-<pre><code class="hljs css ts"><span class="hljs-string">'ContractHash'</span> | <span class="hljs-string">'Vote'</span> | <span class="hljs-string">'Hash1'</span> | <span class="hljs-string">'Hash2'</span> | <span class="hljs-string">'Hash3'</span> | <span class="hljs-string">'Hash4'</span> | <span class="hljs-string">'Hash5'</span> | <span class="hljs-string">'Hash6'</span> | <span class="hljs-string">'Hash7'</span> | <span class="hljs-string">'Hash8'</span> | <span class="hljs-string">'Hash9'</span> | <span class="hljs-string">'Hash10'</span> | <span class="hljs-string">'Hash11'</span> | <span class="hljs-string">'Hash12'</span> | <span class="hljs-string">'Hash13'</span> | <span class="hljs-string">'Hash14'</span> | <span class="hljs-string">'Hash15'</span>
-</code></pre></li>
 </ul>
 <h4><a class="anchor" aria-hidden="true" name="hash256contractparameter"></a><a href="#hash256contractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hash256ContractParameter</h4>
 <ul>
@@ -1017,12 +1261,37 @@
 <li>type: 'InteropInterface'</li>
 </ul></li>
 </ul>
+<h4><a class="anchor" aria-hidden="true" name="localwallet"></a><a href="#localwallet" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LocalWallet</h4>
+<ul>
+<li>Wallet storage for <a href="/docs/en/keystore-api.html">KeyStore</a>.</li>
+<li><a href="#LockedWallet">LockedWallet</a></li>
+<li><a href="#UnlockedWallet">UnlockedWallet</a></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="lockedwallet"></a><a href="#lockedwallet" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LockedWallet</h4>
+<ul>
+<li>A locked wallet is a <a href="#LocalWallet">LocalWallet</a> stored in a  <a href="/docs/en/keystore-api.html">KeyStore</a> which is locked and unable to interact with the blockchain.</li>
+<li>Properties:
+<ul>
+<li>type: 'locked'</li>
+<li>account: <a href="#UserAccount">UserAccount</a></li>
+<li>nep2: string</li>
+</ul></li>
+</ul>
 <h4><a class="anchor" aria-hidden="true" name="networksettings"></a><a href="#networksettings" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>NetworkSettings</h4>
 <ul>
 <li>Settings of the network.</li>
 <li>Properties:
 <ul>
 <li>issueGASFee: <a href="https://github.com/MikeMcl/bignumber.js/">BigNumber</a></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="peer"></a><a href="#peer" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Peer</h4>
+<ul>
+<li>Peer node on the blockchain.</li>
+<li>Properties:
+<ul>
+<li>address: string</li>
+<li>port: numnber</li>
 </ul></li>
 </ul>
 <h4><a class="anchor" aria-hidden="true" name="privatenetworksettings"></a><a href="#privatenetworksettings" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PrivateNetworkSettings</h4>
@@ -1032,12 +1301,6 @@
 <ul>
 <li>secondsPerBlock: number</li>
 </ul></li>
-</ul>
-<h4><a class="anchor" aria-hidden="true" name="publickeyattributeusage"></a><a href="#publickeyattributeusage" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PublicKeyAttributeUsage</h4>
-<ul>
-<li>Attribute usage flag indicating the data is a PublicKey
-<pre><code class="hljs css ts"><span class="hljs-string">'ECDH02'</span> | <span class="hljs-string">'ECDH03'</span>
-</code></pre></li>
 </ul>
 <h4><a class="anchor" aria-hidden="true" name="publickeycontractparameter"></a><a href="#publickeycontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PublicKeyContractParameter</h4>
 <ul>
@@ -1198,6 +1461,17 @@
 <ul>
 <li>Name to change to.</li>
 </ul></li>
+</ul></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" name="unlockedwallet"></a><a href="#unlockedwallet" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UnlockedWallet</h4>
+<ul>
+<li>An unlocked wallet is a <a href="#LocalWallet">LocalWallet</a> stored in a  <a href="/docs/en/keystore-api.html">KeyStore</a> which is unlocked and ready to interact with the blockchain.</li>
+<li>Properties:
+<ul>
+<li>type: 'unlocked'</li>
+<li>account: <a href="#UserAccount">UserAccount</a></li>
+<li>privateKey: <a href="#BufferString">BufferString</a></li>
+<li>nep2 (optional): string | undefined</li>
 </ul></li>
 </ul>
 <h4><a class="anchor" aria-hidden="true" name="voidcontractparameter"></a><a href="#voidcontractparameter" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>VoidContractParameter</h4>

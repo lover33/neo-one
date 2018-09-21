@@ -20,33 +20,107 @@
 <ul>
 <li>Runs consensus immediately on your private network.</li>
 <li>Useful for immediately confirming <a href="/docs/en/client-types.html#Transaction">Transactions</a> and not having to wait between <a href="/docs/en/client-types.html#Block">Blocks</a>.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.claim();
+<span class="hljs-comment">// immediately run consensus to create a new block and confirm the clain the the block.</span>
+<span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.all([
+  result.confirmed(),
+  developerClient.runConsensusNow(),
+])
+</code></pre></li>
 </ul>
 <p><a id="updateSettings"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="updatesettingspartial-privatenetworksettings-docs-en-client-typeshtml-privatenetworksettings-promise-void"></a><a href="#updatesettingspartial-privatenetworksettings-docs-en-client-typeshtml-privatenetworksettings-promise-void" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>updateSettings(Partial&lt;<a href="/docs/en/client-types.html#PrivateNetworkSettings">PrivateNetworkSettings</a>&gt;): Promise&lt;void&gt;</h4>
 <ul>
 <li>Updates the <a href="/docs/en/client-types.html#PrivateNetworkSettings">PrivateNetworkSettings</a>, like seconds per block, to speed up your network for testing.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> blockCount = <span class="hljs-keyword">await</span> client.read(<span class="hljs-string">'private'</span>).getBlockCount();
+
+<span class="hljs-keyword">await</span> developerClient.updateSettings({ secondsPerBlock: <span class="hljs-number">1</span> });
+<span class="hljs-comment">// wait 5 seconds</span>
+<span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt;<span class="hljs-function">(<span class="hljs-params">(<span class="hljs-params">resolve</span>) =&gt; setTimeout(<span class="hljs-params">resolve, 5000</span>)</span>);
+
+<span class="hljs-params">const</span> <span class="hljs-params">newBlockCount</span> = <span class="hljs-params">await</span> <span class="hljs-params">client</span>.<span class="hljs-params">read</span>(<span class="hljs-params">'<span class="hljs-keyword">private</span>'</span>).<span class="hljs-params">getBlockCount</span><span class="hljs-params">()</span>;
+
+// <span class="hljs-params">should</span> <span class="hljs-params">output</span> ~ '5' <span class="hljs-params">to</span> <span class="hljs-params">the</span> <span class="hljs-params">console</span> <span class="hljs-params">as</span> <span class="hljs-params">about</span> 5 <span class="hljs-params">blocks</span> <span class="hljs-params">will</span> <span class="hljs-params">have</span> <span class="hljs-params">been</span> <span class="hljs-params">process</span> <span class="hljs-params">in</span> 5 <span class="hljs-params">seconds</span>.
+<span class="hljs-params">console</span>.<span class="hljs-params">log</span>(<span class="hljs-params">newBlockCount - blockCount</span>);
+</span></code></pre></li>
 </ul>
 <p><a id="getSettings"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="getsettings-promise-privatenetworksettings-docs-en-client-typeshtml-privatenetworksettings"></a><a href="#getsettings-promise-privatenetworksettings-docs-en-client-typeshtml-privatenetworksettings" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getSettings(): Promise&lt;<a href="/docs/en/client-types.html#PrivateNetworkSettings">PrivateNetworkSettings</a>&gt;</h4>
 <ul>
 <li>Returns the current <a href="/docs/en/client-types.html#PrivateNetworkSettings">PrivateNetworkSettings</a>.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> { secondsPerBlock } = <span class="hljs-keyword">await</span> developerClient.getSettings();
+<span class="hljs-comment">// print secondsPerBlock to the console.</span>
+<span class="hljs-built_in">console</span>.log(secondsPerBlock);
+</code></pre></li>
 </ul>
 <p><a id="fastForwardOffset"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="fastforwardoffsetseconds-number-promise-void"></a><a href="#fastforwardoffsetseconds-number-promise-void" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>fastForwardOffset(seconds: number): Promise&lt;void&gt;</h4>
 <ul>
 <li>Fast forwards the time of a private network by the given number of seconds. The time of the next <a href="/docs/en/client-types.html#Block">Block</a> will be increased by the offset provided in seconds.</li>
 <li>This can be useful for testing time dependent contracts, such as ICOs.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> readClient = client.read(<span class="hljs-string">'private'</span>);
+
+<span class="hljs-comment">// get the most recent block's timestamp</span>
+<span class="hljs-keyword">const</span> blockHash = <span class="hljs-keyword">await</span> readClient.getBestBlockHash();
+<span class="hljs-keyword">const</span> block = <span class="hljs-keyword">await</span> readClient.getBlock(blockHash);
+<span class="hljs-keyword">const</span> blockTime = block.time;
+
+<span class="hljs-comment">// fast forward the network by 100000000 seconds</span>
+<span class="hljs-keyword">await</span> developerClient.fastForwardOffset(<span class="hljs-number">100000000</span>);
+
+<span class="hljs-comment">// get the new most recent block's timestamp;</span>
+<span class="hljs-keyword">const</span> newBlockHash = <span class="hljs-keyword">await</span> readClient.getBestBlockHash();
+<span class="hljs-keyword">const</span> newBlock = <span class="hljs-keyword">await</span> readClient.getBlock(newBlockHash);
+<span class="hljs-keyword">const</span> newBlockTime = newBlock.time;
+
+<span class="hljs-comment">// This will log 'true' to the console</span>
+<span class="hljs-built_in">console</span>.log((newBlockTime - blockTime) &gt; <span class="hljs-number">100000000</span>);
+</code></pre></li>
 </ul>
 <p><a id="fastForwardToTime"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="fastforwardtotimeseconds-number-promise-void"></a><a href="#fastforwardtotimeseconds-number-promise-void" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>fastForwardToTime(seconds: number): Promise&lt;void&gt;</h4>
 <ul>
 <li>Fast forwards the time of a private network to the given number of seconds.  The time of the next <a href="/docs/en/client-types.html#Block">Block</a> will be set to the time provided in seconds.</li>
-<li>This can be useful for testing time dependent contracts, such as ICOs.</li>
+<li>This can be useful for testing time dependent contracts, such as ICOs.
+<ul>
+<li>Example:</li>
+</ul>
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> readClient = client.read(<span class="hljs-string">'private'</span>);
+
+<span class="hljs-comment">// fast forward the network to 100000000 seconds</span>
+<span class="hljs-keyword">await</span> developerClient.fastForwardOffset(<span class="hljs-number">100000000</span>);
+
+<span class="hljs-comment">// get the new most recent block's timestamp;</span>
+<span class="hljs-keyword">const</span> blockHash = <span class="hljs-keyword">await</span> readClient.getBestBlockHash();
+<span class="hljs-keyword">const</span> block = <span class="hljs-keyword">await</span> readClient.getBlock(newBlockHash);
+<span class="hljs-keyword">const</span> blockTime = newBlock.time;
+
+<span class="hljs-comment">// This will log 'true' to the console. Leaves some buffer in case an extra block has been created.</span>
+<span class="hljs-built_in">console</span>.log(blockTime &gt;= <span class="hljs-number">100000000</span> &amp;&amp; blockTime &lt; <span class="hljs-number">100000030</span>);
+</code></pre></li>
 </ul>
 <p><a id="reset"></a></p>
 <h4><a class="anchor" aria-hidden="true" name="reset-promise-void"></a><a href="#reset-promise-void" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>reset(): Promise&lt;void&gt;</h4>
 <ul>
 <li>Resets the private network.</li>
+<li>Example:
+<pre><code class="hljs css ts"><span class="hljs-keyword">const</span> readClient = client.read(<span class="hljs-string">'private'</span>);
+
+<span class="hljs-keyword">const</span> blockCount = <span class="hljs-keyword">await</span> readClient.getBlockCount();
+<span class="hljs-comment">// Assume the private has been active for some time.</span>
+<span class="hljs-comment">// This will log a fairly large number to the console.</span>
+<span class="hljs-built_in">console</span>.log(blockCount);
+
+<span class="hljs-keyword">await</span> developerClient.reset();
+
+<span class="hljs-keyword">const</span> newBlockCount = <span class="hljs-keyword">await</span> readClient.getBlockCount();
+<span class="hljs-comment">// This will log '0' or a very small integer to the console.</span>
+<span class="hljs-built_in">console</span>.log(newBlockCount);
+</code></pre></li>
 </ul>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="keystore-api.html">← Key Store API</a></div></div></div></div><footer class="nav-footer footerContainer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/monogram.svg" alt="NEO•ONE" width="66" height="58"/></a><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">DOCS</h5><a class="footerLink" href="/docs/en/getting-started.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/getting-started.svg" alt="Getting Started"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/getting-started-hover.svg" alt="Getting Started"/><div class="body1 gray0 footerLinkText axiformaRegular">Getting Started</div></a><a class="footerLink" href="/docs/en/contributing.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/contribute.svg" alt="Contribute"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/contribute-hover.svg" alt="Contribute"/><div class="body1 gray0 footerLinkText axiformaRegular">Contribute</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">COMMUNITY</h5><a class="footerLink" href="/en/users.html"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/user-showcase.svg" alt="User Showcase"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/user-showcase-hover.svg" alt="User Showcase"/><div class="body1 gray0 footerLinkText axiformaRegular">User Showcase</div></a><a class="footerLink" href="https://discord.gg/S86PqDE" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/chat.svg" alt="NEO•ONE Chat"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/chat-hover.svg" alt="NEO•ONE Chat"/><div class="body1 gray0 footerLinkText axiformaRegular">NEO•ONE Chat</div></a><a class="footerLink" href="http://stackoverflow.com/questions/tagged/neo-one" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/stack-overflow.svg" alt="Stack Overflow"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/stack-overflow-hover.svg" alt="Stack Overflow"/><div class="body1 gray0 footerLinkText axiformaRegular">Stack Overflow</div></a><a class="footerLink" href="https://twitter.com/neo_one_suite" target="_blank"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/twitter.svg" alt="Twitter"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/twitter-hover.svg" alt="Twitter"/><div class="body1 gray0 footerLinkText axiformaRegular">Twitter</div></a></div></div><div class="footerSectionWrapper"><div class="footerSection"><h5 class="body1 footerTitle axiformaBold">MORE</h5><a class="footerLink" href="/blog"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/blog.svg" alt="Blog"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/blog-hover.svg" alt="Blog"/><div class="body1 gray0 footerLinkText axiformaRegular">Blog</div></a><a class="footerLink" href="https://github.com/neo-one-suite/neo-one"><img class="footerLinkImage footerLinkRestImage" src="/img/footer/github.svg" alt="GitHub"/><img class="footerLinkImage footerLinkHoverImage" src="/img/footer/github-hover.svg" alt="GitHub"/><div class="body1 gray0 footerLinkText axiformaRegular">GitHub</div></a><div class="footerGitHubButton"><a class="github-button" href="https://github.com/neo-one-suite/neo-one" data-icon="octicon-star" data-count-href="/neo-one-suite/neo-one/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></div></div></section><section class="copyright">COPYRIGHT © 2018 NEO•ONE.</section></footer></div><script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
