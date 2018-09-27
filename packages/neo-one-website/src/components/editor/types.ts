@@ -1,14 +1,3 @@
-export type EditorFiles = ReadonlyArray<EditorFile>;
-
-export type EditorFileType = 'typescript' | 'contract';
-
-export interface EditorFile {
-  readonly path: string;
-  readonly content: string;
-  readonly writable: boolean;
-  readonly type: EditorFileType;
-}
-
 export type ConsoleType = 'output' | 'problems';
 
 export type FileDiagnosticSeverity = 'hint' | 'info' | 'warning' | 'error';

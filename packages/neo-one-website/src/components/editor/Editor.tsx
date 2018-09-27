@@ -16,6 +16,7 @@ interface Props {
   readonly selectedFile: EditorFile;
   readonly range?: TextRange;
   readonly files: EditorFiles;
+  readonly extraFiles?: EditorFiles;
   readonly onSelectFile: (file: EditorFile) => void;
   readonly onChangeFile: (file: EditorFile) => void;
   readonly onChangeProblems?: (path: string, diagnostics: ReadonlyArray<FileDiagnostic>) => void;
@@ -25,6 +26,7 @@ export const Editor = ({
   selectedFile,
   range,
   files,
+  extraFiles,
   onChangeFile,
   onChangeProblems,
   onSelectFile,
@@ -36,6 +38,7 @@ export const Editor = ({
       selectedFile={selectedFile}
       range={range}
       files={files}
+      extraFiles={extraFiles}
       onChangeFile={onChangeFile}
       onChangeProblems={onChangeProblems}
     />

@@ -1,0 +1,20 @@
+{
+  "name": "@neo-one/local",
+  "version": "1.0.0-preview.0",
+  "description": "NEO•ONE common local node setup and testing.",
+  "main": "./src/index.ts",
+  "dependencies": {
+    "@neo-one/client": "^1.0.0-preview.0",
+    "@neo-one/client-common": "^1.0.0-preview.0",
+    "@neo-one/client-full": "^1.0.0-preview.0",
+    "@neo-one/node-browser": "^1.0.0-preview.0",
+    "@neo-one/smart-contract-codegen": "^1.0.0-preview.0",
+    "@neo-one/smart-contract-compiler": "^1.0.0-preview.0",
+    "@neo-one/utils": "^1.0.0-preview.0",
+    "bignumber.js": "^7.2.1",
+    "rxjs": "^6.3.3",
+    "source-map": "^0.7.3",
+    "typescript": "3.1.0-dev.20180922"
+  },
+  "sideEffects": false
+}

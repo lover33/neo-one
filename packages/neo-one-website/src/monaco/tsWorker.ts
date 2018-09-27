@@ -21,8 +21,10 @@ import { normalizePath, utils } from '@neo-one/utils';
 // @ts-ignore
 import { TPromise } from 'monaco-editor/esm/vs/base/common/winjs.base';
 import ts from 'typescript';
+import { getSmartContractLibPath, getSmartContractPath } from '../manager';
 
 import IWorkerContext = monaco.worker.IWorkerContext;
+
 // tslint:disable-next-line no-any
 type Promise<T1 = any, T2 = any> = monaco.Promise<T1, T2>;
 const Promise: typeof monaco.Promise = TPromise;
@@ -31,16 +33,16 @@ const throwUnsupported = () => {
   throw new Error('Unsupported');
 };
 
-const globalSCFileName = 'sc:global.d.ts';
+const globalSCFileName = getSmartContractPath('global.d.ts');
 const defaultLibName = 'lib:lib.esnext.d.ts';
 
 const SC_FILES: { readonly [key: string]: string } = {
   [globalSCFileName]: scGlobalContents,
-  'sc:index.d.ts': scIndexContents,
-  'sc:harness.d.ts': scHarnessContents,
-  'scLib:index.ts': scLibIndexContents,
-  'scLib:Token.ts': scLibTokenContents,
-  'scLib:ICO.ts': scLibICOContents,
+  [getSmartContractPath('index.d.ts')]: scIndexContents,
+  [getSmartContractPath('harness.d.ts')]: scHarnessContents,
+  [getSmartContractLibPath('index.ts')]: scLibIndexContents,
+  [getSmartContractLibPath('Token.ts')]: scLibTokenContents,
+  [getSmartContractLibPath('ICO.ts')]: scLibICOContents,
 };
 
 const LIB_FILES: { readonly [key: string]: string } = {
@@ -51,8 +53,8 @@ const LIB_FILES: { readonly [key: string]: string } = {
 const createCompilerHost = (host: TypeScriptWorker) => ({
   getAllTypescriptFilesInDir: throwUnsupported,
   createSnippetFile: throwUnsupported,
-  getSmartContractPath: (value: string) => `sc:${value}`,
-  getSmartContractLibPath: (value: string) => `scLib:${value}`,
+  getSmartContractPath,
+  getSmartContractLibPath,
   createLanguageServiceHost(
     rootNamesIn: ReadonlyArray<string>,
     options: ts.CompilerOptions,

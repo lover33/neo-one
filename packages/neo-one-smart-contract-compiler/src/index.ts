@@ -26,5 +26,5 @@ export const compileContract = (
   return result;
 };
 
-export { CompileContractResult, LinkedContracts };
+export { CompileContractResult, LinkedContracts, CompilerHost };
 export { scan, Contracts } from './scan';

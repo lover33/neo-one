@@ -2,6 +2,7 @@ import { ActionMap } from 'constate';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Container, Flex, styled } from 'reakit';
+import { Observable } from 'rxjs';
 import { ReduxStoreProvider } from '../../containers';
 import { ComponentProps } from '../../types';
 import { Editor } from './Editor';
@@ -21,8 +22,10 @@ const Wrapper = styled(Flex)`
 interface ExternalProps {
   readonly selectedFile: EditorFile;
   readonly files: EditorFiles;
+  readonly extraFiles?: EditorFiles;
   readonly onSelectFile: (file: EditorFile) => void;
   readonly onChangeFile: (file: EditorFile) => void;
+  readonly build: (file: EditorFile) => Observable<string>;
 }
 
 interface State {
@@ -58,9 +61,11 @@ interface Props extends ExternalProps {
 const SimpleEditorBase = ({
   selectedFile,
   files,
+  extraFiles,
   onChangeFile,
   onSelectFile,
   onChangeProblems,
+  build,
   ...props
 }: Props & ComponentProps<typeof Wrapper>) => (
   <Container initialState={INITIAL_STATE} actions={actions}>
@@ -69,6 +74,7 @@ const SimpleEditorBase = ({
         <Editor
           selectedFile={selectedFile}
           files={files}
+          extraFiles={extraFiles}
           onSelectFile={onSelectFile}
           onChangeFile={onChangeFile}
           onChangeProblems={onChangeProblems}
@@ -83,6 +89,7 @@ const SimpleEditorBase = ({
         <EditorToolbar
           selectedFile={selectedFile}
           files={files}
+          build={build}
           onSelectRange={(file, nextRange) => {
             if (file.path === selectedFile.path) {
               setRange(nextRange);

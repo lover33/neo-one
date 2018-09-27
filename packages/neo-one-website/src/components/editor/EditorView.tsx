@@ -6,6 +6,7 @@ interface Props {
   readonly selectedFile: EditorFile;
   readonly range?: TextRange;
   readonly files: EditorFiles;
+  readonly extraFiles?: EditorFiles;
   readonly onChangeFile: (file: EditorFile) => void;
   readonly onChangeProblems?: (path: string, diagnostics: ReadonlyArray<FileDiagnostic>) => void;
 }
@@ -13,7 +14,15 @@ interface Props {
 const getType = (type: EditorFileType): 'typescript-smart-contract' | 'typescript' =>
   type === 'contract' ? 'typescript-smart-contract' : 'typescript';
 
-export const EditorView = ({ selectedFile, range, files, onChangeFile, onChangeProblems, ...props }: Props) => (
+export const EditorView = ({
+  selectedFile,
+  range,
+  files,
+  extraFiles,
+  onChangeFile,
+  onChangeProblems,
+  ...props
+}: Props) => (
   <MonacoEditor
     {...props}
     file={{
@@ -22,7 +31,7 @@ export const EditorView = ({ selectedFile, range, files, onChangeFile, onChangeP
       language: getType(selectedFile.type),
     }}
     range={range}
-    entries={files.map((file) => ({
+    entries={files.concat(extraFiles === undefined ? [] : extraFiles).map((file) => ({
       path: file.path,
       content: file.content,
       language: getType(file.type),
